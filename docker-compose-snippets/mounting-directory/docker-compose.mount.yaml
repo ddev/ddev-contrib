@@ -1,0 +1,7 @@
+version: '3.6'
+services:
+  web:
+    volumes:
+      # The source (here /Users/rfay/tmp) must be in an area shared by docker
+      # You can target any directory you want as long as the parent exists (here /mnt)
+      - "/Users/rfay/tmp:/mnt/in-container:ro"
