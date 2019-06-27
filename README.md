@@ -10,7 +10,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [Mounting a directory into web container](docker-compose-snippets/mounting-directory/README.md)
 * [Setting an environment variable](docker-compose-snippets/environment-variable/docker-compose.env.yaml)
 
-## Additional services added via docker-composer.<service>.yaml
+## Additional services added via docker-compose.\<service\>.yaml
 * [MongoDB](docker-compose-services/mongodb/README.md)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
