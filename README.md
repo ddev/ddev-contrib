@@ -9,6 +9,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 
 * [Mounting a directory into web container](docker-compose-snippets/mounting-directory/README.md)
 * [Setting an environment variable](docker-compose-snippets/environment-variable/docker-compose.env.yaml)
+* [Communication between two ddev projects](docker-compose-snippets/project-communication/README.md)
 
 ## Additional services added via docker-composer.<service>.yaml
 
