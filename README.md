@@ -14,3 +14,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 ## Additional services added via docker-composer.<service>.yaml
 
 ## .ddev/web-build/Dockerfile examples to customize web container
+
+## Full recipes
+
+* [Using ddev with a corporate (or other) web proxy](recipes/proxy/README.md)

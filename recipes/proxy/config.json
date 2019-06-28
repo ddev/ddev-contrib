@@ -1,0 +1,11 @@
+{
+  "proxies":
+  {
+    "default":
+    {
+      "httpProxy": "http://10.37.129.4:8888",
+      "httpsProxy": "http://10.37.129.4:8888",
+      "noProxy": "*.ddev.site,localhost,127.0.0.1"
+    }
+  }
+}
