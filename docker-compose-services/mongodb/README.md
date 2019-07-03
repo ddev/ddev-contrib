@@ -24,6 +24,5 @@ Mongo Express will be accessible from `<site>.ddev.site:8081`
 
 Caveats:
 
-* mongo-express will be accessible from everyone on local network, you must use your firewall to avoid that.
 * you can't define custom MongoDB configuration
 * you can't use `ddev import-db`
