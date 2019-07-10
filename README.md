@@ -3,6 +3,8 @@ Contrib space for DDEV-Local services, tools, snippets, approaches
 
 ## config.yaml hook examples
 
+* [Import a sql dump if database is empty](hook-examples/import-db-if-empty/README.md)
+
 ## docker-compose.*.yaml snippets to solve simple problems
 
 Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/users/extend/custom-compose-files/).
