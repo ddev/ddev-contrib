@@ -8,13 +8,14 @@ Another case would be, that you are running `composer install` on `post-start` h
 
 **Solution:**
  
-Run a bash script on `post-start` hook, which looks for a table in the database that should always be there and imports a database dump if check fails:
+Run a bash script like [import-if-empty.sh](import-if-empty.sh) on a `post-start` hook, which looks for a table in the database that should always be there and imports a database dump if check fails.
 
-``` bash
-#!/bin/bash
+The hook setup might look like this; adjust the path to the script. If it's in your code repository, the script will mounted into `/var/www/html/<relative_path>`.
 
-if ! mysql -e 'SELECT * FROM mytable;' db > /dev/null; then
-  echo 'loading db'
-  gzip -dc /var/www/html/db.sql.gz | mysql db
-fi
+
+```
+hooks:
+  post-start:
+  - exec: /var/www/html/import-if-empty.sh
+  - exec: echo 'other post-start hooks will now be executed'
 ```
