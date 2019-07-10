@@ -11,7 +11,8 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [Setting an environment variable](docker-compose-snippets/environment-variable/docker-compose.env.yaml)
 * [Communication between two ddev projects](docker-compose-snippets/project-communication/README.md)
 
-## Additional services added via docker-composer.<service>.yaml
+## Additional services added via docker-compose.\<service\>.yaml
+* [MongoDB](docker-compose-services/mongodb/README.md)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
