@@ -17,7 +17,7 @@ If your container was successfully started, you should be able to access it from
 ## Drupal setup
 1. After connecting create a database, where you want Drupal to live.
 Something like `CREATE DATABASE db`.
-2. Create a user with something like `CREATE USER 'db'@'localhost' IDENTIFIED BY 'db'`;
+2. Create a user with something like `CREATE USER 'db'@'localhost' IDENTIFIED BY 'db';`
 3. Grant permissions on that database `GRANT ALL PRIVILEGES ON db.* TO 'db'@'%' IDENTIFIED BY "db";`
 4. Configure your site settings as usual. Edit `sites/default/settings.ddev.php` and create a connection that has values like:
 
