@@ -21,6 +21,8 @@ services:
       - type: "bind"
         source: "."
         target: "/mnt/ddev_config"
+    # Optionally send startup flags.
+    # command: --sql_mode="" 
 # Names our volume
 volumes:
   mysql-db:
