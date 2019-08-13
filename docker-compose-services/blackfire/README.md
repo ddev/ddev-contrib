@@ -21,7 +21,7 @@ To make sure the probe and agent can communicate, adjust the blackfire agent soc
 ### The Client
 
 * To use the command-line client, download it for your host platform via the blackfire.io website (see [installation instructions](https://blackfire.io/docs/up-and-running/installation#installation-instructions) for the client for each platform). For basic command-line blackfire.io usage see [the blackfire.io docs](https://blackfire.io/docs/cookbooks/profiling-http). For example, `blackfire curl https://d8git.ddev.site` provides a link to a call graph of the functions which were called to build the page.
-* To use the Google Chrome extension, [blackfire chrome integration](https://blackfire.io/docs/integrations/chrome) and install the Chrome extension.
+* To use the Google Chrome extension, see [blackfire chrome integration](https://blackfire.io/docs/integrations/chrome) and install the Chrome extension.
 
 
 ### Basic Usage
