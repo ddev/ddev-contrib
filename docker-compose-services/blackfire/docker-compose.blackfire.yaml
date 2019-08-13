@@ -7,6 +7,7 @@ services:
     environment:
       BLACKFIRE_SERVER_ID: 'YOUR_SERVER_ID'
       BLACKFIRE_SERVER_TOKEN: 'YOUR_SERVER_TOKEN'
+    hostname: ${DDEV_SITENAME}-blackfire
   web:
     links:
       - blackfire:$DDEV_HOSTNAME

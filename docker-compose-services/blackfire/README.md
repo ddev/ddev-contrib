@@ -26,4 +26,8 @@ To make sure the probe and agent can communicate, adjust the blackfire agent soc
 
 ### Basic Usage
 
- or for chrome-driven use, see [blackfire chrome integration](https://blackfire.io/docs/integrations/chrome)
+* Make sure the server information is configured in the docker-compose.blackfire.yaml
+* Make sure your blackfire client is configured with client keys.
+* Start your configured project with `ddev start`
+* Use `blackfire curl <project_url>` to get a call graph URL
+* Use the Google Chrome extension on a specific page to get a call graph interactively.
