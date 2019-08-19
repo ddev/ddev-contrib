@@ -17,6 +17,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [MongoDB](docker-compose-services/mongodb/README.md)
 * [Blackfire.io](docker-compose-services/blackfire/README.md)
 * [PostreSQL](docker-compose-services/postgres/README.md)
+* [Elasticsearch](docker-compose-services/elasticsearch/README.md)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
