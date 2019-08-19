@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  postgres:
+    container_name: ddev-${DDEV_SITENAME}-postgres
+    image: mdillon/postgis:11
+    ports:
+      - 32784:5432
+    environment:
+      - POSTGRES_PASSWORD=db
+      - POSTGRES_USER=db
+      - POSTGRES_DB=db
+    volumes:
+      - ".:/mnt/ddev_config"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+      com.ddev.app-url: $DDEV_URL
+  web:
+    links:
+      - postgres:postgres

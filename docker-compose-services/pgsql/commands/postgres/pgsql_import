@@ -1,0 +1,3 @@
+#!/bin/bash
+
+su postgres -c "psql -U db db < /mnt/ddev_config/import-db/postgresql.db.sql"
