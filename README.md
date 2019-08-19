@@ -15,6 +15,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 
 ## Additional services added via docker-compose.\<service\>.yaml
 * [MongoDB](docker-compose-services/mongodb/README.md)
+* [Blackfire.io](docker-compose-services/blackfire/README.md)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
