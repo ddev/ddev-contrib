@@ -11,7 +11,7 @@ Using PostgreSQL container with PostGIS support provided by [mdillon/postgis
 
 ### Connection
 
-Connect to `pgsql` with
+Connect to `postgres` with
 
 ```
 Host: postgres
@@ -48,7 +48,7 @@ hooks:
 
 ### PostGIS
 
-The pgsql image support `postgis`, but you will need to create the extension before using it:
+The `postgres` image support `postgis`, but you will need to create the extension before using it:
 
 ```
 CREATE EXTENSION IF NOT EXISTS `postgis`;
