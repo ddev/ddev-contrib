@@ -1,3 +1,3 @@
 #!/bin/bash
 
-su postgres -c "pg_dump db --username=db --host=localhost --port=5432 --column-inserts > /mnt/ddev_config/import-db/postgresql.db.sql"
+su postgres -c "pg_dump db --username=db --host=localhost --port=5432 --column-inserts"

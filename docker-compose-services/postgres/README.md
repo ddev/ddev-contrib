@@ -1,17 +1,17 @@
 ## PostgreSQL
 
-Using PostgreSQL container with PostGIS support provided by [mdillon/postgis
+Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided by [mdillon/postgis
 ](https://hub.docker.com/r/mdillon/postgis).
 
 ### Installation
 
 1. Copy `docker-compose.postgres.yaml` to your project
-2. Copy `command/postgres` to your project
-3. *(optional)* Update your config.yaml file to support auto-import/auto-export (see bellow)
+2. Copy the full `commands/postgres` directory to your project's `.ddev/commands` directory. For example `cp -r commands/postgres /.ddev/commands`
+3. *(optional)* Update your config.yaml file to support auto-import/auto-export (see below)
 
 ### Connection
 
-Connect to `postgres` with
+Connect to `postgres` host/db server from within the web container with:
 
 ```
 Host: postgres
@@ -33,17 +33,17 @@ When using multiple project with PostgreSQL support, remember to update your `do
 
 Two new `ddev` commands are provided:
 
-- `ddev pgsql_export` : Use `pg_dump` to export `db` to `import-db/postgresql.db.sql` 
-- `ddev pgsql_import` : Use `pgsql` to import `import-db/postgresql.db.sql` into `db`
+- `ddev pgsql_export` : Dump `db` database content to `stdout` 
+- `ddev pgsql_import` : Import `stdin` into `db` database
 
-To import/export the `db` table automatically add the following hooks to your `config.yaml`:
+Example `config.yaml` hooks configuration to automatically import/export the `db` table:
 
 ```
 hooks:
   pre-stop:
-    - exec-host: ddev pgsql_export
+    - exec-host: ddev pgsql_export > .ddev/import-db/postgresql.db.sql
   post-start:
-    - exec-host: ddev pgsql_import
+    - exec-host: ddev pgsql_import < .ddev/import-db/postgresql.db.sql
 ```
 
 ### PostGIS
