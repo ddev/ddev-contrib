@@ -1,10 +1,4 @@
 #!/bin/bash
 
-# Create temp file with stdin value
-echo $(</dev/stdin) > /tmp/pgsql.import.tmp
-
 # Import via user postgres to avoid credentials prompt
-su postgres -c "psql -U db db < /tmp/pgsql.import.tmp"
-
-# Remove temp file after usage
-rm /tmp/pgsql.import.tmp
+su postgres -c "psql -U db db < /mnt/ddev_config/import-db/postgresql.db.sql"

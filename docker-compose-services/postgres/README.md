@@ -33,17 +33,17 @@ When using multiple project with PostgreSQL support, remember to update your `do
 
 Two new `ddev` commands are provided:
 
-- `ddev pgsql_export` : Dump `db` database content to `stdout` 
-- `ddev pgsql_import` : Import `stdin` into `db` database
+- `ddev pgsql_export` : Use `pg_dump` to export `db` to `.ddev/import-db/postgresql.db.sql`  
+- `ddev pgsql_import` : Use `pgsql` to import `.ddev/import-db/postgresql.db.sql` into `db`
 
 Example `config.yaml` hooks configuration to automatically import/export the `db` table:
 
 ```
 hooks:
   pre-stop:
-    - exec-host: ddev pgsql_export > .ddev/import-db/postgresql.db.sql
+    - exec-host: ddev pgsql_export
   post-start:
-    - exec-host: ddev pgsql_import < .ddev/import-db/postgresql.db.sql
+    - exec-host: ddev pgsql_import
 ```
 
 ### PostGIS
