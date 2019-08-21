@@ -1,10 +1,12 @@
 version: "3.6"
 services:
   mysql:
+    hostname: ${DDEV_SITENAME}-mysql
     container_name: ddev-${DDEV_SITENAME}-mysql
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
+    # Versions other than 5.7 should work here.
     image: mysql:5.7
     restart: "no"
     environment:
