@@ -1,7 +1,6 @@
 ## PostgreSQL
 
-Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided by [mdillon/postgis
-](https://hub.docker.com/r/mdillon/postgis).
+Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided by [mdillon/postgis](https://hub.docker.com/r/mdillon/postgis).
 
 ### Installation
 
@@ -34,7 +33,7 @@ When using multiple project with PostgreSQL support, remember to update your `do
 Two new `ddev` commands are provided:
 
 - `ddev pgsql_export` : Use `pg_dump` to export `db` to `.ddev/import-db/postgresql.db.sql`  
-- `ddev pgsql_import` : Use `pgsql` to import `.ddev/import-db/postgresql.db.sql` into `db`
+- `ddev pgsql_import` : Use `pgsql` to import `.ddev/import-db/postgresql.db.sql` into `db` - Note that this must be executed with an empty database.
 
 Example `config.yaml` hooks configuration to automatically import/export the `db` table:
 
@@ -53,3 +52,11 @@ The `postgres` image support `postgis`, but you will need to create the extensio
 ```
 CREATE EXTENSION IF NOT EXISTS `postgis`;
 ```
+
+### TODO
+
+Future enhancements (PR's welcome here) include:
+
+* Non-volatile postgres database (store it on a docker volume like ddev's normal mariadb container does)
+* Provide interactive custom commands to interact with the `postgres` utility in the container interactively.
+* Consider changing suggested import/export hooks into "exec" hooks with "service: postgres" instead of running `ddev pg*` on the host.
