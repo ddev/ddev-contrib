@@ -12,6 +12,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [Mounting a directory into web container](docker-compose-snippets/mounting-directory/README.md)
 * [Setting an environment variable](docker-compose-snippets/environment-variable/docker-compose.env.yaml)
 * [Communication between two ddev projects](docker-compose-snippets/project-communication/README.md)
+* [Build public projects without ngrok](docker-compose-snippets/public-available-project/README.md)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 * [MongoDB](docker-compose-services/mongodb/README.md)
