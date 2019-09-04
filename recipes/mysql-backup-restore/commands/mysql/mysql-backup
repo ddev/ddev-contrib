@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+## Description: Backup MYSQL DB quick or with snapshot
+## Usage: mysql-backup
+## Example: "ddev mysql-backup snapshot"
+## Options: "mysql-backup snapshot - save backup with timestamp"
+
+# create dir if not available
+mkdir -p /mnt/ddev_config/backup
+
+if [[ $1 = "snapshot" ]]; then
+    mysqldump --single-transaction --quick --lock-tables=false -udb -pdb db | gzip > /mnt/ddev_config/backup/mysql-db-$(date +"%Y%m%d-%H%M").sql.gz
+else
+    mysqldump --single-transaction --quick --lock-tables=false -udb -pdb db | gzip > /mnt/ddev_config/backup/mysql-db.sql.gz
+fi
+
+
+
