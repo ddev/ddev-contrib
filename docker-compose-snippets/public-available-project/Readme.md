@@ -75,3 +75,19 @@ than tunneled over ngrok.
 
 And yes, I know, maybe the server is now open like a barn door again...so
 please do not build this setup on productive.
+
+### Additional information for multiple projects
+
+The above example works for one project only. If you have more than one project
+you will get an error that your router service already exists. In that case I prefer
+to configure one little or dummy project with the router service from above. For
+all other projects you only set the ports to 8080 and 4433. As ddev-router and our
+own router are working on same volume, our router knows about all other projects, too.
+
+1. Configure one little or dummy project with additional router service
+2. Configure next project without router, but with port changes
+3. Configure further projects the same way
+4. You have to start your projects first, so that ddev-router can write configuration
+to docker volume. Now our router should know the new configuration.
+5. At last start your little dummy project with your own router service. Alternative
+you also can start your router service with docker directly `docker start router`
