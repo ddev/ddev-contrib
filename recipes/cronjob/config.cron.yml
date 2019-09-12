@@ -3,5 +3,4 @@ webimage_extra_packages: [--no-install-recommends cron]
 hooks:
   post-start:
     - exec: echo '*/1 * * * * root TYPO3_CONTEXT=Development/Local /usr/bin/php /var/www/html/public/typo3/sysext/core/bin/typo3 scheduler:run' | sudo tee -a /etc/cron.d/typo3
-    - exec: sudo chmod 0600 /etc/cron.d/typo3
-    - exec: sudo service cron start
+    - exec: sudo chmod 0600 /etc/cron.d/typo3 && sudo service cron start
