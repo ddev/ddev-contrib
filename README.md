@@ -23,3 +23,4 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 ## Full recipes
 
 * [Using ddev with a corporate (or other) web proxy](recipes/proxy/README.md)
+* [enable cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/README.md)
