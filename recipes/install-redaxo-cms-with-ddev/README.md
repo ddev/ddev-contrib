@@ -10,10 +10,10 @@ REDAXO is for people who loves the flexibility about a content managment system,
 
 Lets start by cloning the REDAXO repository in our project folder first.
 
-![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/clone-repository.gif?raw=true)
+![](https://raw.githubusercontent.com/crydotsnake/ddev-contrib/master/recipes/install-redaxo-cms-with-ddev/img/clone-repository.gif)
 
 ---
 
 In the next step we run the `ddev config` command.
 
-You will be asked for your project name. But you skip that and just press enter.
+You will be asked for your project name. But you can skip that and just press enter, the same thing for the next step.
