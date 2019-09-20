@@ -16,4 +16,9 @@ Lets start by cloning the REDAXO repository in our project folder first.
 
 In the next step we run the `ddev config` command.
 
-You will be asked for your project name. But you can skip that and just press enter, the same thing for the next step.
+![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-name.png?raw=true)
+
+You will be asked for your project name. But you can skip that and 
+just press enter, the same thing for the next step.
+
+Now we have to choose a project type, in our case its the `php` type.
