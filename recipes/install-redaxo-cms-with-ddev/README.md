@@ -42,3 +42,7 @@ To see your database informations, and other helpful things run the `ddev descri
 ![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-informations.png?raw=true)
 
 We are done!
+
+# Credits
+
+Tool for the animated gif: [Licecap](https://www.cockos.com/licecap/)
