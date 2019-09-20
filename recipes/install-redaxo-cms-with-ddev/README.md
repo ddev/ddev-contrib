@@ -38,3 +38,7 @@ And now you can enter the project with the urls you see in the terminal!.
 ## Project informations
 
 To see your database informations, and other helpful things run the `ddev describe` command.
+
+![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-informations.png?raw=true)
+
+We are done!
