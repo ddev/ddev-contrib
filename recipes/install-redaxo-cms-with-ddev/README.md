@@ -1,4 +1,4 @@
-# Install RedaxoCMS with DDEV
+# Install REDAXO CMS with DDEV
 
 First you have to install DDEV on your system, here you find the [installation instructions](https://ddev.readthedocs.io/en/stable/#installation).
 
@@ -8,7 +8,7 @@ Next create a folder (in your home folder for example) for all your ddev project
 
 ## Install Redaxo
 
-Clone the Redaxo Repository in your folder:
+Clone the REDAXO repository in your folder:
 
 `git clone http://github.com/redaxo/redaxo`
 
