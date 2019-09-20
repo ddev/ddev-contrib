@@ -1,20 +1,11 @@
-# Install REDAXO CMS with DDEV
+# Install [REDAXO CMS](https://redaxo.org) with DDEV
 
-First you have to install DDEV on your system, here you find the [installation instructions](https://ddev.readthedocs.io/en/stable/#installation).
+## What is REDAXO?
 
-To check if ddev is installed on your system, just type `ddev --version` in the terminal, or cmd if you are a windows user.
+REDAXO is an open source content managment system devleoped by a german web agency called [Yakamara](https://www.yakamara.de/). 
 
-Next create a folder (in your home folder for example) for all your ddev projects.
+REDAXO is for people who loves the flexibility about a content managment system, you have easy control about your code and also about the content that you want to create. 
 
-## Install Redaxo
+## Install REDAXO
 
-Clone the REDAXO repository in your folder:
-
-`git clone http://github.com/redaxo/redaxo`
-
-then type `ddev config` in the terminal.
-Follow the instructions on it. 
-
-In the last step just type `ddev start` and everything should work fine!. 
-
-You can use the `ddev describe` command to see all your informations about the ddev project, (database credentials for example). 
+Lets start by cloning the REDAXO repository in our project folder first.
