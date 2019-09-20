@@ -29,3 +29,6 @@ Now we have to choose a project type, in our case its the `php` type.
 
 Now we are done and we can run the `ddev start` command to start the project!.
 
+![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-start.gif?raw=true)
+
+And now you can type enter the project with the urls you see in the terminal!.
