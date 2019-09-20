@@ -32,3 +32,9 @@ Now we are done and we can run the `ddev start` command to start the project!.
 ![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-start.gif?raw=true)
 
 And now you can enter the project with the urls you see in the terminal!.
+
+![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project.png?raw=true)
+
+## Project informations
+
+To see your database informations, and other helpful things run the `ddev describe` command.
