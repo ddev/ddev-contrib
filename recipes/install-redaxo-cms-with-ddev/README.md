@@ -22,3 +22,7 @@ You will be asked for your project name. But you can skip that and
 just press enter, the same thing for the next step.
 
 Now we have to choose a project type, in our case its the `php` type.
+
+![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-type.png?raw=true)
+
+# Start the project
