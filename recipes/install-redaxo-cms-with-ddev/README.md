@@ -4,7 +4,7 @@
 
 REDAXO is an open source content managment system devleoped by a german web agency called [Yakamara](https://www.yakamara.de/). 
 
-REDAXO is for people who loves the flexibility about a content managment system, you have easy control about your code and also about the content that you want to create. 
+REDAXO is for people who love the flexibility about a content managment system, you have easy control about your code and also about the content that you want to create. 
 
 ## Install REDAXO
 
@@ -45,4 +45,4 @@ We are done!
 
 # Credits
 
-Tool for the animated gif: [Licecap](https://www.cockos.com/licecap/)
+Tool for the animated GIF: [Licecap](https://www.cockos.com/licecap/)
