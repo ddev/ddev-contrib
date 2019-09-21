@@ -14,6 +14,13 @@ Lets start by cloning the REDAXO repository in our project folder first.
 
 ![](https://raw.githubusercontent.com/crydotsnake/ddev-contrib/master/recipes/install-redaxo-cms-with-ddev/img/clone-repository.gif)
 
+After cloning the repository its important to install the git submodules also:
+
+```bash
+git submodule init
+git submodule update
+```
+
 ---
 
 In the next step we run the `ddev config` command.
