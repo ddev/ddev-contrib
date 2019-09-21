@@ -10,6 +10,8 @@ REDAXO is for people who love the flexibility about a content managment system, 
 
 Lets start by cloning the REDAXO repository in our project folder first.
 
+`git clone https://github.com/redaxo/redaxo.git .`
+
 ![](https://raw.githubusercontent.com/crydotsnake/ddev-contrib/master/recipes/install-redaxo-cms-with-ddev/img/clone-repository.gif)
 
 ---
