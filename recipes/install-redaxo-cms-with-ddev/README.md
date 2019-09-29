@@ -34,6 +34,9 @@ Now we have to choose a project type, in our case its the `php` type.
 
 ![](https://github.com/crydotsnake/ddev-contrib/blob/master/recipes/install-redaxo-cms-with-ddev/img/project-type.png?raw=true)
 
+# Change the Webserver
+By default DDEV is using the nginx server, but you have to change it to apache. go to the `.ddev/config.yaml` and change `webserver_type: nginx-fpm` to `webserver_type: apache-fpm`.
+
 # Start the project
 
 Now we are done and we can run the `ddev start` command to start the project!.
