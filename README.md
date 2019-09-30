@@ -14,6 +14,9 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [Communication between two ddev projects](docker-compose-snippets/project-communication/README.md)
 
 ## Additional services added via docker-compose.\<service\>.yaml
+
+General information on how to do additional services and some additional examples are [in the docs](https://ddev.readthedocs.io/en/latest/users/extend/additional-services/).
+
 * [MongoDB](docker-compose-services/mongodb/README.md)
 * [Blackfire.io](docker-compose-services/blackfire/README.md)
 * [PostreSQL](docker-compose-services/postgres/README.md)

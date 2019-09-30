@@ -16,6 +16,13 @@ services:
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+      - ".:/mnt/ddev_config"
   web:
     links:
       - elasticsearch:elasticsearch
+
+volumes:
+  elasticsearch:
+    name: "${DDEV_SITENAME}-elasticsearch"
