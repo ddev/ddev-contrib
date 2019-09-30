@@ -10,4 +10,4 @@ services:
     hostname: ${DDEV_SITENAME}-blackfire
   web:
     links:
-      - blackfire:$DDEV_HOSTNAME
+      - blackfire:blackfire
