@@ -28,3 +28,4 @@ General information on how to do additional services and some additional example
 
 * [Using ddev with a corporate (or other) web proxy](recipes/proxy/README.md)
 * [enable cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/README.md)
+* [REDAXO CMS](recipes/redaxo-cms)
