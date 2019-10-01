@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## Description: Open PHPStorm with the current project
+## Usage: fetchproductiondb
+## Example: "ddev fetchprodctiondb"
+
+# Example is macOS-specific, but easy to adapt to any OS
+ssh -t user@host 'mysqldump --defaults-file=~/.mysql/project.cnf databasename' > productionsqldump.sql
+ddev import-db --src=productionsqldump.sql
+rm productionsqldump.sql
