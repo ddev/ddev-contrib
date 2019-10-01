@@ -13,6 +13,10 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [Setting an environment variable](docker-compose-snippets/environment-variable/docker-compose.env.yaml)
 * [Communication between two ddev projects](docker-compose-snippets/project-communication/README.md)
 
+## Custom command examples
+
+Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/custom-commands/) are a great way to add team-level or project-level commands. They're simple scripts that can be run in any of the containers or on the host.
+
 ## Additional services added via docker-compose.\<service\>.yaml
 
 General information on how to do additional services and some additional examples are [in the docs](https://ddev.readthedocs.io/en/latest/users/extend/additional-services/).
