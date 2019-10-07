@@ -15,16 +15,17 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 
 ## Custom command examples
 
-Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/custom-commands/) are a great way to add team-level or project-level commands. They're simple scripts that can be run in any of the containers or on the host.
+Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/custom-commands/) are a great way to add team-level or project-level commands. They're simple scripts that can be run in any of the containers or on the host. Note that several examples are already shipped with ddev, you'll find them in .ddev/commands/*/*.example, and then can be enabled by symlinking or copying.)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
 General information on how to do additional services and some additional examples are [in the docs](https://ddev.readthedocs.io/en/latest/users/extend/additional-services/).
 
-* [MongoDB](docker-compose-services/mongodb/README.md)
-* [Blackfire.io](docker-compose-services/blackfire/README.md)
-* [PostreSQL](docker-compose-services/postgres/README.md)
-* [Elasticsearch](docker-compose-services/elasticsearch/README.md)
+* [MongoDB](docker-compose-services/mongodb/)
+* [Blackfire.io](docker-compose-services/blackfire/)
+* [PostreSQL](docker-compose-services/postgres/)
+* [Elasticsearch](docker-compose-services/elasticsearch)
+* [Oracle MySQL](docker-compose-services/mysql)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 

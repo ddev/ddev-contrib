@@ -7,7 +7,7 @@ replace the MariaDB or PHPMyAdmin containers. It also demonstrates how to connec
 2. Start or restart your project with `ddev start` or `ddev restart`.
 3. You should see your container start up. You could look for it with `docker ps -a | grep mysql`. The container will be named ddev-[your project name]-mysql.
 
-NB: We use MySQL 5.7, but it should be possible to use a different version. Check out the [MySQL Images on Docker Hub](https://hub.docker.com/_/mysql) for more options. Then change the image key in docker-compose.mysql.yaml.
+NB: We use MySQL 5.7, but it should be possible to use a different version. Check out the [MySQL Images on Docker Hub](https://hub.docker.com/_/mysql) for more options. Then change the image key in docker-compose.mysql.yaml. (A short attempt at 8.0.x was *not* successful).
 
 ## Connecting
 If your container was successfully started, you should be able to access it from within the ddev webserver container.
