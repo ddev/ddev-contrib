@@ -4,6 +4,10 @@ services:
   php:
     container_name: ddev-${DDEV_SITENAME}-php
     image: devilbox/php-fpm-5.2
+#    image: devilbox/php-fpm-5.3
+#    image: devilbox/php-fpm:5.4-prod
+#    image: devilbox/php-fpm:5.5-prod
+
     restart: "no"
     ports:
       - 9000
