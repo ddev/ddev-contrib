@@ -19,3 +19,5 @@ Clone the git repository for bludit: `git clone https://github.com/bludit/bludit
 * Visit the selected URL (like `https://bludit.ddev.site`) to install Bludit.
 * To see complete ddev project information, use `ddev describe`.
 
+
+## Original Author: [@crydotsnake](https://github.com/crydotsnake)
