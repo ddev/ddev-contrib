@@ -36,3 +36,4 @@ General information on how to do additional services and some additional example
 * [enable cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/README.md)
 * [REDAXO CMS](recipes/redaxo-cms)
 * [Bludit CMS](recipes/bludit-cms)
+* [Laravel PHP Framework](recipes/laravel)
