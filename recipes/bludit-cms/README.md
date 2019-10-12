@@ -4,9 +4,10 @@
 Bludit is an open source content managment system. Its a flat file cms which means that you dont need a database for it, bludit saves everything in the folders. You can read more about that, in the Bludit Documentation for the [Folder Structure](https://docs.bludit.com/en/developers/folder-structure).
 
 # Installation
-First we need to clone the git repository for bludit:
 
-`git clone https://github.com/bludit/bludit.git`
+Installation is the same as for any general-purpose PHP or HTML project, you get the code and then use `ddev config` and `ddev start`.
+
+Clone the git repository for bludit: `git clone https://github.com/bludit/bludit.git`
 
 ## Configure ddev
 
