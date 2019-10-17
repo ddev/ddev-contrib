@@ -20,4 +20,4 @@ Clone the git repository for bludit: `git clone https://github.com/bludit/bludit
 * To see complete ddev project information, use `ddev describe`.
 
 
-## Original Author: [@crydotsnake](https://github.com/crydotsnake)
+## Original Author: [@crydotsnake](https://twitter.com/crydotsnake)
