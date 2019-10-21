@@ -23,7 +23,7 @@ General information on how to do additional services and some additional example
 
 * [MongoDB](docker-compose-services/mongodb/)
 * [Blackfire.io](docker-compose-services/blackfire/)
-* [PostreSQL](docker-compose-services/postgres/)
+* [PostgreSQL](docker-compose-services/postgres/)
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Oracle MySQL](docker-compose-services/mysql)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
