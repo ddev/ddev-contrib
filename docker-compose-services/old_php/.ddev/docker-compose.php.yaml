@@ -23,6 +23,9 @@ services:
     - ddev-global-cache:/mnt/ddev-global-cache
 
   web:
+    links:
+    - php:php
     healthcheck:
       # Use "true" as the healthcheck to ignore its result
       test: ["CMD", "true"]
+
