@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## Description: Run typo3 scheduler:run on every minute
-## Usage: ddev
+## Usage: cron
 ## Example: "ddev cron"
 
 while true
