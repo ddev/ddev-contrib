@@ -24,7 +24,11 @@ services:
         source: "."
         target: "/mnt/ddev_config"
     # Optionally send startup flags.
-    # command: --sql_mode="" 
+    # command: --sql_mode=""
+  web:
+    links:
+    - mysql:mysql
+
 # Names our volume
 volumes:
   mysql-db:
