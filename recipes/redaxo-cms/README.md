@@ -15,13 +15,13 @@ In general, REDAXO setup is exactly the same as any other generic PHP project, e
 
 ## Configure ddev
 
-* Use `ddev config --project-type=php --webserver-type=apache-fpm` to configure the project. REDAXO expects an apache webserver; 'php' is the default/generic project type.
+* Use `ddev config --project-type=php --webserver-type=apache-fpm` to configure the project. REDAXO expects an apache webserver; `php` is the default/generic project type.
 
 ## Start ddev and visit the REDAXO URL to configure the project
 
 * `ddev start`
 * Visit the selected URL (like `https://redaxo.ddev.site`) to choose language, license terms, etc.
-* Configure site and database settings. (Database name is "db", mysql host is "db", "login" is "db", and password is "db")
+* Configure site and database settings. (Database name is `db`, mysql host is `db`, database username is `db`, and password is `db`)
 * Complete setup
 * To see complete ddev project information, use `ddev describe`.
 
