@@ -19,6 +19,8 @@ For more details check the connection section below.
 
 RabbitMQ is accessible from the host machine itself as well as between the containers on the same network, and comes with a nice management UI for ease of use.
 
+__Important:__ If you need to run multiple ddev sites that use this RabbitMQ service, you will have to alter the ports per site in the [docker-compose.rabbitmq.yaml](docker-compose.rabbitmq.yaml). 
+
 #### Management UI
 It can be accessed through `http://<DDEV_SITENAME>.ddev.site:15672` on the host machine.
 
