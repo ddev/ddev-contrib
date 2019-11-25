@@ -25,7 +25,6 @@ General information on how to do additional services and some additional example
 * [Blackfire.io](docker-compose-services/blackfire/)
 * [PostgreSQL](docker-compose-services/postgres/)
 * [Elasticsearch](docker-compose-services/elasticsearch)
-* [Oracle MySQL](docker-compose-services/mysql)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
