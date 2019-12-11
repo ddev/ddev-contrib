@@ -53,6 +53,16 @@ The `postgres` image support `postgis`, but you will need to create the extensio
 CREATE EXTENSION IF NOT EXISTS `postgis`;
 ```
 
+### Typo3 Notice
+
+Typo3 CMS supports PostgreSQL natively, but the Typo3 Installer has issues with the default `db` database because the `postgis` extension is enabled per default.
+
+You will need to disable the extension before the installation:
+```
+DROP EXTENSION postgis CASCADE;
+```
+It’s safe to re-enable `postgis` after the installation is complete.
+
 ### TODO
 
 Future enhancements (PR's welcome here) include:
