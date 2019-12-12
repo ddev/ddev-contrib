@@ -20,8 +20,7 @@ Resources:
     * `mkdir -p .ddev/solr`
     * `cp -r public/typo3conf/ext/solr/Resources/Private/Solr/* .ddev/solr`
     * You will have `configsets`, `cores`, `solr.xml` and `zoo.cfg` in .ddev/solr.
-6. `ddev start` will bring up the new solr container.
-   * Click the "Apache Solr" "Info" module on the left and choose your site, you should see that it has connected the Apache Solr server.
+6. `ddev restart` will bring up the new solr container.
 7. On the TYPO3 backend "Sites" module, choose your site
    * Make sure that on the "General" tab a full URL is specified for "Entry Point". Just using "/" here results in a failure of the extension.
    * On the "Solr" tab (far right) set "Host" to "solr" (NOT the default "localhost")
@@ -33,7 +32,8 @@ Resources:
    * Click the "Includes" tab"
    * Add "Search - Base Configuration (solr)" and "Search - Default Stylesheets (solr)" to the "Selected Items" pane and save.
 9. "Flush all caches" using the lightning bolt icon on top of the screen.
-10. Click "Index Queue" module under "Apache Solr" and 
+10. Click the "Apache Solr" "Info" module on the left and choose your site, you should see that it has connected the Apache Solr server.
+11. Click "Index Queue" module under "Apache Solr" and 
    * Click the checkbox to initialize all pages. 
    * Queue all pages for indexing
    * "Index now" as needed to create the index.

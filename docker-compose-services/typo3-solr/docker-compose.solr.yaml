@@ -3,7 +3,7 @@ version: '3.6'
 services:
   solr:
     container_name: ddev-${DDEV_SITENAME}-solr
-    image: typo3solr/ext-solr:10.0.0
+    image: typo3solr/ext-solr:10.0.1
     restart: "no"
     ports:
       - 8983
