@@ -1,5 +1,6 @@
-# ddev-contrib
-Contrib space for DDEV-Local services, tools, snippets, approaches
+# ddev-contrib: Contrib for DDEV-Local
+
+Contrib space for DDEV-Local services, tools, snippets, approaches.
 
 ## config.yaml hook examples
 
