@@ -35,7 +35,8 @@ Resources:
 9. "Flush all caches" using the lightning bolt icon on top of the screen.
 10. Click the "Apache Solr" "Info" module on the left and choose your site, you should see that it has connected the Apache Solr server.
 11. Click "Index Queue" module under "Apache Solr" and
-12. Click the checkbox to initialize all pages.
+
+   * Click the checkbox to initialize all pages.
     * Queue all pages for indexing
     * "Index now" as needed to create the index.
 
