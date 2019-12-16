@@ -2,9 +2,9 @@
 
 Blackfire.io is a profiler for PHP sites, it will help you find out what your code is doing, showing where most of the execution time is spent. It's a successor or competitor to older profiling tools like XHProf. It consists of three parts:
 
-- the probe (Already installed in ddev by default)
-- the agent (Added as an additional service in docker-compose.blackfire.yaml)
-- the client (Installed and configured by you on your host, or any computer)
+1. the probe (Already installed in ddev by default)
+2. the agent (Added as an additional service in docker-compose.blackfire.yaml)
+3. the client (Installed and configured by you on your host, or any computer)
 
 ## The Probe
 

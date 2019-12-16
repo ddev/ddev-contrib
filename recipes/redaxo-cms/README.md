@@ -24,4 +24,5 @@ In general, REDAXO setup is exactly the same as any other generic PHP project, e
 * Configure site and database settings. (Database name is `db`, mysql host is `db`, database username is `db`, and password is `db`)
 * Complete setup
 * To see complete ddev project information, use `ddev describe`.
+
 ## Original Author: [@crydotsnake](https://twitter.com/crydotsnake)
