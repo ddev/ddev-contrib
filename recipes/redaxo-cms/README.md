@@ -1,10 +1,10 @@
 # Install [REDAXO CMS](https://redaxo.org) with DDEV
 
-## What is REDAXO?
+## What is REDAXO
 
-[REDAXO](https://redaxo.org) is an open source content managment system devleoped by the German web agency  [Yakamara](https://www.yakamara.de/). 
+[REDAXO](https://redaxo.org) is an open source content managment system devleoped by the German web agency  [Yakamara](https://www.yakamara.de/).
 
-REDAXO is for people who love the flexibility of a content managment system; you have easy control of your code and also of the content that you want to create. 
+REDAXO is for people who love the flexibility of a content managment system; you have easy control of your code and also of the content that you want to create.
 
 ## Install REDAXO code and submodules
 

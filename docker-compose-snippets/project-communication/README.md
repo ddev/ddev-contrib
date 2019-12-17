@@ -1,4 +1,4 @@
-## Communicating between two projects
+# Communicating between two projects
 
 There are many reasons to have two independent ddev projects talk with each other, and there are very easy ways to do it:
 
@@ -9,7 +9,7 @@ What some people want, though, is a third option, *HTTP or HTTPS routed through 
 
 This [docker-compose.project2.yaml](docker-compose.project2.yaml) is intended to be put in project1/.ddev/, and  then it will be able to `curl https://project1.ddev.site`, or do anything else that's going through the router (http or https exposed ports)
 
-### Resources
+## Resources
 
 * [Stack Overflow question on communication between projects](https://stackoverflow.com/questions/51710272/communication-between-two-ddev-projects)
 * [Migrating from Drupal 6 to Drupal 8 Like a Boss](https://dev.acquia.com/blog/migrating-drupal-6-drupal-8-boss) demonstrates option 1 in the context of a Drupal migration activity.

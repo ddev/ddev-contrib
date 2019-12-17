@@ -1,5 +1,6 @@
-# ddev-contrib
-Contrib space for DDEV-Local services, tools, snippets, approaches
+# ddev-contrib: Contrib for DDEV-Local
+
+Contrib space for DDEV-Local services, tools, snippets, approaches.
 
 ## config.yaml hook examples
 
@@ -26,6 +27,7 @@ General information on how to do additional services and some additional example
 * [PostgreSQL](docker-compose-services/postgres/)
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
+* [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
