@@ -19,7 +19,7 @@ the blackfire agent socket in a custom PHP config file ([docs](https://ddev.read
 
 ## The Client
 
-* To use the command-line client, download it for your host platform via the blackfire.io website (see [installation instructions](https://blackfire.io/docs/up-and-running/installation#installation-instructions) 
+* To use the command-line client, download it for your host platform via the blackfire.io website (see [installation instructions](https://blackfire.io/docs/up-and-running/installation#installation-instructions)
   for the client for each platform). For basic command-line blackfire.io usage see [the blackfire.io docs](https://blackfire.io/docs/cookbooks/profiling-http).
   For example, `blackfire curl https://d8git.ddev.site` provides a link to a call graph of the functions which were called to build the page.
 * To use the Google Chrome extension, see [blackfire chrome integration](https://blackfire.io/docs/integrations/chrome) and install the Chrome extension.
@@ -35,8 +35,7 @@ the blackfire agent socket in a custom PHP config file ([docs](https://ddev.read
 
 ## CLI client particulars
 
-When you want to use the cli client, there are several possibilities to do so. Especially for the container based approaches there is no
-real difference, just the command you need to type in differ. Pick the approach that suits best your needs.
+When you want to use the cli client, there are several ways to use it. There is no real difference between the container-based approaches, but the command you need to type in differ. Pick the approach that suits best your needs.
 
 ### Configure before use
 
@@ -45,35 +44,36 @@ You will find those at [the credentials page](https://blackfire.io/my/settings/c
 Run `blackfire configure`, which will ask for the input values. This works for each of the following usage versions, only the prefix you use
 will differ depending on the recipient.
 
-### On your host system. 
+### On your host system
 
-This is the straight forward approach that messes with your 
-local host system. You might even run into conflicts, in case the locally configures blackfire.io account will be not
-the same you want to use to profile this particular project you use ddev for. If there are no concerns, just use it.
+This is the most straightforward approach. but requires changes on your
+local host system. You might even run into conflicts, if the locally configures blackfire.io account is not
+the same as the one you want to use to profile the project you use ddev for. If there are no concerns, just use this approach.
 
-### From the ddev web container.
+### From the DDEV web container
 
 For this to work, you need to add the blackfire client to your setup, using `webimage_extra_packages: [blackfire-agent]` in `.ddev/config.yaml`.
 To test (after starting / restarting ddev on your project) the package has actually been installed, run `ddev exec blackfire`.
 The output should present the usage options of the blackfire.io cli client.
 
-### From the blackfire container.
+### From the blackfire container
 
-This container is available from your setup, the executable is there, just the usage is a little awkward. Run
+This container is available from your setup, and the blackfire executable is already there, but the usage is a little awkward. Run
 
 `ddev exec -s blackfire blackfire`
+or `ddev ssh -s blackfire` and then use the blackfire command.
 
 to see the usage help.
-The first ``blackfire`` in the command is the name of the container, the second one the actual command. Keep that in mind while using.
 
-### Trouble Shooting
+(The first ``blackfire`` in the command is the name of the container, the second one the actual command. Keep that in mind while using.)
+
+### Troubleshooting
 
 If using curl for profiling, provide the -L flag, like `blackfire curl -L https://my-project.ddev.site/typo3`
- 
+
 This will actually give you the TYPO3 backend you want to profile. If Location Header is not sent, you end up with
-``Are you authorized to profile this page? No probe response, missing PHP extension or invalid signature for relaying agent.``
+`Are you authorized to profile this page? No probe response, missing PHP extension or invalid signature for relaying agent.`
 
 This is not helpful at all in discovering the source of your issue.
 Here is a quick test: `blackfire curl https://my-project.ddev.site/typo3/` (no -L flag, but a trailing slash to the URL) will give you a profile,
 when only the Location Header redirect is missing.
-
