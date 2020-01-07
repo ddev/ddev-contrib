@@ -43,4 +43,3 @@ General information on how to do additional services and some additional example
 * [Bludit CMS](recipes/bludit-cms)
 * [Laravel PHP Framework](recipes/laravel)
 * [Setting up Drupal 8 multisite, including Drush support](recipes/drupal8-multisite/README.md)
-
