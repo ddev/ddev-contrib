@@ -6,7 +6,7 @@ This example will show how to setup a basic two-site multisite configuration, co
 
 Neither of the sites will be default to ensure that if something is misconfigured, commands will fail against incomplete Drupal site instance instead of silently running against wrong one.
 
-## Initial setup
+## Initial DDEV-Local and Drupal 8 setup
 
 Let's mostly follow the suggested configuration in [the official DDEV documentation for Drupal 8 setup](https://ddev.readthedocs.io/en/stable/users/cli-usage/#drupal-8-quickstart).
 
@@ -25,7 +25,7 @@ Let's create two sites:
 * **basic** - using *standard* install profile
 * **umami** - using *umami* install profile
 
-## Preparing the databases and URLs
+## Prepare the databases and URLs
 
 The file *.ddev/config.yaml* is where additional URLs are setup and where we can use hooks to create the databases. However, it may be better to use [a separate override config file](https://ddev.readthedocs.io/en/stable/users/extend/customization-extendibility/#extending-configyaml-with-custom-configyaml-files) to keep that information more clear and easier to track. The combination of sites may also be different on each individual machine, so this file may or may not be checked into the version control.
 
@@ -40,14 +40,14 @@ You should get a message that additional domains are now available:
 
 > Your project can be reached at <https://basic.ddev.site> <https://d8m.ddev.site> <https://umami.ddev.site> <https://127.0.0.1:32817>
 
-## Preparing drush
+## Enable the `ddev drush` custom command
 
-Drush is useful, but it is a bit annoying to *ddev ssh* into the container all the time or to run *ddev exec drush*. Fortunately, latest version of DDEV already ships with a simpler way, using [Container commands](https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/).  And drush is one of the examples, so it just needs to be renamed.
+Drush is useful, but it is a bit annoying to *ddev ssh* into the container all the time or to run *ddev exec drush*. Fortunately, DDEV has [Custom commands](https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/).  And drush is one of the examples, so it just needs to be renamed.
 
 1. mv .ddev/commands/web/drush.example .ddev/commands/web/drush
 2. ddev drush status
 
-## Enabling multisite
+## Enable multisite
 
 First we need to enable the multisite support by copying *example.sites.php* to *sites.php*. And then, because we are using DDEV for development and our production URLs will be different from test URLs, we want to define explicit aliases. That also allows us to have nice site directory names.
 
@@ -60,16 +60,16 @@ First we need to enable the multisite support by copying *example.sites.php* to 
 
 The final *sites.php* should look something like the [example inluded](web/sites/sites.php).
 
-## Disabling DDEV's global drush option
+## Disable DDEV's global drush.yml
 
-Now, we have to do a DDEV specific thing. Trying to be helpful, it creates a global drush configuration file that sets *uri* option for the default project url. [This is not recommended](https://github.com/drush-ops/drush/blob/e8d0fdc32e5457cbcd0b63b8c897fb2a6496c9d6/examples/example.drush.yml#L85-L87) for multisite configuration as it may confuse drush into silently using wrong site.
+Now, we have to do a DDEV specific thing. Trying to be helpful, it creates a global drush configuration file that sets *uri* option for the default project url. [This is not recommended for multisite configuration](https://github.com/drush-ops/drush/blob/4dea224bfcb539fe2c11ff366d7d325223958ec4/examples/example.drush.yml#L84-L87) as it may confuse drush into silently using wrong site.
 
 So, we want to disable that option. However, the file is DDEV generated, so we can't just comment the line out, it may get regenerated. We need to remove the auto-generation marker lines as well. We can make this file empty.
 
 1. Edit *web/sites/all/drush/drush.yml* and delete all content including comments
-2. Explicitly check the file in to git, if using (it has to be explicit, as DDEV also creates a local *.gitignore* file)
+2. Explicitly check the file in to git, if you use git (it has to be explicit, as DDEV also creates a local *.gitignore* file)
 
-## Preparing umami site
+## Prepare example umami site
 
 Normally, with multisite install, a *settings.php* file is copied from *default* directory. However, DDEV adds its own parallel config file (*settings.ddev.php*). As that ddev file is also auto-managed, just copying it may cause problems later. One of the things it includes is database configuration, so we can't just ignore it. And we also can't just copy *settings.php*, as the inclusion statement is site local and it will not find the additional file back in *default* directory.
 
@@ -82,30 +82,40 @@ For this example, we are just going to include both *settings.php* and *settings
 
 Now, if *drush status* is run from within *web* container's *umami* directory, the output should look similar to following:
 
-    Drupal version : 8.7.6
-    Site URI       : http://umami
-    DB driver      : mysql
-    DB hostname    : db
-    DB port        : 3306
-    DB username    : db
-    DB name        : umami
-    PHP binary     : /usr/bin/php7.2
-    PHP config     : /etc/php/7.2/cli/php.ini
-    PHP OS         : Linux
-    Drush script   : /usr/local/bin/drush
-    Drush version  : 9.7.1
-    Drush temp     : /tmp
-    Drush configs  : /var/www/html/vendor/drush/drush/drush.yml
-                     /var/www/html/drush/drush.yml
-                     /var/www/html/web/sites/all/drush/drush.yml
-    Drupal root    : /var/www/html/web
-    Site path      : sites/umami
+```
+web/sites/umami$ drush status -l umami.ddev.site
+ Drupal version   : 8.8.1
+ Site URI         : http://umami.ddev.site
+ DB driver        : mysql
+ DB hostname      : db
+ DB port          : 3306
+ DB username      : db
+ DB name          : umami
+ Database         : Connected
+ Drupal bootstrap : Successful
+ Default theme    : umami
+ Admin theme      : seven
+ PHP binary       : /usr/bin/php7.2
+ PHP config       : /etc/php/7.2/cli/php.ini
+ PHP OS           : Linux
+ Drush script     : /usr/local/bin/drush
+ Drush version    : 9.7.1
+ Drush temp       : /tmp
+ Drush configs    : /var/www/html/vendor/drush/drush/drush.yml
+                    /var/www/html/drush/drush.yml
+                    /var/www/html/web/sites/all/drush/drush.yml
+ Install profile  : demo_umami
+ Drupal root      : /var/www/html/web
+ Site path        : sites/umami
+ Files, Public    : sites/umami/files
+ Files, Temp      : /tmp
+ ```
 
 If *Site path* looks different or DB information is missing, that means something has gone wrong.
 
 Note that this has be run from inside the container and not from outside with *ddev drush* as drush needs to know which site we are referencing. This will be fixed once we have drush aliases in place.
 
-## Creating umami site
+## Install the umami demo site
 
 Now, visiting <http://umami.ddev.site> will show the site creation form. Going through the form and setting the values and defaults (including *Demo: Umami* profile) will create the Umami Food Magazine site.
 
@@ -113,46 +123,43 @@ Notice that visiting either <http://basic.ddev.site> or <http://d8m.ddev.site> s
 
 And reruning *drush status* inside the *umami* directory within the *web* container should now show additional information from the initialized site.
 
-## Creating basic site
+## Install the "basic" demo site
 
-We can follow the same steps for the basic site. We already have the directory, URL, database, and *sites.php* setup. So all that needs to be done is:
+We can follow the same steps for the "basic"" site. We already have the directory, URL, database, and *sites.php* setup. So all that needs to be done is:
 
 1. Copy *settings.php* from *umami* directory and change database name to *basic*.
 2. Visit <http://basic.ddev.site> and setup the site with *Standard* profile
 
 Now, we have a simple Drupal site at <http://basic.ddev.site,> a food magazine at <http://umami.ddev.site> and still only a configuration form at the original <http://d8m.ddev.site.>
 
-## Setting up drush site aliases
+## Set up drush site aliases
 
 [Drush site aliases](http://docs.drush.org/en/9.x/usage/#site-aliases) help to address individual sites without being in the specific directory inside the web container. There is an example *self.site.yml* already with *drush/sites* folder, showing the basic format for default (self) site with environments *prod* and *stage*.
 
-Let's also use an environment name *ddev* for our local setup. We only need to set *root* and *uri* parameters to point to the Drupal root (within container) and the full url to the site instance.
+We'll set the *root* and *uri* parameters to point to the Drupal root (within container) and the full url to the site instance.
 
-1. cd *drush/sites*
-2. cp *self.site.yml* [umami.site.yml](drush/sites/umami.site.yml)
-3. Edit *umami.site.yml* to have *ddev* environment and two options:
-   * root: /var/www/html/web (for default ddev Drupal setup)
-   * uri: <http://umami.ddev.site>
-4. Run *ddev drush site:alias* from outside of the container to check that the alias is recognized
-5. Run *ddev drush @umami.ddev status* to check that all site-specific information is now present, including full *Site URI*
-6. Copy *umami.site.yml* to *basic.site.yml* and update *uri* option (*root* option does not change)
-7. Run *ddev drush @basic.ddev status* to check alias working for the second site too
-8. Run *ddev drush status* to remind what the default configuration still shows
-9. Run *ddev drush views:list* to see the kind of error shown if the site alias is accidentally forgotten
+1. cd `drush/sites`
+2. Copy the aliases files into your project's drush/sites directory from this [drush/sites](drush/sites) directory
+3. Run `ddev drush site:alias` from outside the container to check that the alias is recognized
+4. Run `ddev drush @umami.ddev status` to check that all site-specific information is now present, including full *Site URI*
+5. Run `ddev drush @basic.ddev status` to check that the alias is working for the second site too.
+6. Run `ddev drush status` to see what the default configuration still shows.
 
-## Adding more sites
+## Add more sites
 
 Now that we have a basic setup in place, new site requires:
 
-1. Updating [config.multisite.yaml](dot.ddev/config.multisite.yaml) to add the database and set the website address (remember to run *ddev restart* to pick up the changes)
-2. Creating a directory for the new site
-3. Copying *settings.php* to the new directory and updating the database name
-4. Adding new alias to the *sites.php*
-5. Copying a drush alias and updating the *uri* option
-6. Visiting the new site and complete the Drupal setup
+1. Updating ddev's [config.multisite.yaml](dot.ddev/config.multisite.yaml) to add the database and set the website address (remember to run *ddev restart* to pick up the changes). This can also be done directly in the .ddev/config.yaml.
+2. Creating a directory for the new site in `web/sites/<newsitename>`.
+3. Copying `settings.php` to the new directory and updating the database name.
+4. Adding new alias to the `sites.php`.
+5. Copying a drush alias and updating the `uri` option.
+6. Visiting the new site to install Drupal.
 
 ## Conclusion
 
-There is a lot more work to setup a good Drupal site. *settings.php* file alone may need a lot more additional configuration. This however, is a standard Drupal issue covered in their documentation.
+Of course much more work lies ahead.  The `settings.php` file alone may need a lot more additional configuration. This however, is a standard Drupal issue covered in the documentation.
 
-The focus of this example was to show how to get the basics working within the DDEV environment. Hopefully, things are clearer now.
+The focus of this example was to show how to get the basics working within the DDEV-Local environment.
+
+**Contributed by [@arafalov](https://github.com/arafalov)**
