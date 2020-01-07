@@ -1,0 +1,17 @@
+#!/bin/bash
+
+## Description: Fetch a database from production and load it into current project
+## Usage: fetchproductiondb
+## Example: "ddev fetchprodctiondb"
+
+set -o errexit pipefail nounset
+#set -x
+
+SSH_TARGET=remoteuser@remotehost.com
+TARGET_DBNAME=somedb
+
+DUMPDIR=${DDEV_APPROOT}/.dumps
+mkdir -p ${DUMPDIR}
+echo "Fetching ${TARGET_DBNAME} from ${SSH_TARGET} into ${DUMPDIR}/${DDEV_SITENAME}.sql.gz"
+ssh ${SSH_TARGET} "mysqldump ${TARGET_DBNAME} | gzip" > ${DUMPDIR}/${DDEV_SITENAME}.sql.gz
+ddev import-db --src=${DUMPDIR}/${DDEV_SITENAME}.sql.gz

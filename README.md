@@ -16,9 +16,10 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 
 ## Custom command examples
 
-* [dump and deploy SQL from/to remote servers](custom-commands/dump-and-deploy-db/README.md)
-
 Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/custom-commands/) are a great way to add team-level or project-level commands. They're simple scripts that can be run in any of the containers or on the host. Note that several examples are already shipped with ddev, you'll find them in .ddev/commands/*/*.example, and then can be enabled by symlinking or copying.)
+
+* [Dump and deploy SQL from/to remote servers](custom-commands/dump-and-deploy-db/README.md)
+* [Fetch Production DB from remote server](custom-commands/fetchproductiondb/README.md)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
