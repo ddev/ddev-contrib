@@ -2,7 +2,7 @@
 
 ## What is Flextype
 
-Flextype is an flat file open source content managment system, which is simple, flexible, and fast!.
+[FlextypeCMS](https://flextype.org) is a flat file open source content management system, which is simple, flexible, and fast!.
 
 ## Configure ddev
 
