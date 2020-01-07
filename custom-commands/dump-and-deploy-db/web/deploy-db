@@ -1,0 +1,263 @@
+#!/bin/bash
+
+## Description: deploy MySQL/MariaDB to remote system from ./data/sql/(records|struct)/ directories
+## Usage: deploy-db [options, call without params for help] ‹target/source›
+
+endC="\033[0m"
+black="\033[0;30m"
+blackb="\033[1;30m"
+white="\033[0;37m"
+whiteb="\033[1;37m"
+red="\033[0;31m"
+redb="\033[1;31m"
+green="\033[0;32m"
+greenb="\033[1;32m"
+yellow="\033[0;33m"
+yellowb="\033[1;33m"
+blue="\033[0;34m"
+blueb="\033[1;34m"
+purple="\033[0;35m"
+purpleb="\033[1;35m"
+lightblue="\033[0;36m"
+lightblueb="\033[1;36m"
+
+targetC=$green
+successC=$greenb
+errorC=$red
+
+function usage() {
+  printf "Usage: ddev deploy-db [options] ‹target/source›\n"
+  printf "  %s %s\n" "‹target/source›" "Available targets/sources (from ./.ddev/commands/web/targets):"
+  printf "\t%-15s   · $targetC%s$endC\n" "" "ddev (the local ddev database)"
+  find "$targetDir" -type f -not -name README.txt -print0 |
+    while IFS= read -r -d '' _i; do
+      printf "\t%-15s   · $targetC%s$endC\n" "" "$(basename $_i)"
+    done
+  printf "  options:\n"
+  printf "\t%-15s %s\n" "-f|--force" "no question before data deletion"
+  printf "\t%-15s %s\n" "-c|--creative" "use funny progress spinners"
+}
+
+function cursorBack() {
+  echo -en "\033[$1D"
+}
+
+# global to keep its state
+iSpinner=0
+function spinner() {
+  # make sure we use non-unicode character type locale
+  # (that way it works for any locale as long as the font supports the characters)
+  local LC_CTYPE=C
+
+  local pid=$1 # Process Id of the previous running command
+
+  if [ $isCreative == 0 ]; then
+    spin="-\|/"
+    local charwidth=1
+  else
+    declare -a spins
+    local charwidth=3
+    spins+=(" ▁▂▃▄▅▆▇█▉▊▋▌▍▎▏ ▏▎▍▌▋▊▉█▇▆▅▄▃▂▁")
+    spins+=(" ▔▔▀▀██▐▐▕▕  ▕▕▐▐██▀▀▔▔")
+    spins+=(" ▁▂▃▄▅▆▇███▀▔")
+    spins+=('◐◓◑◒')
+    spins+=('⠁⠂⠄⡀⢀⠠⠐⠈')
+    spins+=('⣾⣽⣻⢿⡿⣟⣯⣷')
+    spins+=('┤┘┴└├┌┬┐')
+    spins+=('▖▘▝▗')
+    spins+=('◢◣◤◥')
+    spins+=('←↖↑↗→↘↓↙')
+    spins+=('◰◳◲◱')
+    spins+=('◴◷◶◵')
+    spins+=(" ▏▎▍▌▋▊▉█▉▊▋▌▍▎▏")
+    spins+=(" ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁")
+    spin=${spins[$(($RANDOM % ${#spins[@]}))]}
+  fi
+
+  tput civis # cursor invisible
+  while kill -0 $pid 2>/dev/null; do
+    iSpinner=$(((iSpinner + $charwidth) % ${#spin}))
+    printf "$purpleb%s$endC" "${spin:$iSpinner:$charwidth}"
+
+    cursorBack 1
+    sleep .1
+  done
+  tput cnorm
+  wait $pid # capture exit code
+  return $?
+}
+
+function shutdown() {
+  if [ $isDumpDdev == 0 ]; then
+    # this would allow short running mysqldumps to finish before we shut off the line
+    sleep 1
+    printf "\nClosing tunnel …"
+    # we ignore the actual result because it might already be closed
+    pkill -TERM -f "^ssh -f"
+    cursorBack 1
+    printf "${successC}✓${endC}\n"
+  fi
+  printf "\n"
+  tput cnorm # reset cursor
+}
+
+function parseArgs() {
+  # -allow a command to fail with !’s side effect on errexit
+  # -use return value from ${PIPESTATUS[0]}, because ! hosed $?
+  ! getopt --test >/dev/null
+  if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
+    echo $errorC'`getopt --test` failed in this environment.'$endC
+    exit 1
+  fi
+
+  OPTIONS="fc"
+  LONGOPTS="force,creative"
+
+  # -regarding ! and PIPESTATUS see above
+  # -temporarily store output to be able to check for errors
+  # -activate quoting/enhanced mode (e.g. by writing out “--options”)
+  # -pass arguments only via   -- "$@"   to separate them correctly
+  ! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
+  if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+    # e.g. return value is 1
+    #  then getopt has complained about wrong arguments to stdout
+    usage
+    exit 2
+  fi
+  # read getopt’s output this way to handle the quoting right:
+  eval set -- "$PARSED"
+
+  while true; do
+    case "$1" in
+    -f | --force)
+      isForce=1
+      shift
+      ;;
+    -c | --creative)
+      isCreative=1
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      targetName="$1"
+      usage
+      exit 3
+      ;;
+    esac
+  done
+
+  # handle non-option arguments
+  if [[ $# -ne 1 ]]; then
+    usage
+    exit 4
+  fi
+  targetName="$1"
+
+  if [ "$targetName" == "ddev" ]; then
+    isDumpDdev=1
+  else
+    # read target config
+    if ! . "$targetDir"/"$targetName" 2>/dev/null; then
+      printf "${errorC}Target/source ‹$targetC%s$errorC› not found.$endC\n" "$targetName"
+      usage
+      exit 3
+    fi
+  fi
+}
+
+function openTunnel() {
+  if [ $isDumpDdev == 1 ]; then
+    target=(
+      [mysqlHost]=db
+      [mysqlPort]=3306
+      [mysqlUser]=db
+      [mysqlPass]=db
+      [mysqlDatabase]=db
+      # TODO: make configurable
+      [ignoredDbTablesPattern]="^(sys_log|.*_sessions|cf_.*|.*cache.*|sys_file_processedfile|sys_refindex|sys_lockedrecords|tx_realurl_urldata|index_debug|index_fulltext|index_grlist|index_phash|index_rel|index_section|index_stat_search|index_stat_word|index_words|tx_crawler_queue|tx_extensionmanager_domain_model_extension)$"
+    )
+
+    mysqlConnectString="--host=${target[mysqlHost]} --protocol=TCP --port=${target[mysqlPort]} --user=\"${target[mysqlUser]}\" --password=\"${target[mysqlPass]}\""
+  else
+    printf "Opening tunnel …"
+
+    if [ -z "${target[sshPrivKey]}" ]; then
+      sshIdentitiyArg=
+    else
+      sshIdentitiyArg="-i \"$WEBSERVER_DOCROOT/${target[sshPrivKey]}\""
+    fi
+    localMysqlPort=33060
+    sshCommand="ssh -f -N -o LogLevel=ERROR -p ${target[sshPort]} $sshIdentitiyArg ${target[sshUser]}@${target[sshHost]} -L 127.0.0.1:$localMysqlPort:${target[mysqlHost]}:${target[mysqlPort]}"
+    if eval $sshCommand; then
+      cursorBack 1
+      printf "${successC}✓${endC}\n"
+    else
+      cursorBack 1
+      printf "${errorC}✓${endC}\n"
+      exit 1
+    fi
+
+    mysqlConnectString="--host=127.0.0.1 --protocol=TCP --port=$localMysqlPort --user=\"${target[mysqlUser]}\" --password=\"${target[mysqlPass]}\""
+  fi
+  trap shutdown EXIT
+
+  mysqlNoDbCommand="mysql $mysqlConnectString --default-character-set=utf8mb4"
+  mysqlCommand="mysql $mysqlConnectString --default-character-set=utf8mb4 \"${target[mysqlDatabase]}\""
+  mysqldumpCommand="mysqldump $mysqlConnectString --default-character-set=utf8mb4 --insert-ignore --skip-comments --quote-names \"${target[mysqlDatabase]}\""
+}
+
+# saner programming env: these switches turn some bugs into errors
+set -o errexit -o pipefail -o noclobber -o nounset
+
+# init
+targetDir=$(dirname "$0")/targets
+structDir="$WEBSERVER_DOCROOT/data/sql/struct"
+dataDir="$WEBSERVER_DOCROOT/data/sql/records"
+
+# arguments
+isForce=0
+isDumpDdev=0
+isCreative=0
+targetName=
+typeset -A target
+
+parseArgs "$@"
+
+openTunnel
+#mysql --host=localhost --protocol=TCP --port=33060 --user="typo3" --password="cPxcWzFbXDSSxOC8" --default-character-set=utf8mb4 ${target[mysqlDatabase]}
+
+#eval $mysqlCommand
+
+#printf "Creating database if not there yet\n"
+#createDbCommand="$mysqlNoDbCommand <<< 'CREATE DATABASE IF NOT EXISTS ${target[mysqlDatabase]}'"
+#echo $createDbCommand
+#eval $createDbCommand
+
+findCommand="find \"$structDir\" \"$dataDir\" -name '*.sql'"
+
+nFiles=$(eval $findCommand | wc -l)
+
+printf "${white}Deploying %d sql files …${endC}\n" "$nFiles"
+
+declare -i _i=0
+eval "$findCommand -print0" |
+  while IFS= read -r -d '' _file; do
+    _i+=1
+    printf "$white%${#nFiles}d/%d$endC" $_i $nFiles
+
+    printf "    %-80s " "$(eval "sed -e 's/\/var\/www\/html\///g' <<< $_file")"
+    eval "$mysqlCommand < \"$_file\"&"
+    if ! spinner $!; then
+      echo $?
+      printf "${errorC}✓${endC}\n"
+      printf "Error\n"
+      exit 1
+    fi
+    printf "${successC}✓${endC}    (%s)\n" "$(du --apparent-size --human-readable $_file | cut -f1)"
+
+  done
+
+printf "\nFinished. Deployed SQL (%s)\n" "$(du --apparent-size --human-readable $dataDir | cut -f1)"
