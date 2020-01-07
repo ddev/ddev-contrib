@@ -23,7 +23,7 @@ __Important:__ If you need to run multiple ddev sites that use this RabbitMQ ser
 
 ### Management UI
 
-It can be accessed through `http://<DDEV_SITENAME>.ddev.site:15672` on the host machine.
+The management UI can be accessed through `http://<DDEV_SITENAME>.ddev.site:15672` on the host machine. Username "rabbitmq", password "rabbitmq".
 
 ### AMQP protocol access
 
@@ -31,3 +31,5 @@ You can access the RabbitMQ service through it's AMQP protocol two ways:
 
 * From the host machine: `amqp://<DDEV_SITENAME>.ddev.site:5672`
 * From docker containers on the same docker network (ddev_default): `amqp://rabbitmq:15672`
+
+**Originally by [@Graloth](https://github.com/Graloth)**
