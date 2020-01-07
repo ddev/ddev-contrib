@@ -2,7 +2,7 @@
 
 DDEV supports Drupal 8 multisite, however it is not always obvious what changes need to be done to make it work. Additionally, sometimes setup helpful for single-site configuration blocks the desired behavior for a multi-site setup.
 
-This example will show how to setup a basic two-site multisite configuration, covering ddev, database, drush, and other issues. It has been tested on a Mac.
+This example will show how to setup a basic two-site multisite configuration, covering ddev, database, drush, and other issues. It has been tested on macOS, but should work anywhere.
 
 Neither of the sites will be default to ensure that if something is misconfigured, commands will fail against incomplete Drupal site instance instead of silently running against wrong one.
 
