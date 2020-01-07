@@ -1,0 +1,26 @@
+version: '3.6'
+services:
+  rabbitmq:
+    container_name: ddev-${DDEV_SITENAME}-rabbitmq
+    hostname: ${DDEV_SITENAME}-rabbitmq
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=SWQOKODSQALRPCLNMEQG
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+      - RABBITMQ_DEFAULT_VHOST=/
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - "./rabbitmq-build/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      - ".:/mnt/ddev_config"
+  web:
+    links:
+      - rabbitmq:rabbitmq
+volumes:
+  rabbitmq:
+    name: "${DDEV_SITENAME}-rabbitmq"
