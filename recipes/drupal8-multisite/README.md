@@ -54,33 +54,32 @@ First we need to enable the multisite support by copying *example.sites.php* to 
 1. cd *web/sites*
 2. mkdir *basic* *umami*
 3. cp *example.sites.php* *sites.php*
-4. add aliases to *sites.php* to point *sitename*.ddev.site to *sitename* directory
-5. Remove all the commented out lines, as we still kept original example
-6. If you know production URL, you can add them at the same time
+4. Configure sites in the sites.php to match the URL with the correct directory.
+5. If you know production URLs, you can add them at the same time
 
-The final *sites.php* should look something like the [example inluded](web/sites/sites.php).
+The final `sites.php` should look something like the [example included](web/sites/sites.php).
 
 ## Disable DDEV's global drush.yml
 
-Now, we have to do a DDEV specific thing. Trying to be helpful, it creates a global drush configuration file that sets *uri* option for the default project url. [This is not recommended for multisite configuration](https://github.com/drush-ops/drush/blob/4dea224bfcb539fe2c11ff366d7d325223958ec4/examples/example.drush.yml#L84-L87) as it may confuse drush into silently using wrong site.
+Now we have to do a DDEV specific thing. Trying to be helpful, it creates a global drush configuration file that sets `uri` option for the default project url. [This is not recommended for multisite configuration](https://github.com/drush-ops/drush/blob/4dea224bfcb539fe2c11ff366d7d325223958ec4/examples/example.drush.yml#L84-L87) as it may confuse drush into silently using wrong site.
 
-So, we want to disable that option. However, the file is DDEV generated, so we can't just comment the line out, it may get regenerated. We need to remove the auto-generation marker lines as well. We can make this file empty.
+We want to disable that option. However, the file is DDEV generated, so we can't just comment the line out, it may get regenerated. We need to remove the auto-generation marker lines as well. We can make this file empty.
 
-1. Edit *web/sites/all/drush/drush.yml* and delete all content including comments
-2. Explicitly check the file in to git, if you use git (it has to be explicit, as DDEV also creates a local *.gitignore* file)
+1. Edit `web/sites/all/drush/drush.yml` and delete all content including comments
+2. Explicitly check the file in to git, if you use git (it has to be explicit, as DDEV also creates a local `.gitignore` file)
 
 ## Prepare example umami site
 
-Normally, with multisite install, a *settings.php* file is copied from *default* directory. However, DDEV adds its own parallel config file (*settings.ddev.php*). As that ddev file is also auto-managed, just copying it may cause problems later. One of the things it includes is database configuration, so we can't just ignore it. And we also can't just copy *settings.php*, as the inclusion statement is site local and it will not find the additional file back in *default* directory.
+Normally, with multisite install, a *settings.php* file is copied from `sites/default` directory. However, DDEV adds its own parallel config file (`settings.ddev.php`). As that ddev file is also auto-managed, just copying it may cause problems later. One of the things it includes is database configuration, so we can't just ignore it. And we also can't just copy `settings.php`, as the inclusion statement is site local and it will not find the additional file back in `sites/default` directory.
 
-For this example, we are just going to include both *settings.php* and *settings.ddev.php* by direct reference and then override some values ([see example](web/sites/umami/settings.php)). The best solution may look a bit different.
+For this example, we are just going to include both *settings.php* and `settings.ddev.php` by direct reference and then override some values ([see example](web/sites/umami/settings.php)). The best solution may look a bit different.
 
-1. cd *web/sites/umami*
-2. create *settings.php*
-3. Edit the file to directly include both *default/settings.php* and *default/settings.ddev.php* (if present)
-4. Add override option for default database name, as we gave default *db* user access to all our databases. This keeps things simpler.
+1. `cd web/sites/umami`
+2. create `settings.php`
+3. Edit the file to directly include both `sites/default/settings.php` and `sites/default/settings.ddev.php` (if present)
+4. Add override option for default database name, as we gave default "db" user access to all our databases. This keeps things simpler.
 
-Now, if *drush status* is run from within *web* container's *umami* directory, the output should look similar to following:
+Now, if *drush status* is run from within *web* container's `sites/umami` directory, the output should look similar to following:
 
 ```
 web/sites/umami$ drush status -l umami.ddev.site
