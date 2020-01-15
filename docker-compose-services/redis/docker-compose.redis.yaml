@@ -1,0 +1,22 @@
+# ddev redis recipe file
+#
+version: "3.6"
+
+services:
+  redis:
+    container_name: ddev-${DDEV_SITENAME}-redis
+    image: redis:4
+    restart: always
+    ports:
+      - 6379
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=6379
+    volumes:
+      - ".:/mnt/ddev_config"
+  web:
+    links:
+      - redis:$DDEV_HOSTNAME
