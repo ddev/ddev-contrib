@@ -4,6 +4,9 @@
 
 [FlextypeCMS](https://flextype.org) is a flat file open source content management system, which is simple, flexible, and fast!.
 
+## Get Flextype
+The best way is to clone the flextype repository `https://github.com/flextype/flextype.git`.
+
 ## Configure ddev
 
 use the `ddev config --project-type=php` command, to configure the project.
