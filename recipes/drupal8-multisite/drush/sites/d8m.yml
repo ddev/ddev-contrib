@@ -1,0 +1,3 @@
+ddev:
+  root: /var/www/html/web/default
+  uri: https://d8m.ddev.site

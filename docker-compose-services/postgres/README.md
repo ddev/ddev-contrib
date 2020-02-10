@@ -1,14 +1,14 @@
-## PostgreSQL
+# PostgreSQL
 
 Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided by [mdillon/postgis](https://hub.docker.com/r/mdillon/postgis).
 
-### Installation
+## Installation
 
 1. Copy `docker-compose.postgres.yaml` to your project
 2. Copy the full `commands/postgres` directory to your project's `.ddev/commands` directory. For example `cp -r commands/postgres /.ddev/commands`
 3. *(optional)* Update your config.yaml file to support auto-import/auto-export (see below)
 
-### Connection
+## Connection
 
 Connect to `postgres` host/db server from within the web container with:
 
@@ -26,14 +26,14 @@ When using multiple project with PostgreSQL support, remember to update your `do
 ```
     ports:
       - <EXTERNAL_PORT>:5432
-``` 
+```
 
-### Import / Export
+## Import / Export
 
 Two new `ddev` commands are provided:
 
-- `ddev pgsql_export` : Use `pg_dump` to export `db` to `.ddev/import-db/postgresql.db.sql`  
-- `ddev pgsql_import` : Use `pgsql` to import `.ddev/import-db/postgresql.db.sql` into `db` - Note that this must be executed with an empty database.
+* `ddev pgsql_export` : Use `pg_dump` to export `db` to `.ddev/import-db/postgresql.db.sql`
+* `ddev pgsql_import` : Use `pgsql` to import `.ddev/import-db/postgresql.db.sql` into `db` - Note that this must be executed with an empty database.
 
 Example `config.yaml` hooks configuration to automatically import/export the `db` table:
 
@@ -45,7 +45,7 @@ hooks:
     - exec-host: ddev pgsql_import
 ```
 
-### PostGIS
+## PostGIS
 
 The `postgres` image support `postgis`, but you will need to create the extension before using it:
 
@@ -53,7 +53,19 @@ The `postgres` image support `postgis`, but you will need to create the extensio
 CREATE EXTENSION IF NOT EXISTS `postgis`;
 ```
 
-### TODO
+## Typo3 Notice
+
+Typo3 CMS supports PostgreSQL natively, but the Typo3 Installer has issues with the default `db` database because the `postgis` extension is enabled per default.
+
+You will need to disable the extension before the installation:
+
+```
+DROP EXTENSION postgis CASCADE;
+```
+
+It’s safe to re-enable `postgis` after the installation is complete.
+
+## TODO
 
 Future enhancements (PR's welcome here) include:
 

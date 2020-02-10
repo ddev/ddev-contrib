@@ -1,0 +1,9 @@
+additional_hostnames:
+  - basic
+  - umami
+hooks:
+  post-start:
+  - exec: mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS basic; GRANT ALL ON basic.* to 'db'@'%';"
+    service: db
+  - exec: mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS umami; GRANT ALL ON umami.* to 'db'@'%';"
+    service: db
