@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+  rediscommander:
+    container_name: ddev-${DDEV_SITENAME}-rediscommander
+    hostname: ${DDEV_SITENAME}-rediscommander
+    image: rediscommander/redis-commander
+    restart: always
+    ports:
+      - "1358"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=1358
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+      - PORT=1358
+    volumes:
+      - ".:/mnt/ddev_config"
+  redis:
+    links:
+      - rediscommander:rediscommander
