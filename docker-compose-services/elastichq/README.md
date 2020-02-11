@@ -1,14 +1,21 @@
-The purpose of this service is to enable a GUI for viewing the data that is inside the elastricsearch service.
+# ElasticHQ
 
-## Elasticsearch
+This recipe adds an ElasticHQ container to a project.
 
-This elasticHQ service requires that you have an elasticsearch service available for it to link to.
+This will allow you to have a graphical interface for browsing data in your Elasticsearch server.
 
-### Installation
+## Requirements
 
-1. Copy [docker-compose.elastichq.yaml](docker-compose.elastichq.yaml) to your project
+Elastic HQ requires that there is a container within the project that has a working instance of Elasticsearch running for it to connect to.
 
-### Connection
+## Configuration
 
-You can access the ElasticHQ GUI directly from the host by visiting `http://<DDEV_SITENAME>.ddev.site:5000`
+If your Elasticsearch server is not available on `http://elasticsearch:9200`, then you need to edit `docker-compose.elastichq.yaml` and edit the following environment variable:
 
+* Change `HQ_DEFAULT_URL` to the url your Elasticsearch server is available at.
+
+## Installation
+
+* Copy `docker-compose.elastichq.yaml` to the `.ddev` folder of your project.
+* Start (or restart) DDEV to have the service initialized: `ddev start`
+* Access your redis-commander UI at `http://<DDEV_STENAME>.ddev.site:5000`
