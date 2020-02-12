@@ -4,7 +4,7 @@ Using official Elasticsearch container [elasticsearch](https://hub.docker.com/_/
 
 ## Installation
 
-Copy [docker-compose-elasticsearch.yaml](docker-compose-elasticsearch.yaml) to your project's .ddev folder.
+Copy [docker-compose.elasticsearch.yaml](docker-compose.elasticsearch.yaml) to your project's .ddev folder.
 
 ## Configuration
 
@@ -12,11 +12,11 @@ From within the container, the elasticsearch container is reached at hostname: e
 
 ## Connection
 
-You can access the Elasticsearch server directly from the host for debugging purposes by visiting `http://<DDEV_STENAME>.ddev.site:9200`
+You can access the Elasticsearch server directly from the host for debugging purposes by visiting `http://<DDEV_SITENAME>.ddev.site:9200`
 
 ## Memory Limit
 
-This configuration limits memory usage to 512mb. This should be enough for most projects, but if your `elasticsearch` service stops with no obvious reason, increase your docker max memory or/and the service max memory.  
+This configuration limits memory usage to 512mb. This should be enough for most projects, but if your `elasticsearch` service stops with no obvious reason, increase your docker max memory or/and the service max memory.
 
 You can use `ddev logs -s elasticsearch` to investigate what the elasticsearch daemon has been up to, or if you have a RAM-related crash.
 
