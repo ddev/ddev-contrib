@@ -39,7 +39,8 @@ General information on how to do additional services and some additional example
 
 * [Using ddev with a corporate (or other) web proxy](recipes/proxy/README.md)
 * [enable cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/README.md)
-* [REDAXO CMS](recipes/redaxo-cms)
-* [Bludit CMS](recipes/bludit-cms)
-* [Laravel PHP Framework](recipes/laravel)
 * [Setting up Drupal 8 multisite, including Drush support](recipes/drupal8-multisite/README.md)
+* [Bludit CMS](recipes/bludit-cms)
+* [Flexitype CMS](recipes/flexitype-cms)
+* [Laravel PHP Framework](recipes/laravel)
+* [REDAXO CMS](recipes/redaxo-cms)
