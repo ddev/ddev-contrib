@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  elastichq:
+    container_name: ddev-${DDEV_SITENAME}-elastichq
+    hostname: ${DDEV_SITENAME}-elastichq
+    image: elastichq/elasticsearch-hq
+    restart: always
+    ports:
+      - "5000"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=5000:5000
+      - HTTPS_EXPOSE=5443:5000
+      - HQ_DEFAULT_URL=http://elasticsearch:9200
+    volumes:
+      - ".:/mnt/ddev_config"
+  elasticsearch:
+    links:
+      - elastichq:elastichq
