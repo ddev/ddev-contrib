@@ -10,14 +10,14 @@ Elastic HQ requires that there is a container within the project that has a work
 
 ## Configuration
 
-If your Elasticsearch server is not available inside the web container at `http://elasticsearch:9200`, then you need to edit `docker-compose.elastichq.yaml` and edit the following environment variable:
+If your Elasticsearch server is not available inside the elastichq container at `http://elasticsearch:9200` (as it is when using the [ddev-contrib recipe](../elasticsearch), then you need to edit `docker-compose.elastichq.yaml` and edit the following environment variable:
 
-* Change `HQ_DEFAULT_URL` to the url your Elasticsearch server is available at.
+* Change `HQ_DEFAULT_URL` to the url your Elasticsearch server is available at within the elastichq container.
 
 ## Installation
 
 * Copy `docker-compose.elastichq.yaml` to the `.ddev` folder of your project.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
-* Access your redis-commander UI at `http://<DDEV_STENAME>.ddev.site:5000`
+* Access your redis-commander UI at `http://<DDEV_STENAME>.ddev.site:5000` or via https at `https://<DDEV_SITENAME>.ddev.site:5443`.
 
 **Contributed by [@Graloth](https://github.com/Graloth)**
