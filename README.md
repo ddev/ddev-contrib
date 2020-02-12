@@ -30,6 +30,7 @@ General information on how to do additional services and some additional example
 * [PostgreSQL](docker-compose-services/postgres/)
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Elastichq](docker-compose-services/elastichq)
+* [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [TYPO3 Solr Integration](docker-compose-services/typo3-solr)

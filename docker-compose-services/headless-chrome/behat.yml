@@ -1,0 +1,35 @@
+default:
+    suites:
+        default:
+            contexts:
+                - FeatureContext
+                - Drupal\DrupalExtension\Context\DrupalContext
+                - Drupal\DrupalExtension\Context\MinkContext
+                - Drupal\DrupalExtension\Context\MessageContext
+    extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+        Drupal\MinkExtension:
+            base_url: https://<PROJECTNAME>>.ddev.site
+            ajax_timeout: 30
+            # goutte: ~
+            browser_name: chrome
+            sessions:
+                default:
+                    chrome:
+                        api_url: "http://chrome:9222"
+                        socket_timeout: 20
+                        download_behavior: allow
+                        validate_certificate: false
+        # Using drupalextension "drupal/drupal-extension": "v4.0.0rc1" or above. Use Behat\DrupalExtension if
+        Drupal\DrupalExtension:
+            drupal:
+                # Change this to the relative path to the docroot
+                drupal_root: "web"
+            api_driver: 'drush'
+            drush:
+                root: /var/www/html/web
+            region_map:
+                header: "#header"
+                sidebar: "#sidebar-first"
+                content: "#content"
+                footer: ".site-footer"

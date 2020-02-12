@@ -1,0 +1,25 @@
+---
+version: '3.6'
+services:
+    chrome:
+        image:  isholgueras/chrome-headless:latest
+        restart: unless-stopped
+        container_name: ddev-${DDEV_SITENAME}-chrome
+        labels:
+            com.ddev.site-name: ${DDEV_SITENAME}
+            com.ddev.approot: $DDEV_APPROOT
+        volumes:
+            - ddev-global-cache:/mnt/ddev-global-cache
+            - ".:/mnt/ddev_config"
+        external_links:
+            - "ddev-router:${DDEV_HOSTNAME}"
+        cap_add:
+            - SYS_ADMIN
+        ports:
+        # Exposing this port allows you to visit 127.0.0.1:9222 to see what Headless Chrome doing without
+        # any additional configuration; However, you can only have one project using this port at a time.
+            - '9222:9222'
+networks:
+    default:
+        external:
+            name: ddev_default
