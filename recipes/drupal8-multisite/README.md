@@ -65,7 +65,7 @@ Now we have to do a DDEV specific thing. Trying to be helpful, it creates a glob
 
 We want to disable that option. However, the file is DDEV generated, so we can't just comment the line out, it may get regenerated. We need to remove the auto-generation marker lines as well. We can make this file empty.
 
-1. Edit `web/sites/all/drush/drush.yml` and delete all content including comments
+1. Edit `drush/drush.yml` and delete all content including comments
 2. Explicitly check the file in to git, if you use git (it has to be explicit, as DDEV also creates a local `.gitignore` file)
 
 ## Prepare example umami site
