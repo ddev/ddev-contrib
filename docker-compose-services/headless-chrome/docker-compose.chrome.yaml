@@ -10,14 +10,14 @@ services:
             com.ddev.approot: $DDEV_APPROOT
         volumes:
             - ddev-global-cache:/mnt/ddev-global-cache
+            - ".:/mnt/ddev_config"
         external_links:
-            # change d8.local with your own domain
-            - "ddev-router:d8.local"
+            - "ddev-router:${DDEV_HOSTNAME}"
         cap_add:
             - SYS_ADMIN
         ports:
-            # Exposing this port allows you to visit 127.0.0.1:9222 to see what si Chrome doing without
-            # any additional configuration
+        # Exposing this port allows you to visit 127.0.0.1:9222 to see what Headless Chrome doing without
+        # any additional configuration; However, you can only have one project using this port at a time.
             - '9222:9222'
 networks:
     default:

@@ -6,11 +6,10 @@ default:
                 - Drupal\DrupalExtension\Context\DrupalContext
                 - Drupal\DrupalExtension\Context\MinkContext
                 - Drupal\DrupalExtension\Context\MessageContext
-                - Drupal\DrupalExtension\Context\DrushContext
     extensions:
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
         Drupal\MinkExtension:
-            base_url: https://d8.local
+            base_url: https://<PROJECTNAME>>.ddev.site
             ajax_timeout: 30
             # goutte: ~
             browser_name: chrome
@@ -24,10 +23,13 @@ default:
         # Using drupalextension "drupal/drupal-extension": "v4.0.0rc1" or above. Use Behat\DrupalExtension if
         Drupal\DrupalExtension:
             drupal:
-                # Change this to the absolute path to Drupal install.
+                # Change this to the relative path to the docroot
                 drupal_root: "web"
-        Bex\Behat\ScreenshotExtension:
-            image_drivers:
-                local:
-                    screenshot_directory: /var/www/html/behat/results
-                    clear_screenshot_directory: true
+            api_driver: 'drush'
+            drush:
+                root: /var/www/html/web
+            region_map:
+                header: "#header"
+                sidebar: "#sidebar-first"
+                content: "#content"
+                footer: ".site-footer"
