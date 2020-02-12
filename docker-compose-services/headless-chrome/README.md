@@ -1,4 +1,4 @@
-## Headless Chrome
+# Headless Chrome
 
 This recipe allows you to configure a Headless chrome available, inside the web container, at `chrome:9222`.
 
