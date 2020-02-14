@@ -18,4 +18,4 @@ use the `ddev start` command, to start the project. If everything works, you can
 
 Visit `https://foldername.ddev.site/admin` and enter your account information for the Flextype admin panel.
 
-**Author: [@crydotsnake](https://twitter.com/crydotsnake)**
+**Author: [@simonwestghost](https://twitter.com/simonwestghost)**
