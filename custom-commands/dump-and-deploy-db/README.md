@@ -16,7 +16,7 @@ Copy [the web/ directory](web/) into your project's .ddev/commands/web.
 
 Without configuration this lets you dump and and deploy the local (called ‹ddev›) database. This might seem redundant to the existing `ddev import-db` and `ddev export-db` commands, but this has a fancy progress indicator and exports each table's data and structure separately...
 
-In roder to add other hosts, see [web/targets/README.txt](web/targets/README.txt) for the config file structure. You basically need SSH and DB connection info. You can use private keys (e.g. via `ddev auth ssh`) or a password prompt to connect.
+In order to add other hosts, see [web/targets/README.txt](web/targets/README.txt) for the config file structure. You basically need SSH and DB connection info. You can use private keys (e.g. via `ddev auth ssh`) or a password prompt to connect.
 
 ## Usage
 
