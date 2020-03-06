@@ -1,4 +1,4 @@
-webimage_extra_packages: [--no-install-recommends cron]
+webimage_extra_packages: [cron]
 
 hooks:
   post-start:
