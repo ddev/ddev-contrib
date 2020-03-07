@@ -10,13 +10,13 @@ Neither of the sites will be default to ensure that if something is misconfigure
 
 Let's mostly follow the suggested configuration in [the official DDEV documentation for Drupal 8 setup](https://ddev.readthedocs.io/en/stable/users/cli-usage/#drupal-8-quickstart).
 
-  mkdir d8m
-  cd d8m
-  ddev config --project-type php
-  ddev composer create drupal-composer/drupal-project:8.x-dev --stability dev --no-interaction --prefer-dist
-  ddev config --project-type drupal8
-  ddev restart
-  ddev describe
+    mkdir d8m
+    cd d8m
+    ddev config --project-type php
+    ddev composer create drupal-composer/drupal-project:8.x-dev --stability dev --no-interaction --prefer-dist
+    ddev config --project-type drupal8
+    ddev restart
+    ddev describe
 
 This gets us to the basic Drupal 8 site using composer setup At this point, if you go to the assigned URL (<https://d8m.ddev.site),> you will see Drupal's site creation dialogue. Let's leave that as is and not configure the default site.
 
@@ -44,16 +44,16 @@ You should get a message that additional domains are now available:
 
 Drush is useful, but it is a bit annoying to `ddev ssh` into the container all the time or to run `ddev exec drush` (or the shorter `ddev . drush`). Fortunately, DDEV has [Custom commands](https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/).  And drush is one of the examples, so it just needs to be copied.
 
-  cp .ddev/commands/web/drush.example .ddev/commands/web/drush
-  ddev drush status
+    cp .ddev/commands/web/drush.example .ddev/commands/web/drush
+    ddev drush status
 
 ## Enable multisite
 
 First we need to enable the multisite support by copying `example.sites.php` to `sites.php`. And then, because we are using DDEV for development and our production URLs will be different from test URLs, we want to define explicit aliases. That also allows us to have nice site directory names.
 
-  cd web/sites
-  mkdir basic umami
-  cp example.sites.php sites.php
+    cd web/sites
+    mkdir basic umami
+    cp example.sites.php sites.php
 
 1. Configure sites in the sites.php to match the URL with the correct directory.
 1. If you know production URLs, you can add them at the same time.
