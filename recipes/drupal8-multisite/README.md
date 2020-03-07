@@ -134,7 +134,7 @@ Now, we have a simple Drupal site at <https://basic.ddev.site,> a food magazine 
 
 ## Set up drush site aliases
 
-[Drush site aliases](http://docs.drush.org/en/9.x/usage/#site-aliases) help to address individual sites without being in the specific directory inside the web container. There is an example *self.site.yml* already with `drush/sites` folder, showing the basic format for default (self) site with environments *prod* and *stage*.
+[Drush site aliases](http://docs.drush.org/en/9.x/usage/#site-aliases) help to address individual sites without being in the specific directory inside the web container.
 
 We'll set the *root* and *uri* parameters to point to the Drupal root (within container) and the full url to the site instance.
 
