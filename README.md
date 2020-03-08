@@ -33,6 +33,7 @@ General information on how to do additional services and some additional example
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [RabbitMQ](docker-compose-services/rabbitmq)
+* [redis](docker-compose-services/redis)
 * [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 
 ## .ddev/web-build/Dockerfile examples to customize web container

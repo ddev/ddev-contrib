@@ -6,7 +6,6 @@ services:
   redis:
     container_name: ddev-${DDEV_SITENAME}-redis
     image: redis:4
-    restart: always
     ports:
       - 6379
     labels:
@@ -14,9 +13,12 @@ services:
       com.ddev.approot: $DDEV_APPROOT
     environment:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
-      - HTTP_EXPOSE=6379
     volumes:
       - ".:/mnt/ddev_config"
+      - "./redis:/usr/local/etc/redis"
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
   web:
+    depends_on:
+      - redis
     links:
       - redis:$DDEV_HOSTNAME
