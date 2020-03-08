@@ -25,4 +25,4 @@ In general, REDAXO setup is exactly the same as any other generic PHP project, e
 * Complete setup
 * To see complete ddev project information, use `ddev describe`.
 
-## Original Author: [@crydotsnake](https://twitter.com/crydotsnake)
+## Original Author: [@simonwestghost](https://twitter.com/simonwestghost)
