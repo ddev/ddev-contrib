@@ -69,6 +69,5 @@ It’s safe to re-enable `postgis` after the installation is complete.
 
 Future enhancements (PR's welcome here) include:
 
-* Non-volatile postgres database (store it on a docker volume like ddev's normal mariadb container does)
 * Provide interactive custom commands to interact with the `postgres` utility in the container interactively.
 * Consider changing suggested import/export hooks into "exec" hooks with "service: postgres" instead of running `ddev pg*` on the host.

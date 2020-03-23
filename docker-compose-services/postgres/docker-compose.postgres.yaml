@@ -10,10 +10,22 @@ services:
       - POSTGRES_USER=db
       - POSTGRES_DB=db
     volumes:
-      - ".:/mnt/ddev_config"
+      - type: "volume"
+        source: postgres-database
+        target: "/var/lib/postgresql/data"
+        volume:
+          nocopy: true
+      - type: "bind"
+        source: "."
+        target: "/mnt/ddev_config"
+      - ddev-global-cache:/mnt/ddev-global-cache
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
   web:
     links:
       - postgres:postgres
+
+volumes:
+  postgres-database:
+    name: "${DDEV_SITENAME}-postgres"
