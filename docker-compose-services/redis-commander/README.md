@@ -19,7 +19,7 @@ If your redis server is not available on host `redis` on port `6379`, then you n
 
 * Copy `docker-compose.redis-commander.yaml` to the `.ddev` folder of your project.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
-* Access your redis-commander UI at `http://<DDEV_STENAME>.ddev.site:1358`
+* Access your redis-commander UI at `http://<DDEV_STENAME>.ddev.site:1358` or `https://<DDEV_SITENAME>.ddev.site:1359`
 
 ## Notes
 
