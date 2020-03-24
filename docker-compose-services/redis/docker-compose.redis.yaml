@@ -19,4 +19,4 @@ services:
     depends_on:
       - redis
     links:
-      - redis:$DDEV_HOSTNAME
+      - redis:redis
