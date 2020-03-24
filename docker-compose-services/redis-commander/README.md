@@ -24,3 +24,5 @@ If your redis server is not available on host `redis` on port `6379`, then you n
 ## Notes
 
 This service example is made to work with the redis service example out-of-the-box, as such you might need to do some additional tweaking to either your redis server or this service if you are using a different redis server.
+
+**Contributed by [@Graloth](https://github.com/Graloth)**

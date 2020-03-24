@@ -34,6 +34,7 @@ General information on how to do additional services and some additional example
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
+* [redis-commander](docker-compose-services/redis-commander)
 * [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
