@@ -1,3 +1,3 @@
 ddev:
-  root: /var/www/html/web/umami
+  root: /var/www/html/web/sites/umami
   uri: https://umami.ddev.site
