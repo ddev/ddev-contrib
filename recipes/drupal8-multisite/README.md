@@ -132,10 +132,5 @@ Now that we have a basic setup in place, new site requires us to:
 5. Copy a drush alias and updating the `uri` option.
 6. Visit each new site to install Drupal.
 
-## Conclusion
-
-Of course much more work lies ahead.  The `settings.php` file alone may need a lot more additional configuration. This however, is a standard Drupal issue covered in Drupal's documentation.
-
-The focus of this example was to show how to get the basics working within the DDEV-Local environment.
-
 **Contributed by [@arafalov](https://github.com/arafalov)**
+**Major updates and reviews by [@amitaibu](https://github.com/amitaibu)**
