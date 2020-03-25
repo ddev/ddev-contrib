@@ -66,7 +66,7 @@ Since the settings.php for each subsite is nearly the same, we can use a basic s
 
 ## Prepare example umami site
 
-Inspect  [web/sites/umami/settings.php](web/sites/umami/settings.php) and copy it to `web/sites/umami`.
+Inspect [web/sites/umami/settings.php](web/sites/umami/settings.php) and copy it to `web/sites/umami`.
 
 Now, if `drush status -l umami.ddev.site` is run from within the *web* container's `sites/umami` directory, the output should look similar to following:
 
