@@ -103,7 +103,7 @@ And reruning `drush status` inside the `sites/umami` directory inside the *web* 
 
 We can follow the same steps as we did for "umami" for the "basic" site. We already have the directory, URL, database, and `sites.php` setup. So all that needs to be done is:
 
-1. Inspect  [web/sites/basic/settings.php](web/sites/basic/settings.php) and copy it to `web/sites/basic`.
+1. Inspect [web/sites/basic/settings.php](web/sites/basic/settings.php) and copy it to `web/sites/basic`.
 2. Visit `https://basic.ddev.site` and install the site with the *Standard* profile
 
 Now, we have a simple Drupal site at <https://basic.ddev.site,> a food magazine at <https://umami.ddev.site> and still only a configuration form at the original <https://d8m.ddev.site.>
