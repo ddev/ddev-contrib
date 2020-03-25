@@ -101,7 +101,7 @@ And reruning `drush status` inside the `sites/umami` directory inside the *web* 
 
 ## Install the "basic" demo site
 
-We can follow the same steps as we did for "umami" for the "basic"" site. We already have the directory, URL, database, and `sites.php` setup. So all that needs to be done is:
+We can follow the same steps as we did for "umami" for the "basic" site. We already have the directory, URL, database, and `sites.php` setup. So all that needs to be done is:
 
 1. Inspect  [web/sites/basic/settings.php](web/sites/basic/settings.php) and copy it to `web/sites/basic`.
 2. Visit `https://basic.ddev.site` and install the site with the *Standard* profile
