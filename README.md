@@ -39,6 +39,8 @@ General information on how to do additional services and some additional example
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
+* [Puppeteer Headless Chrome support](dockerfile-examples/puppeteer-headless-chrome-support/README.md)
+
 ## Full recipes
 
 * [Using ddev with a corporate (or other) web proxy](recipes/proxy)
