@@ -38,6 +38,10 @@ Two new `ddev` commands are provided:
 Example `config.yaml` hooks configuration to automatically import/export the `db` table:
 
 ```
+# Add psql to your webserver
+webimage_extra_packages: [postgresql-11]
+
+# Automatically import and export PostreSQL database on ddev start and stop
 hooks:
   pre-stop:
     - exec-host: ddev pgsql_export
