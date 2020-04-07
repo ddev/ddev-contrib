@@ -39,7 +39,7 @@ Example `config.yaml` hooks configuration to automatically import/export the `db
 
 ```
 # Add psql to your webserver
-webimage_extra_packages: [postgresql-11]
+webimage_extra_packages: [postgresql-client]
 
 # Automatically import and export PostreSQL database on ddev start and stop
 hooks:
