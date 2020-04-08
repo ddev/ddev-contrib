@@ -8,7 +8,7 @@ Copy [docker-compose.elasticsearch.yaml](docker-compose.elasticsearch.yaml) to y
 
 ## Configuration
 
-From within the container, the elasticsearch container is reached at hostname: elasticsearch, port: 9200, so the server URL might be `http://elasticsearch:9200`
+From within the container, the elasticsearch container is reached at hostname: elasticsearch, port: 9200, so the server URL might be `http://elasticsearch:9200`. You can also use the non-SSL, and SSL urls to access it: `http://<DDEV_SITENAME>.ddev.site:9200`, and `https://<DDEV_SITENAME>.ddev.site:9201`
 
 ## Connection
 
