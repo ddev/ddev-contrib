@@ -10,7 +10,7 @@ Resources:
 
 * ApacheSolrForTypo3 EXT:Solr [docs (master)](https://docs.typo3.org/p/apache-solr-for-typo3/solr/master/en-us/)
 * [typo3solr/ext-solr](https://hub.docker.com/r/typo3solr/ext-solr/) Solr image on hub.docker.com.
-* [typo3solr Slack Channel](https://typo3.slack.com/messages/ext-solr/)  (request your invite for TYPO3 Slack at <https://forger.typo3.org/slack)>
+* [typo3solr Slack Channel](https://typo3.slack.com/messages/ext-solr/) (request your invite for TYPO3 Slack at <https://my.typo3.org/about-mytypo3org/slack>)
 * [Original Stack Overflow Tutorial](https://stackoverflow.com/questions/51479399/how-to-set-up-solr-server-for-typo3-using-ddev) that this is based on.
 
 1. Add the solr extension to your project: `ddev composer require apache-solr-for-typo3/solr`
