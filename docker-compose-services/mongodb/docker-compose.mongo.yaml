@@ -8,7 +8,7 @@ services:
 
     volumes:
       - type: "volume"
-        source: mongo-database
+        source: mongo
         target: "/data/db"
         volume:
           nocopy: true
@@ -43,5 +43,4 @@ services:
       - mongo:mongo
 
 volumes:
-  mongo-database:
-    name: "${DDEV_SITENAME}-mongo"
+  mongo:

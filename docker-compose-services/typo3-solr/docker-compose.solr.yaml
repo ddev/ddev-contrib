@@ -18,11 +18,12 @@ services:
       # If you want your solr to persist over `ddev stop` and `ddev start` then uncomment the following line
       # If you uncomment it and want to flush your data you have to `ddev stop` and then
       # `docker volume rm ddev-<projectname>_solrdata` to destroy it.
-#      - solrdata:/var/solr
+#      - solr:/var/solr
   web:
     links:
       - solr:$DDEV_HOSTNAME
 
 volumes:
-  # solrdata is a persistent Docker volume for this project's solr data
-  solrdata:
+  # solr is a persistent Docker volume for this project's solr data
+  # the volume will be named ddev-<project>_solr
+  solr:

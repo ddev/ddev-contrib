@@ -11,7 +11,7 @@ services:
       - POSTGRES_DB=db
     volumes:
       - type: "volume"
-        source: postgres-database
+        source: postgres
         target: "/var/lib/postgresql/data"
         volume:
           nocopy: true
@@ -27,5 +27,4 @@ services:
       - postgres:postgres
 
 volumes:
-  postgres-database:
-    name: "${DDEV_SITENAME}-postgres"
+  postgres:
