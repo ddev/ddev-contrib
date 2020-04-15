@@ -27,4 +27,3 @@ services:
 
 volumes:
   elasticsearch:
-    name: "${DDEV_SITENAME}-elasticsearch"
