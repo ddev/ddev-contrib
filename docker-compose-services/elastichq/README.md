@@ -18,6 +18,6 @@ If your Elasticsearch server is not available inside the elastichq container at 
 
 * Copy `docker-compose.elastichq.yaml` to the `.ddev` folder of your project.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
-* Access your redis-commander UI at `http://<DDEV_STENAME>.ddev.site:5000` or via https at `https://<DDEV_SITENAME>.ddev.site:5443`.
+* Access your ElasticHQ UI at `http://<DDEV_STENAME>.ddev.site:5000` or via https at `https://<DDEV_SITENAME>.ddev.site:5443`.
 
 **Contributed by [@Graloth](https://github.com/Graloth)**
