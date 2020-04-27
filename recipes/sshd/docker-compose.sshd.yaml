@@ -1,0 +1,5 @@
+version: '3.6'
+services:
+  web:
+    ports:
+    - "127.0.0.1:2222:2222"

@@ -48,3 +48,4 @@ General information on how to do additional services and some additional example
 * [Flexitype CMS](recipes/flexitype-cms)
 * [Laravel PHP Framework](recipes/laravel)
 * [REDAXO CMS](recipes/redaxo-cms)
+* [SSH Server](recipes/sshd): Adding a "real" sshd server in web container
