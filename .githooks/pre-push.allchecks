@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # markdownlint
-markdownlint -o /tmp/mdlint.out .
+markdownlint -o /tmp/mdlint.out $(find . -name "*.md")
 if [ "$?" != "0" ]; then
     echo "Markdownlint failed on these files:"
     awk -F: '{ print $1 }' < "/tmp/mdlint.out" | sort -u
