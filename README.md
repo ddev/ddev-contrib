@@ -49,3 +49,4 @@ General information on how to do additional services and some additional example
 * [Laravel PHP Framework](recipes/laravel)
 * [REDAXO CMS](recipes/redaxo-cms)
 * [SSH Server](recipes/sshd): Adding a "real" sshd server in web container
+* [Puppeteer Headless Chrome support](recipes/puppeteer-headless-chrome-support/README.md)
