@@ -43,3 +43,5 @@ At that stage you should be able to view the landing page at `https://demo.ddev.
 You can see how the plugin is triggered by opening the `webpack.config.js` configuration file.
 
 A `yarn dev` and `yarn watch` scripts are also provided as examples.
+
+## Original Author: [@juban](https://github.com/juban)
