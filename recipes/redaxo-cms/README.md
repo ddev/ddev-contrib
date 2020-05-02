@@ -6,12 +6,11 @@
 
 REDAXO is for people who love the flexibility of a content managment system; you have easy control of your code and also of the content that you want to create.
 
-## Install REDAXO code and submodules
+## Install REDAXO code
 
-In general, REDAXO setup is exactly the same as any other generic PHP project, except for the need to update the git submodules after cloning.
+In general, REDAXO setup is exactly the same as any other generic PHP project
 
 * Clone the REDAXO repository: `git clone https://github.com/redaxo/redaxo.git`
-* Update  git submodules: `git submodule init && git submodule update`
 
 ## Configure ddev
 
