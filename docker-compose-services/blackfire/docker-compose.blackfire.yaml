@@ -1,3 +1,10 @@
+# 1. Replace YOUR_SERVER_ID and YOUR_SERVER_TOKEN (https://blackfire.io/my/settings/credentials)
+# 2. Add the following line (but without the '######') to this file .ddev/php/blackfire.ini (create it if it doesn't exist)
+###### blackfire.agent_socket = tcp://blackfire:8707
+# 3. Restart DDEV
+#
+# For Additional documentation - https://github.com/drud/ddev-contrib/tree/master/docker-compose-services/blackfire
+
 version: '3.6'
 services:
   blackfire:
