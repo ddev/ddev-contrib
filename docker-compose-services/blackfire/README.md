@@ -4,7 +4,7 @@ Blackfire.io is a profiler for PHP sites, it will help you find out what your co
 
 1. the probe (Already installed in ddev by default)
 2. the agent (Added as an additional service in docker-compose.blackfire.yaml)
-3. the client (Installed and configured by you on your host, or any computer)
+3. the client (Installed and configured by you on your host, on the ddev web container, or any computer)
 
 ## The Probe
 
@@ -37,12 +37,11 @@ the blackfire agent socket in a custom PHP config file ([docs](https://ddev.read
 
 When you want to use the cli client, there are several ways to use it. There is no real difference between the container-based approaches, but the command you need to type in differ. Pick the approach that suits best your needs.
 
-### Configure before use
+### Configure blackfire before use
 
 Before you can use the cli client, you need to configure it with the client credentials blackfire.io provides for the used account.
 You will find those at [the credentials page](https://blackfire.io/my/settings/credentials) after logging into your blackfire.io account.
-Run `blackfire configure`, which will ask for the input values. This works for each of the following usage versions, only the prefix you use
-will differ depending on the recipient.
+Run `blackfire config`, which will ask for your Client ID and Client Token values. This works for each of the following usage versions, only the prefix you use will differ depending on the recipient.
 
 ### On your host system
 
@@ -52,9 +51,16 @@ the same as the one you want to use to profile the project you use ddev for. If 
 
 ### From the DDEV web container
 
-For this to work, you need to add the blackfire client to your setup, using `webimage_extra_packages: [blackfire-agent]` in `.ddev/config.yaml`.
-To test (after starting / restarting ddev on your project) the package has actually been installed, run `ddev exec blackfire`.
-The output should present the usage options of the blackfire.io cli client.
+If you'd like to profile drush or other CLI commands running in your DDEV project, you'll need to add the blackfire client (agent) to your web container, using `webimage_extra_packages: [blackfire-agent]` in `.ddev/config.yaml`.
+To test (after starting / restarting ddev on your project) the package has actually been installed, run `ddev exec blackfire`. 
+
+The output should present the usage options of the blackfire.io cli client. Before running commands, you'll need to follow the "Configure blackfire before use" steps above, i.e., `ddev exec blackfire config`.
+
+Here is an example of profiling a drush command using blackfire:
+
+```bash
+ddev exec blackfire run drush status
+```
 
 ### From the blackfire container
 
