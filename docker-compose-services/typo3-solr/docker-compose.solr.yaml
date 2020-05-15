@@ -14,10 +14,10 @@ services:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8983
     volumes:
-      - "./solr:/opt/solr/server/solr"
+      - "./solr:/opt/solr/data"
       # If you want your solr to persist over `ddev stop` and `ddev start` then uncomment the following line
       # If you uncomment it and want to flush your data you have to `ddev stop` and then
-      # `docker volume rm ddev-<projectname>_solrdata` to destroy it.
+      # `docker volume rm ddev-<projectname>_solr` to destroy it.
 #      - solr:/var/solr
   web:
     links:
