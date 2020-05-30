@@ -10,7 +10,7 @@ I'm using it on a Symfony 4 app with API Platform.
 
 Steps to follow:
 
-1. Install Php extension, see the [example .ddev/web-build/Dockerfile](Dockerfile).
+1. Install Php extension using [webimage_extra_packages](https://ddev.readthedocs.io/en/stable/users/extend/customizing-images/) config option: `webimage_extra_packages: [php-mongodb]`
 
 2. Add extra file [docker-compose.mongo.yaml](docker-compose.mongo.yaml)
 
