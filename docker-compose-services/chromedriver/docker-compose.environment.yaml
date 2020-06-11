@@ -1,0 +1,6 @@
+version: '3.6'
+
+services:
+  web:
+    environment:
+      - MINK_DRIVER_ARGS_WEBDRIVER=["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox"]}}, "http://chromedriver:9515"]

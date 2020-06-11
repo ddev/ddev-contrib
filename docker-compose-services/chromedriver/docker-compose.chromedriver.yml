@@ -1,0 +1,12 @@
+---
+version: '3.6'
+services:
+  chromedriver:
+    image:  drupalci/webdriver-chromedriver:production
+    container_name: ddev-${DDEV_SITENAME}-chromedriver
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+  web:
+    links:
+      - chromedriver:$DDEV_HOSTNAME
