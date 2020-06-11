@@ -16,7 +16,8 @@ None
 ## Installation
 
 * Copy `docker-compose.chromedriver.yaml` to the `.ddev` folder of your project.
-* Copy (merge variables if one already exists) `docker-compose.environment.yaml` to the `.ddev` folder of your project.
+* Set environment variables as appropriate. Examples are for Drupal Functional and FunctionalJavascript testing.
+  * To do this, copy (merge variables if one already exists) `docker-compose.environment.yaml` to the `.ddev` folder of your project.
 * Verify your phpunit.xml does not define environment variable for `MINK_DRIVER_ARGS_WEBDRIVER`. These should come from environment variable.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
 
