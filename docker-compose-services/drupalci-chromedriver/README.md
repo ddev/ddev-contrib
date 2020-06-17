@@ -20,9 +20,9 @@ None
   * To do this, copy (merge variables if one already exists) `docker-compose.environment.yaml` to the `.ddev` folder of your project.
 * Verify your phpunit.xml does not define environment variable for `MINK_DRIVER_ARGS_WEBDRIVER`. These should come from environment variable.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
-* To test setup, run a unit test that triggers ChromeDriver. Example:
+* To test the setup, run a Drupal unit test that triggers ChromeDriver. Example:
 ```shell script
-vendor/bin/phpunit --verbose -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
+user@demo-web:/var/www/html$ vendor/bin/phpunit --verbose -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
 ```
 
 **Contributed by [@mglaman](https://github.com/mglaman)
