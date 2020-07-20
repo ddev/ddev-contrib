@@ -1,0 +1,24 @@
+# We ned to maintain this file because we need to override Nginx config for the subfolder setup.
+
+/**/*.example
+/.dbimageBuild
+/.dbimageExtra
+/.ddev-docker-compose-base.yaml
+/.ddev-docker-compose-full.yaml
+/.ddevlive-downloads
+/.global_commands
+/.sshimageBuild
+/.webimageBuild
+/.webimageExtra
+/apache/apache-site.conf
+/commands/.gitattributes
+/commands/db/mysql
+/commands/host/launch
+/commands/web/live
+/commands/web/xdebug
+/config.*.y*ml
+/db_snapshots
+/import-db
+/import.yaml
+/sequelpro.spf
+/**/README.*
