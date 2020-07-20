@@ -6,13 +6,15 @@ A Drupal site might be operated from a subfolder (subdirectory) of a domain. Exa
 * No Subfolder frontpage: https://example.com
 * Subfolder frontpage: https://example.com/jobs
 
-That means the Drupal site only lives in the `/jobs` part. A reverse proxy sits in front of the site and delivers requests either to the main page "/" or the Drupal site at "/jobs.
+That means the Drupal site only lives in the `/jobs` part. A reverse proxy sits in front of the production site and delivers requests either to the main page "/" or the Drupal site at "/jobs.
 
 ## Simulating a subfolder setup in DDEV
 
-In order to have a development environment that mimics the production site subfolder as much as possible we want to run DDEV also in a subfolder. We need to change a couple of things for that.
+In order to have a development environment that mimics the production site subfolder as much as possible we want to run DDEV also with a URL subfolder. We need to change a couple of things for that.
 
-## Demo repository with the .ddev config folder
+Note that this setup only runs the /jobs subfolder site and ignore the main site completely.
+
+### Demo repository with the .ddev config folder
 
 See https://github.com/jobiqo/drupal7-subfolder
 
