@@ -46,7 +46,6 @@ General information on how to do additional services and some additional example
 * [Setting up Drupal 8 multisite, including Drush support](recipes/drupal8-multisite/)
 * [Bludit CMS](recipes/bludit-cms)
 * [Flexitype CMS](recipes/flexitype-cms)
-* [Laravel PHP Framework](recipes/laravel)
 * [REDAXO CMS](recipes/redaxo-cms)
 * [SSH Server](recipes/sshd): Adding a "real" sshd server in web container
 * [Puppeteer Headless Chrome support](recipes/puppeteer-headless-chrome-support/README.md)

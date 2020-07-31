@@ -52,7 +52,7 @@ the same as the one you want to use to profile the project you use ddev for. If 
 ### From the DDEV web container
 
 If you'd like to profile drush or other CLI commands running in your DDEV project, you'll need to add the blackfire client (agent) to your web container, using `webimage_extra_packages: [blackfire-agent]` in `.ddev/config.yaml`.
-To test (after starting / restarting ddev on your project) the package has actually been installed, run `ddev exec blackfire`. 
+To test (after starting / restarting ddev on your project) the package has actually been installed, run `ddev exec blackfire`.
 
 The output should present the usage options of the blackfire.io cli client. Before running commands, you'll need to follow the "Configure blackfire before use" steps above, i.e., `ddev exec blackfire config`.
 
