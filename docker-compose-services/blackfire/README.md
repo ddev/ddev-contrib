@@ -83,3 +83,5 @@ This will actually give you the TYPO3 backend you want to profile. If Location H
 This is not helpful at all in discovering the source of your issue.
 Here is a quick test: `blackfire curl https://my-project.ddev.site/typo3/` (no -L flag, but a trailing slash to the URL) will give you a profile,
 when only the Location Header redirect is missing.
+
+**Contributed by [@susannemoog](https://github.com/susannemoog)**
