@@ -20,6 +20,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 
 * [Dump and deploy SQL from/to remote servers](custom-commands/dump-and-deploy-db/)
 * [Fetch Production DB from remote server](custom-commands/fetchproductiondb/)
+* [Exclude ddev directory from git: git-exclude](custom-commands/git-exclude)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
