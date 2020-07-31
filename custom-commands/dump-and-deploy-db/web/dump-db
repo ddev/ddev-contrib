@@ -210,7 +210,7 @@ function openTunnel() {
     if [ -z "${target[sshPrivKey]}" ]; then
       sshIdentitiyArg=
     else
-      sshIdentitiyArg="-i \"$WEBSERVER_DOCROOT/${target[sshPrivKey]}\""
+      sshIdentitiyArg="-i \"/var/www/html/${target[sshPrivKey]}\""
     fi
     localMysqlPort=33060
     sshCommand="ssh -f -N -o LogLevel=ERROR -p ${target[sshPort]} $sshIdentitiyArg ${target[sshUser]}@${target[sshHost]} -L 127.0.0.1:$localMysqlPort:${target[mysqlHost]}:${target[mysqlPort]}"
@@ -278,8 +278,8 @@ set -o errexit -o pipefail -o noclobber -o nounset
 
 # init
 targetDir=$(dirname "$0")/targets
-structDir="$WEBSERVER_DOCROOT/data/sql/struct"
-dataDir="$WEBSERVER_DOCROOT/data/sql/records"
+structDir="/var/www/html/data/sql/struct"
+dataDir="/var/www/html/data/sql/records"
 
 # arguments
 isForce=0
