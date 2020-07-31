@@ -36,4 +36,4 @@ It was planned to create siblings for these commands in the form of `dump-files`
 
 ![dump-db](dump-db-example.png)
 
-**Original submission from [@jonaseberle](https://github.com/jonaseberle)**
+**Contributed by [@jonaseberle](https://github.com/jonaseberle)**

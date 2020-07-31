@@ -1,0 +1,17 @@
+#!/bin/bash
+
+## Description: Exclude ddev generated files from the project repo
+## Usage: git-exclude
+
+case $OSTYPE in
+  linux-gnu | "darwin"* )
+    if [ $DDEV_PROJECT_TYPE == "drupal7" ]; then
+      grep -qxF ".ddev" .git/info/exclude || echo ".ddev" >> .git/info/exclude
+      grep -qxF "${DDEV_DOCROOT}/sites/default/.gitignore" .git/info/exclude || echo "${DDEV_DOCROOT}/sites/default/.gitignore" >> .git/info/exclude
+    elif [ $DDEV_PROJECT_TYPE == "drupal8" ] || [ $DDEV_PROJECT_TYPE == "drupal9" ]; then
+      grep -qxF ".ddev" .git/info/exclude || echo ".ddev" >> .git/info/exclude
+      grep -qxF "drush/.gitignore" .git/info/exclude || echo "drush/.gitignore" >> .git/info/exclude
+      grep -qxF "${DDEV_DOCROOT}/sites/default/.gitignore" .git/info/exclude || echo "${DDEV_DOCROOT}/sites/default/.gitignore" >> .git/info/exclude
+    fi
+    ;;
+esac
