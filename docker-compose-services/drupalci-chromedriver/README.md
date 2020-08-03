@@ -12,7 +12,7 @@ It is based on [Matt Glaman's excelent blog post](https://glamanate.com/blog/run
 * Set environment variables in the "environment" section of the "web" service in `docker-compose.chromedriver.yaml` as appropriate. The defaults are for Drupal Functional and FunctionalJavascript testing.
 * Verify that your phpunit.xml does not define  `MINK_DRIVER_ARGS_WEBDRIVER`. This should come from our docker-compose.chromedriver.yaml.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
-* Make sure you have phpunit installed, `composer require phpunit/phpunit`
+* Your Drupal project must be built with --require-dev to get necessary dependencies like phpunit (for example, `ddev composer create drupal/recommended-project --require-dev`)
 * To test the setup, `ddev ssh` and run a Drupal unit test that triggers ChromeDriver. Example:
 
 ```bash
