@@ -4,13 +4,11 @@ This simple recipe creates two new containers, one for MongoDB and one for Mongo
 
 Based on [MongoDb from Docker Hub](https://hub.docker.com/_/mongo?tab=description#-via-docker-stack-deploy-or-docker-compose), [ddev custom compose files](https://ddev.readthedocs.io/en/stable/users/extend/custom-compose-files/) and [API Platform tutorial](https://api-platform.com/docs/core/mongodb/#enabling-mongodb-support).
 
-It's a first try, contributions to improve it are welcome!
-
 I'm using it on a Symfony 4 app with API Platform.
 
 Steps to follow:
 
-1. Install Php extension, see the [example .ddev/web-build/Dockerfile](Dockerfile).
+1. Install php-mongo extension by adding `webimage_extra_packages: [php-mongodb]` to your .ddev/config.yaml.
 
 2. Add extra file [docker-compose.mongo.yaml](docker-compose.mongo.yaml)
 
@@ -24,9 +22,11 @@ Steps to follow:
     MONGODB_DB=api
     ```
 
-Mongo Express will now be accessible from `<site>.ddev.site:8081`
+Mongo Express will now be accessible from `https://<site>.ddev.site:8081`
 
 Caveats:
 
-* you can't define custom MongoDB configuration
-* you can't use `ddev import-db`
+* You can't define custom MongoDB configuration with this current setup.
+* You can't use `ddev import-db` to import to mongo.
+
+**Contributed by [@wtfred](https://github.com/wtfred)**

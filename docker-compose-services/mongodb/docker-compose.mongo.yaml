@@ -3,25 +3,23 @@ version: '3.6'
 services:
   mongo:
     container_name: ddev-${DDEV_SITENAME}-mongo
-
     image: mongo:4.0
-
     volumes:
-      - type: "volume"
-        source: mongo
-        target: "/data/db"
-        volume:
-          nocopy: true
+    - type: "volume"
+      source: mongo
+      target: "/data/db"
+      volume:
+        nocopy: true
     restart: "no"
     ports:
-      - "27017"
+    - "27017"
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=db
-      - MONGO_INITDB_ROOT_PASSWORD=db
-      - MONGO_INITDB_DATABASE=db
+    - MONGO_INITDB_ROOT_USERNAME=db
+    - MONGO_INITDB_ROOT_PASSWORD=db
+    - MONGO_INITDB_DATABASE=db
 
   mongo-express:
     container_name: ddev-${DDEV_SITENAME}-mongo-express
@@ -29,18 +27,23 @@ services:
     restart: "no"
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
-      com.ddev.approot: $DDEV_APPROOT
+      com.ddev.approot: ${DDEV_APPROOT}
+      com.ddev.platform: ddev
+
     links:
-      - mongo:mongo
+    - mongo:mongo
     ports:
-      - "127.0.0.1:8081:8081"
+    - "8081"
     environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=db
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=db
+      VIRTUAL_HOST: $DDEV_HOSTNAME
+      ME_CONFIG_MONGODB_ADMINUSERNAME: db
+      ME_CONFIG_MONGODB_ADMINPASSWORD: db
+      HTTP_EXPOSE: "8082:8081"
+      HTTPS_EXPOSE: 8081:8081
 
   web:
     links:
-      - mongo:mongo
+    - mongo:mongo
 
 volumes:
   mongo:
