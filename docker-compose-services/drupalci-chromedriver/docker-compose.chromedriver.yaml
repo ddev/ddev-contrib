@@ -7,6 +7,14 @@ services:
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
+
   web:
     links:
       - chromedriver:$DDEV_HOSTNAME
+    environment:
+      # Pick if you want to run tests as sqlite or mysql and uncomment.
+      # - SIMPLETEST_DB=sqlite://tmp/test.sqlite
+      # - SIMPLETEST_DB=mysql://db:db@db:3306/db
+      - SIMPLETEST_BASE_URL=http://web
+      - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
+      - MINK_DRIVER_ARGS_WEBDRIVER=["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox"]}}, "http://chromedriver:9515"]
