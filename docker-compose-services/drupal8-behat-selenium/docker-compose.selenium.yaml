@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  web:
+    depends_on:
+    - db
+    - selenium
+    links:
+    - db:db
+    - selenium:selenium
+  selenium:
+    container_name: ddev-${DDEV_SITENAME}-selenium
+    image: selenium/standalone-chrome-debug:3.13.0-argon
+    networks:
+      default:
+        aliases:
+        - web
