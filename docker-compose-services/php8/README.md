@@ -8,6 +8,8 @@ In the meantime, you can use the [official docker php image](https://hub.docker.
 2. Copy [nginx-site.conf](nginx-site.conf) to your .ddev/nginx_full directory (overwriting the generated file there)
 3. `ddev start`
 
+Note that this introduces a container named `php`, which you can accesss via `ddev ssh -s php`. It has the exact same code mounted in the same place as in the `web` container, at `/var/www/html`.
+
 You may find that your project has some problems with PHP8 or that PHP8 has some problems with your project :)
 
 **Contributed by [@rfay](https://github.com/rfay)**
