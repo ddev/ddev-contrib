@@ -1,0 +1,25 @@
+version: '3.6'
+
+services:
+  php:
+    container_name: ddev-${DDEV_SITENAME}-php
+    image: php:8.0.0alpha3-fpm-buster
+    restart: "no"
+    ports:
+      - 9000
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+    - type: bind
+      source: ../
+      target: /var/www/html
+      consistency: cached
+    - ".:/mnt/ddev_config:ro"
+    - ddev-global-cache:/mnt/ddev-global-cache
+
+  web:
+    healthcheck:
+      # Use "true" as the healthcheck to ignore its result
+      test: ["CMD", "true"]
+

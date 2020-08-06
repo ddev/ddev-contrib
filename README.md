@@ -33,6 +33,7 @@ General information on how to do additional services and some additional example
 * [Elastichq](docker-compose-services/elastichq)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
+* [PHP 8 (while in alpha/beta)](docker-compose-services/php8)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
