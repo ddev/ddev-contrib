@@ -47,6 +47,7 @@ General information on how to do additional services and some additional example
 * [enable TYPO3 cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/)
 * [Setting up Drupal 8 multisite, including Drush support](recipes/drupal8-multisite/)
 * [Bludit CMS](recipes/bludit-cms)
+* [Drupal 7 in a Subfolder of Main Site](recipes/drupal7-subfolder)
 * [Flexitype CMS](recipes/flexitype-cms)
 * [REDAXO CMS](recipes/redaxo-cms)
 * [SSH Server](recipes/sshd): Adding a "real" sshd server in web container

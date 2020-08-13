@@ -1,0 +1,14 @@
+name: drupal7-subfolder
+type: drupal7
+docroot: ""
+php_version: "7.2"
+router_http_port: "80"
+router_https_port: "443"
+xdebug_enabled: false
+provider: default
+use_dns_when_possible: true
+
+hooks:
+  pre-start:
+  - exec-host: cp -f sites/default/ddev-subfolder.settings.php sites/default/settings.php
+
