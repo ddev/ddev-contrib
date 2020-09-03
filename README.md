@@ -38,6 +38,7 @@ General information on how to do additional services and some additional example
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
 * [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
+* [Varnish](docker-compose-services/varnish)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 

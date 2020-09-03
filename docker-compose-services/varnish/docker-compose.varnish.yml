@@ -1,0 +1,38 @@
+version: '3.6'
+
+services:
+  # This is the service name used when running ddev commands accepting the
+  # --service flag.
+  varnish:
+    # This is the name of the container. It is recommended to follow the same
+    # name convention used in the main docker-compose.yml file.
+    container_name: ddev-${DDEV_SITENAME}-varnish
+    # Use "varnish:latest" to get the latest stable image.
+    image: varnish:6.4
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      # This is the first half of the trick that puts varnish "in front of" the
+      # web container, just by switching the names.
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      # This defines the ports the service should be accessible from at
+      # sitename.ddev.site.
+      - HTTPS_EXPOSE=443:80,8026:8025
+      - HTTP_EXPOSE=80:80,8025:8025
+    volumes:
+      # This exposes a mount to the host system `.ddev/varnish` directory where
+      # your default.vcl should be.
+      - "./varnish:/etc/varnish"
+      - ".:/mnt/ddev_config"
+    ports: []
+    links:
+      - web:web
+  # This is the second half of the trick that puts varnish "in front of" the web
+  # container, just by switching the names.
+  web:
+    environment:
+      - VIRTUAL_HOST=novarnish.$DDEV_HOSTNAME
