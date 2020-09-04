@@ -13,6 +13,7 @@ Don't forget the [Official documentation](https://ddev.readthedocs.io/en/stable/
 * [Mounting a directory into web container](docker-compose-snippets/mounting-directory/)
 * [Setting an environment variable](docker-compose-snippets/environment-variable/docker-compose.env.yaml)
 * [Communication between two ddev projects](docker-compose-snippets/project-communication/)
+* [Set default language (or other settings) in phpmyadmin](docker-compose-snippets/phpmyadmin-user-settings/)
 
 ## Custom command examples
 
