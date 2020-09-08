@@ -27,12 +27,13 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 
 General information on how to do additional services and some additional examples are [in the docs](https://ddev.readthedocs.io/en/latest/users/extend/additional-services/).
 
-* [MongoDB](docker-compose-services/mongodb/)
+* [Behat, Selenium, Drupal 8/9](docker-compose-services/drupal8-behat-selenium)
 * [Blackfire.io](docker-compose-services/blackfire/)
 * [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver). This example uses Drupal's DrupalCI approach, supports Behat, DrupalCI, etc.
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Elastichq](docker-compose-services/elastichq)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
+* [MongoDB](docker-compose-services/mongodb/)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [PHP 8 (while in alpha/beta)](docker-compose-services/php8)
 * [PostgreSQL](docker-compose-services/postgres/)

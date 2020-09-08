@@ -1,0 +1,16 @@
+# Make sure to update base_url: for your site
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: https://myproject.ddev.site
+    Drupal\DrupalExtension:
+      blackbox: ~
