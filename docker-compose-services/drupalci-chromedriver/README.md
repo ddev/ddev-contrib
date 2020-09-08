@@ -1,8 +1,8 @@
-# DrupalCI ChromeDriver
+# DrupalCI ChromeDriver (Behat, DrupalCI, FunctionalJavascript)
 
 This recipe adds the DrupalCI ChromeDriver container to a project.
 
-Among other things, this support Drupal's FunctionalJavascript tests.
+Among other things, this supports Drupal's FunctionalJavascript tests.
 But it also supports Behat with WebDriver or any other use of headless Chrome.
 It is based on [Matt Glaman's excelent blog post](https://glamanate.com/blog/running-drupals-functionaljavascript-tests-ddev)
 

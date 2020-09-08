@@ -29,7 +29,7 @@ General information on how to do additional services and some additional example
 
 * [MongoDB](docker-compose-services/mongodb/)
 * [Blackfire.io](docker-compose-services/blackfire/)
-* [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver)
+* [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver). This example uses Drupal's DrupalCI approach, supports Behat, DrupalCI, etc.
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Elastichq](docker-compose-services/elastichq)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
