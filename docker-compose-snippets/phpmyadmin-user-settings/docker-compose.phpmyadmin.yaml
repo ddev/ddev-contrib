@@ -1,0 +1,6 @@
+version: '3.6'
+
+services:
+  dba:
+    volumes:
+      - "./phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php"
