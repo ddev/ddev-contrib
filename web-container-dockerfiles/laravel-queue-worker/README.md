@@ -11,3 +11,5 @@ Keep in mind that using this approach will modify your web image, so read the ca
 ## Run in background using `nohup`
 
 Copy `config.laravel-worker.conf` to `.ddev`. When the container is restarted, the queue worker will run in the background with no change to the Docker image.
+
+**Contributed by [@karlshea](https://github.com/karlshea)**

@@ -43,6 +43,7 @@ General information on how to do additional services and some additional example
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
+* [Laravel Queue-Worker](web-container-dockerfiles/laravel-queue-worker) (This is also a good example of adding an additional process to supervisord,)
 * [Stripe CLI](web-container-dockerfiles/stripe-cli) (This is also a good example of adding any non-standard Debian repository.)
 
 ## Full recipes
