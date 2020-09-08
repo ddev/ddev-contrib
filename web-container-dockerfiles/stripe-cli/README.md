@@ -20,3 +20,5 @@ stripe version 1.5.1
 ```
 
 Well done. Now you can start to listen to the stripe web hooks. Have fun 🎉
+
+**Contributed by [@SuddenlyRust](https://github.com/SuddenlyRust)**
