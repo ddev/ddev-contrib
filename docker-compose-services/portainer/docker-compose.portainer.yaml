@@ -1,0 +1,28 @@
+---
+version: '3.6'
+services:
+    portainer:
+        image: portainer/portainer:latest
+        restart:  always
+        container_name: ddev-${DDEV_SITENAME}-portainer
+        labels:
+          com.ddev.site-name: ${DDEV_SITENAME}
+          com.ddev.approot: $DDEV_APPROOT
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - portainer_data:/data
+        external_links:
+            - "ddev-router:${DDEV_HOSTNAME}"
+        cap_add:
+            - SYS_ADMIN
+        ports:
+          - '9000:9000'
+          - '8000:8000'
+volumes:
+  portainer_data:
+
+networks:
+  default:
+    external:
+      name: ddev_default
+
