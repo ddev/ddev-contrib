@@ -15,7 +15,7 @@ To enable Solr in your project follow these steps:
 
 You now have a running Solr instance for your project. To get the URL for the instance run `ddev describe`.
 
-By default the Solr core is named "dev" and the host is named "solr" so applications running inside the web container will be able to access the Solr service at http://solr:8983.
+By default the Solr core is named "dev" and the host is named "solr" so applications running inside the web container will be able to access the Solr service at `http://solr:8983`.
 
 > **Note**
 >
