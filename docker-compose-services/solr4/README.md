@@ -1,6 +1,6 @@
 # Solr 4.x
 
-This recipe allows you to configure a Solr server for your project using version 4.
+This recipe allows you to configure a [Solr](https://lucene.apache.org/solr/) server for your project using version 4.
 
 The Solr version used in this recipe is 4.10.4 which is not supported officially anymore.
 
@@ -20,3 +20,7 @@ By default the Solr core is named "dev" and the host is named "solr" so applicat
 > **Note**
 >
 > If you change the name of the core in [core.properties](core.properties) you also need to update the name in [docker-compose.solr.yml](docker-compose.solr.yml), section "services > solr > volumes".
+
+--- 
+
+Special thanks to [Jeff Geerling](https://www.jeffgeerling.com/) for building [Docker images](https://hub.docker.com/r/geerlingguy/solr) using versions of Apache Solr that have been deprecated long time ago.
