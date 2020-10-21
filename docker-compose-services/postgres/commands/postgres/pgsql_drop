@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Drop the postgresql database.
+## Usage: pgsql_drop
+## Example: ddev pgsql_drop
+
+su postgres -c "dropdb -U db db"
