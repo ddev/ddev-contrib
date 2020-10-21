@@ -14,7 +14,7 @@ If you're just kicking the tires, you can use a Drupal 4.7 version with `git clo
 
 ## ddev config
 
-* `ddev config --project-type=php --webserver-type=apache-fpm --mariadb-version=10.1` sets up your project
+* `ddev config --project-type=php --webserver-type=apache-fpm --mariadb-version=5.5` sets up your project
 
 If your docroot is not the default, make sure to set it correctly in the .ddev/config.yaml.
 
@@ -56,5 +56,4 @@ You may need another version of PHP. As noted in [docker-compose.php.yaml](.ddev
 
 * OK, you know that these PHP versions are long out of support and this recipe is provided only to help you resurrect and port or hibernate an old site, not for presentation or production purposes.
 * You definitely may have to do more than listed here to get your particular site going.
-* MariaDB 10.1 may not be an old enough database version for you.
 * I haven't experimented with getting PHP4 to work. Please provide a PR to this recipe if you get it to work.
