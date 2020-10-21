@@ -35,7 +35,6 @@ General information on how to do additional services and some additional example
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [MongoDB](docker-compose-services/mongodb/)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
-* [PHP 8 (while in alpha/beta)](docker-compose-services/php8)
 * [PostgreSQL](docker-compose-services/postgres/)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
