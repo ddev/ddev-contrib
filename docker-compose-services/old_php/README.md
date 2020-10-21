@@ -63,3 +63,5 @@ You may need another version of PHP. As noted in [docker-compose.php.yaml](.ddev
 * OK, you know that these PHP versions are long out of support and this recipe is provided only to help you resurrect and port or hibernate an old site, not for presentation or production purposes.
 * You definitely may have to do more than listed here to get your particular site going.
 * I haven't experimented with getting PHP4 to work. Please provide a PR to this recipe if you get it to work.
+
+**Originally by [@rfay](https://github.com/rfay)**
