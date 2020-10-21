@@ -1,0 +1,15 @@
+#!/bin/bash
+## Description: Log into the Drupal site with a one-time login link.
+URL=$(ddev exec drush uli | tr -d '\r')
+
+case $OSTYPE in
+  linux-gnu)
+    xdg-open ${URL}
+    ;;
+  "darwin"*)
+    open ${URL}
+    ;;
+  "win*"* | "msys"*)
+    start ${URL}
+    ;;
+esac
