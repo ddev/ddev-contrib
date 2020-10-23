@@ -26,8 +26,8 @@ Portainer is a visual mode for management of containers and networks. Is open-so
 Ok, by default you can access to the Portainer interface at the next address from your browser:
 
 ```
-https://projectname.ddev.site:9000
-https://127.0.0.1:9000
+https://projectname.ddev.site:9001
+https://127.0.0.1:9001
 ```
 
 Cause is the annotated port registered in the config.yaml file. If you want to avoid conflicts, just stop your DDEV-Local network, change the value and relaunch the containers.
@@ -35,12 +35,12 @@ Cause is the annotated port registered in the config.yaml file. If you want to a
 Just do:
 
 ```
-ddev stop
-vim docker-compose.portainer.yaml
+$ ddev stop
+$ vim docker-compose.portainer.yaml
 ports:
   - '3434:9000'
 :wq!
-ddev start
+$ ddev start
 ```
 
 But remember that Portainer always exposes from port 9000, so use this address as destiny in your mapping.
