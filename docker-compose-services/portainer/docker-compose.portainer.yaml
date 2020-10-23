@@ -16,8 +16,7 @@ services:
         cap_add:
             - SYS_ADMIN
         ports:
-          - '9000:9000'
-          - '8000:8000'
+          - '9001:9000'
 volumes:
   portainer_data:
 
