@@ -17,5 +17,5 @@ services:
       # - SIMPLETEST_DB=mysql://db:db@db:3306/db
       - SIMPLETEST_BASE_URL=http://web
       - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
-      - BROWSERTEST_OUTPUT_BASE_URL=http://${DDEV_SITENAME}.ddev.site
+      - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}
       - MINK_DRIVER_ARGS_WEBDRIVER=["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox"]}}, "http://chromedriver:9515"]
