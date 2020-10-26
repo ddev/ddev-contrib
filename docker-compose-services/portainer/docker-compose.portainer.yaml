@@ -4,8 +4,8 @@ services:
     portainer:
         image: portainer/portainer:latest
         environment:
-          - HTTP_EXPOSE=9001:9000
-          - HTTPS_EXPOSE=8001:9000
+          HTTP_EXPOSE: "9001:9000"
+          HTTPS_EXPOSE: "8001:9000"
         restart:  always
         container_name: ddev-${DDEV_SITENAME}-portainer
         labels:
@@ -19,7 +19,7 @@ services:
         cap_add:
             - SYS_ADMIN
         expose:
-          - '9000'
+          - "9000"
 volumes:
   portainer_data:
 
