@@ -23,26 +23,39 @@ Portainer is a visual mode for management of containers and networks. Is open-so
 
 ## Connection
 
-Ok, by default you can access to the Portainer interface at the next address from your browser:
+Ok, by default you can access to the Portainer interface at the next addresses from your browser:
 
 ```
-https://projectname.ddev.site:9001
-https://127.0.0.1:9001
+# using http
+http://projectname.ddev.site:9001
+http://127.0.0.1:9001
+
+# or using https
+https://projectname.ddev.site:8001
+https://127.0.0.1:8001
+```
+**Why?** Well, we're setting the mapped ports from Host to Guest just likes this:   
+
+``` 
+environment:
+  HTTP_EXPOSE: "9001:9000"
+  HTTPS_EXPOSE: "8001:9000"
 ```
 
-Cause is the annotated port registered in the config.yaml file. If you want to avoid conflicts, just stop your DDEV-Local network, change the value and relaunch the containers.
+If you want to avoid conflicts in the host side, just stop your DDEV-Local network, changing the value in the former section and relaunch the containers.  
 
-Just do:
+Just do:  
 
 ```
 $ ddev stop
 $ vim docker-compose.portainer.yaml
-ports:
-  - '3434:9000'
-:wq!
+    environment:
+      HTTP_EXPOSE: "3401:9000"
+      HTTPS_EXPOSE: "3501:9000"
+  :wq!
 $ ddev start
 ```
 
-But remember that Portainer always exposes from port 9000, so use this address as destiny in your mapping.
+And remember that Portainer always exposes internally to the ddev network from its port 9000 in the container, so use this address as destiny in your mapping.  
 
 **Contributed by [davidjguru](https://gitlab.com/davidjguru)**, [Drupal Developer](https://www.drupal.org/u/davidjguru) and blogger in [The Russian Lullaby](https://www.therussianlullaby.com/).
