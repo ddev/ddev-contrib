@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  cups:
+    privileged: true
+    container_name: ddev-${DDEV_SITENAME}-cups
+    hostname: ${DDEV_SITENAME}-cups
+    image: olbat/cupsd:latest
+    ports:
+      - "631"
+    environment:
+      - cluster.name=docker-cluster
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - /var/run/dbus:/var/run/dbus
+  web:
+    links:
+      - cups:cups
