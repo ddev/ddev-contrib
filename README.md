@@ -47,6 +47,8 @@ General information on how to do additional services and some additional example
 * [Drupal Solr 7 Integration](docker-compose-services/solr-7)
 * [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 * [RabbitMQ](docker-compose-services/rabbitmq)
+* [Search API Solr Cloud](docker-compose-services/search_api_solr-cloud)
+* [Search API Solr NLP Cloud](docker-compose-services/search_api_solr_nlp-cloud)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
 * [Varnish](docker-compose-services/varnish)
