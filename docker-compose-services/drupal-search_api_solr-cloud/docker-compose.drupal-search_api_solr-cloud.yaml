@@ -1,13 +1,4 @@
-# DDev Apache Solr recipe file.
-#
-# To use this in your own project:
-# 1. Copy this file to your project's ".ddev" directory.
-# 2. Create the folder path ".ddev/solr/conf".
-# 3. Copy the Solr configuration files for the appropriate plugin/module to
-#    ".ddev/solr/conf". For example, using Drupal 8's Search API Solr module,
-#    you'll get the config files as a file config.zip from
-#    /admin/config/search/search-api/server/solr and unzip it into .ddev/solr/conf
-#    so that a file exists with the path ".ddev/solr/conf/solrconfig.xml".
+# DDev Drupal Search API Solr recipe file.
 #
 # To access Solr after it is installed:
 # - The Solr admin interface will be accessible at:
@@ -16,10 +7,16 @@
 #   http://myproject.ddev.site:8983/solr/
 # - To access the Solr container from the web container use:
 #   http://solr:8983/solr/
-# - A Solr core is automatically created with the name "dev" unless you
+# - A Solr core is automatically created with the name "drupal" unless you
 #   change that usage throughout. It can be
-#   accessed at the URL: http://solr:8983/solr/dev (inside web container)
-#   or at http://myproject.ddev.site:8983/solr/dev (on the host)
+#   accessed at the URL: http://solr:8983/solr/drupal (inside web container)
+#   or at http://myproject.ddev.site:8983/solr/drupal (on the host)
+#
+# To use this in your own project:
+# 1. Copy this file to your project's ".ddev" directory.
+# 2. Import the config "web/modules/contrib/search_api_solr/jump-start/drupal_configs/search_api.server.solr.yml" in
+#    Drupal or create your own search server using the Solr Cloud Connector and the default collection name "drupal".
+# 3. Edit the Search API Server and replace "localhost" by "<projectname>.ddev.site", for example "myproject.ddev.site".
 
 version: '3.6'
 
