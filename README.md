@@ -33,8 +33,8 @@ General information on how to do additional services and some additional example
 
 * [Behat, Selenium, Drupal 8/9](docker-compose-services/drupal8-behat-selenium)
 * [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver). This example uses Drupal's DrupalCI approach, supports Behat, DrupalCI, etc.
-* [Drupal Search API Solr Cloud](docker-compose-services/drupal_search_api_solr-cloud)
-* [Drupal Search API Solr NLP Cloud](docker-compose-services/drupal_search_api_solr_nlp-cloud)
+* [Drupal Search API Solr Cloud](docker-compose-services/drupal-search_api_solr-cloud)
+* [Drupal Search API Solr NLP Cloud](docker-compose-services/drupal-search_api_solr_nlp-cloud)
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Elastichq](docker-compose-services/elastichq)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
