@@ -49,7 +49,7 @@ function enable() {
 }
 function shutdown() {
     printf " \n\nDisabling general_log "
-    mysql -uroot -proot <<< "SET GLOBAL general_log=0aaa" &
+    mysql -uroot -proot <<< "SET GLOBAL general_log=0" &
     spinner $!
     printf "%b✓%b \n" "${successC}" "${endC}"
 
