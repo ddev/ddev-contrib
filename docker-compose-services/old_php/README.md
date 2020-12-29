@@ -6,6 +6,12 @@ However, there are images of older PHP versions on hub.docker.com and we can use
 
 This recipe was explicitly tested on Drupal 4.7 and 5.x, both from the 2008-2010 timeframe. 5.x installation succeeded with this configuration and PHP 5.3. Drupal 4.7 installation (very manual) succeeeded with PHP 5.2. Another approach which I used initially is to build the site or recover it on an Ubuntu 12.04 VM.
 
+## Architecture
+
+The normal DDEV-Local approach is to run both nginx/apache and php-fpm in the same container. However, it doesn't have to be that way. Here we're using *apache* int he regular ddev-webserver, but we've set the apache config to proxy to a different container, a php container running one of the Devilbox php images.
+
+This means that the `php_version` you have set in your .ddev/config.yaml is irrelevant; the actual PHP version is the one in the Devilbox container.
+
 ## Check out or download the repository and files into a project directory
 
 For example, on a Drupal site you'll want the code and the user-uploaded files from sites/default/files.
@@ -14,7 +20,7 @@ If you're just kicking the tires, you can use a Drupal 4.7 version with `git clo
 
 ## ddev config
 
-* `ddev config --project-type=php --webserver-type=apache-fpm --mariadb-version=10.1` sets up your project
+* `ddev config --project-type=php --webserver-type=apache-fpm --mariadb-version=5.5` sets up your project
 
 If your docroot is not the default, make sure to set it correctly in the .ddev/config.yaml.
 
@@ -56,5 +62,6 @@ You may need another version of PHP. As noted in [docker-compose.php.yaml](.ddev
 
 * OK, you know that these PHP versions are long out of support and this recipe is provided only to help you resurrect and port or hibernate an old site, not for presentation or production purposes.
 * You definitely may have to do more than listed here to get your particular site going.
-* MariaDB 10.1 may not be an old enough database version for you.
 * I haven't experimented with getting PHP4 to work. Please provide a PR to this recipe if you get it to work.
+
+**Originally by [@rfay](https://github.com/rfay)**

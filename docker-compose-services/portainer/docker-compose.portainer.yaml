@@ -1,0 +1,30 @@
+---
+version: '3.6'
+services:
+  portainer:
+    image: portainer/portainer:latest
+    expose:
+      - "9000"
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=9001:9000
+      - HTTPS_EXPOSE=8001:9000
+    restart: "no"
+    container_name: ddev-${DDEV_SITENAME}-portainer
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    external_links:
+      - "ddev-router:${DDEV_HOSTNAME}"
+    cap_add:
+      - SYS_ADMIN
+volumes:
+  portainer_data:
+
+networks:
+  default:
+    external:
+      name: ddev_default
