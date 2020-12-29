@@ -2,7 +2,7 @@
 
 ## Description: Downloading data from Platform.sh into DDEV
 ## Usage: sync [branch]
-## Example: "ddev sync" or "ddev sync feature"
+## Example: "ddev platform-sync" or "ddev platform-sync feature"
 
 # The ID of the project
 PLATFORM_PROJECT=
