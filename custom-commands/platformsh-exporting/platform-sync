@@ -1,0 +1,24 @@
+#!/bin/bash
+
+## Description: Downloading data from Platform.sh into DDEV
+## Usage: sync [branch]
+## Example: "ddev platform-sync" or "ddev platform-sync feature"
+
+# The ID of the project
+PLATFORM_PROJECT=
+
+# The name of the Git branch
+PLATFORM_BRANCH=develop
+
+if [ "$PLATFORM_PROJECT" != "" ] && [ "$PLATFORM_BRANCH" != "" ]
+then
+  # Downloading database
+  platform db:dump -p $PLATFORM_PROJECT -e $PLATFORM_BRANCH -o | ddev import-db
+
+  # Downloading files
+  rsync -az `platform ssh -p $PLATFORM_PROJECT -e $PLATFORM_BRANCH --pipe`:web/sites/default/files web/sites/default/ --verbose
+fi
+
+if [ -n "${1:-}" ] ; then
+  PLATFORM_BRANCH="${1}";
+fi
