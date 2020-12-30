@@ -6,4 +6,4 @@ To download your site’s data for local development:
 2. Set the `PLATFORM_PROJECT` variable to the ID of your project.
 3. Run `ddev platform-sync` to download data.
 
-**Contributed by [Fullwave](https://fullwaveagency.com/)**
+**Contributed by [@boulaffasae](https://github.com/boulaffasae) at [Fullwave](https://fullwaveagency.com/)**
