@@ -1,0 +1,37 @@
+#!/bin/bash
+
+## Description: Run inotify-proxy to recognize file system changes if NFS is used.
+## Usage: inotify [-profile <magento2|magento2-theme|vue-storefront>] [-sleep <seconds>] [folder1] [folder2] [...folder n]
+## Example: "ddev inotify -profile magento2-theme vendor/magento/theme-frontend-luma"
+
+CURRENT_DIR=$(dirname "$0")
+
+cd /var/www/html;
+
+INOTIFY=/usr/local/bin/inotify-proxy
+
+# Download inotify-proxy
+if [ ! -f "$INOTIFY" ]; then
+  pushd /tmp/ || exit
+
+  curl -s https://api.github.com/repos/cmuench/inotify-proxy/releases/latest \
+  | grep "browser_download_url.*inotify-proxy.*_linux_amd64\.tar\.gz" \
+  | cut -d ":" -f 2,3 \
+  | tr -d \" \
+  | wget -qi -
+
+  tarball="$(find . -name "inotify-proxy_*_linux_amd64\.tar\.gz")"
+  echo $tarball
+  tar -xzf $tarball
+
+  chmod +x inotify-proxy
+
+  sudo mv inotify-proxy "$INOTIFY"
+
+  rm $tarball
+
+  popd || exit
+fi
+
+cd /var/www/html;
+${INOTIFY} "$@"

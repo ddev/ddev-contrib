@@ -23,6 +23,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [Fetch Production DB from remote server](custom-commands/fetchproductiondb/)
 * [Exclude ddev directory from git: git-exclude](custom-commands/git-exclude)
 * [Downloading data from Platform.sh into DDEV](custom-commands/platform-sync)
+* [inotify-proxy to enable file watchers on NFS shares](custom-commands/inotify-proxy)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
