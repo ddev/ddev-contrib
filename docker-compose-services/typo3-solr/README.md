@@ -15,7 +15,7 @@ Resources:
 
 1. Add the solr extension to your project: `ddev composer require apache-solr-for-typo3/solr`
 2. Deactivate and then re-activate the "Apache Solr for TYPO3" module to make sure that its database tables get installed: `ddev typo3 extension:deactivate solr && ddev typo3 extension:activate solr`
-3. Copy [docker-compose.solr.yaml](https://raw.githubusercontent.com/drud/ddev-contrib/master/docker-compose-services/typo3-solr/docker-compose.solr.yaml) to your project's .ddev folder.
+3. Copy [docker-compose.solr.yaml](docker-compose.solr.yaml) to your project's .ddev folder.
 4. If you want your solr data to be persistent across `ddev restart`, then uncomment the `- solrdata:/var/solr` line in docker-compose.solr.yaml. The comments there explain what you have to do if you want to start over. It's recommended to wait to uncomment that until you have everything else working.
 5. Copy the default Solr configuration from Ext:Solr to ddev:
     * `mkdir -p .ddev/solr`
