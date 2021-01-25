@@ -12,7 +12,7 @@ INOTIFY=/usr/local/bin/inotify-proxy
 
 # Download inotify-proxy
 if [ ! -f "$INOTIFY" ]; then
-  pushd /tmp/ || exit
+  pushd /tmp/ >/dev/null || exit
 
   unamearch=$(uname -m)
   
