@@ -41,7 +41,7 @@ if [ ! -f "$INOTIFY" ]; then
 
   rm $tarball
 
-  popd || exit
+  popd >/dev/null || exit
 fi
 
 cd /var/www/html;
