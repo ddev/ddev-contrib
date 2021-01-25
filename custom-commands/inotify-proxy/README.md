@@ -4,7 +4,7 @@ On a regular Linux or macOS filesystem, a process can subscribe to notifications
 
 (Note that this is not necessary on Linux hosts; NFS is not needed there because the Docker filesystem mount is so fast.)
 This tool helps to detect changed files in Docker Containers if NFS mount is used.
-If a file is changed from host system a file watcher inside the container detects the change and triggers an notify event. The command runs inside the docker container.
+If a file is changed from host system a file watcher inside the container detects the change and triggers a notify event. The command runs inside the docker container.
 
 The tool is designed to run over a longer period of time. It comes with a garbage collector to cleanup old watched files in memory.
 
