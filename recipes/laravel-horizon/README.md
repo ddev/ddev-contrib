@@ -14,7 +14,7 @@ This expects the project to already have an working laravel project.
 
     * Option A: Run using nohup
 
-      Use the `dot.ddev/config.laravel-horizon.yaml`
+      Copy the `dot.ddev/config.laravel-horizon.yaml` into your project's .ddev directory, or incorporate it into your .ddev/config.yaml. This snipped uses a post-start hook to use artisan to start the horizon process. 
 
     * Option B: Run using supervisor
 
