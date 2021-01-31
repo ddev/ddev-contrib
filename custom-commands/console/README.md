@@ -4,7 +4,13 @@ This adds custom command which executes the `bin/console` in the container witho
 
 ## Installation
 
-Copy the [web/](web/) directory into your project's .ddev/commands/web, so that the [console](web/console) command would be in .ddev/commands/web
+- Copy the [web/](web/) directory into your project `.ddev/commands/web`, so that the [console](web/console) command would be in `.ddev/commands/web` folder.
+
+- If the Symfony project is in a subfolder, add to `.ddev/ddev.config.yaml`:
+  ```yaml
+  working_dir:
+    web: /var/www/html/<symfony-project-subfolder>
+  ```
 
 ## Usage
 
