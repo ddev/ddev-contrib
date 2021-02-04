@@ -6,6 +6,8 @@
 version: '3.6'
 services:
   chromedriver:
+      links:
+          web:web
     image:  drupalci/webdriver-chromedriver:production
     container_name: ddev-${DDEV_SITENAME}-chromedriver
     labels:
