@@ -10,7 +10,8 @@ It is based on [Matt Glaman's excelent blog post](https://glamanate.com/blog/run
 
 * Copy `docker-compose.chromedriver.yaml` to the `.ddev` folder of your project.
 * Set environment variables in the "environment" section of the "web" service in `docker-compose.chromedriver.yaml` as appropriate. The defaults are for Drupal Functional and FunctionalJavascript testing.
-* Verify that your phpunit.xml does not define  `MINK_DRIVER_ARGS_WEBDRIVER`. This should come from our docker-compose.chromedriver.yaml.
+* Verify that your phpunit.xml does not define `MINK_DRIVER_ARGS_WEBDRIVER`. This should come from our docker-compose.chromedriver.yaml.
+* Ensure that one of the two `SIMPLETEST_DB` options is uncommented.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
 * Your Drupal project must be built with --require-dev to get necessary dependencies like phpunit (for example, `ddev composer create drupal/recommended-project --require-dev`)
 * To test the setup, `ddev ssh` and run a Drupal unit test that triggers ChromeDriver. Example:
@@ -18,6 +19,11 @@ It is based on [Matt Glaman's excelent blog post](https://glamanate.com/blog/run
 ```bash
 user@demo-web:/var/www/html$ phpunit --verbose -c web/core/phpunit.xml.dist web/core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
 ```
+
+## Notes
+
+* In order for this to work all other ddev instances must be turned off, only the Drupal core instance which will be used for the PHPUnit tests can be running.
+* Do not modify the `SIMPLETEST_BASE_URL`, otherwise ChromeDriver will not be able to access the test site.
 
 **Contributed by [@mglaman](https://github.com/mglaman)
 and [@heddn](https://github.com/heddn)**
