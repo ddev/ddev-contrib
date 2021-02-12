@@ -9,6 +9,7 @@ The author of this document is not sure if we need both the new `/var/solr` dire
 ## General documentation
 
 [DDEV Integration documentation](https://ddev.readthedocs.io/en/stable/users/extend/additional-services/#apache-solr)
+
 [Docker Solr documentation](https://hub.docker.com/_/solr/)
 
 ## Why support old versions?
