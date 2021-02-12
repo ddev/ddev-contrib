@@ -40,6 +40,7 @@ volumes:
 DDEV has a note that it will clean up volumes that match the service name. Since we have two volumes, they can't both match the service name, so that probably won't happen and you'll have to do that manually if it's a concern for you. DDEV creates standard Docker volumes, so they can be deleted with Docker by following standard documentation.
 
 `docker volume ls` to list the volumes
+
 `docker volume rm [volume name]` to remove a volume
 
 You'll see two named something like `ddev-example_solr_opt` and `ddev-example_solr_var`.
