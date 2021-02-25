@@ -1,6 +1,6 @@
 # Solr 5 integration with DDEV
 
-The Solr integration with DDEV assumes a newer version of Solr.
+The documented ApacheSolr integration with DDEV assumes a newer version of Solr.
 
 With the default integration, Solr data from old versions is not stored in a Docker volume, so it is lost during each restart. This is because Solr changed where it stored its data at some point from `/opt/solr` to `/var/solr`.
 
@@ -44,3 +44,5 @@ DDEV has a note that it will clean up volumes that match the service name. Since
 `docker volume rm [volume name]` to remove a volume
 
 You'll see two named something like `ddev-example_solr_opt` and `ddev-example_solr_var`.
+
+Contributed by [@damontgomery](https://github.com/damontgomery)
