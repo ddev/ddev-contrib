@@ -8,7 +8,7 @@ I'm using it on a Symfony 4 app with API Platform.
 
 Steps to follow:
 
-1. Install php-mongo extension by adding `webimage_extra_packages: [php-mongodb]` to your .ddev/config.yaml.
+1. Install php-mongo extension by adding `webimage_extra_packages: [php7.3-mongodb]` to your .ddev/config.yaml. Note that the PHP version in the package name must correspond to the PHP version you are running, e.g. use `php7.4-mongodb` if your server runs PHP 7.4.
 
 2. Add extra file [docker-compose.mongo.yaml](docker-compose.mongo.yaml)
 
