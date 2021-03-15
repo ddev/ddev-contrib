@@ -1,0 +1,20 @@
+#!/bin/bash
+
+## Description: Run gulp in theme directory.
+## Usage: gulp styles|watch
+## Example: "ddev gulp", "ddev gulp styles", "ddev gulp watch"
+
+## Set custom theme root (example works for Drupal)
+DDEV_THEMEROOT=/var/www/html/web/themes/custom/customtheme
+
+## This presupposes that gulp is installed in ${DDEV_THEMEROOT}/node_modules
+pushd ${DDEV_THEMEROOT}
+./node_modules/gulp/bin/gulp.js $1
+popd
+exit
+
+## The same approach should work for other front-end build tools
+## (e.g., grunt, brunch, less, sass, compass, etc.)
+## which expect to be run with the theme directory as working directory.
+## It should also work when building theme assets for WordPress, etc.,
+## just by changing the DDEV_THEMEROOT to an appropriate directory.
