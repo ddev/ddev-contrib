@@ -5,7 +5,7 @@ version: "3.6"
 services:
   redis:
     container_name: ddev-${DDEV_SITENAME}-redis
-    image: redis:4
+    image: redis:latest
     ports:
       - 6379
     labels:
@@ -14,7 +14,7 @@ services:
     volumes:
       - ".:/mnt/ddev_config"
       - "./redis:/usr/local/etc/redis"
-    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
   web:
     depends_on:
       - redis
