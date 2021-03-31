@@ -26,6 +26,7 @@ then
   fi
 else
   echo "Error: Directory ${DDEV_THEMEROOT} does not exist."
+  echo '(Edit THEME variable in ./ddev/commands/web/gulp to fix this.)'
 fi
 exit
 
