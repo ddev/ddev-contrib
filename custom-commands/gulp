@@ -22,6 +22,7 @@ then
     popd
   else
     echo "Error: No gulp.js found at ./node_modules/gulp/bin/gulp.js."
+    echo '(You may need to "npm install" theme dependencies first.)'
   fi
 else
   echo "Error: Directory ${DDEV_THEMEROOT} does not exist."
