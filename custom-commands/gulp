@@ -1,16 +1,29 @@
 #!/bin/bash
 
 ## Description: Run gulp in theme directory.
-## Usage: gulp styles|watch
-## Example: "ddev gulp", "ddev gulp styles", "ddev gulp watch"
+## Usage: gulp build|watch
+## Example: "ddev gulp", "ddev gulp build", "ddev gulp watch"
 
-## Set custom theme root (example works for Drupal)
-DDEV_THEMEROOT=/var/www/html/web/themes/custom/customtheme
+## Edit the following line to set the relative path from DDEV_DOCROOT
+## to your custom theme root (this example works for Drupal projects.)
+THEME=themes/custom/customtheme
 
-## This presupposes that gulp is installed in ${DDEV_THEMEROOT}/node_modules
-pushd ${DDEV_THEMEROOT}
-./node_modules/gulp/bin/gulp.js $1
-popd
+## Concatenates path to theme directory for your project.
+DDEV_THEMEROOT=/var/www/html/${DDEV_DOCROOT}/${THEME}
+
+## Presupposes that gulp is installed in ${DDEV_THEMEROOT}/node_modules
+## You may need to "npm install" theme dependencies before running this.
+if [ -d ${DDEV_THEMEROOT} ]
+then
+  if [ -f ./node_modules/gulp/bin/gulp.js ]
+  then
+    pushd ${DDEV_THEMEROOT}
+    ./node_modules/gulp/bin/gulp.js $@
+    popd
+  else
+    echo "Error: No gulp.js found at ./node_modules/gulp/bin/gulp.js."
+else
+  echo "Error: Directory ${DDEV_THEMEROOT} does not exist."
 exit
 
 ## The same approach should work for other front-end build tools
