@@ -10,7 +10,7 @@ To enable Solr in your project follow these steps:
 1. Copy [docker-compose.solr.yml](docker-compose.solr.yml) into `.ddev\solr`.
 1. Copy the [core.properties](core.properties) into `.ddev/solr` and edit it according to your needs.
 1. Create a new directory `.ddev/solr/data`.
-1. Copy the configuration suitable for Solr 4.x (including `schema.xml` and `solrconfig.xml`) into a new directory named `.ddev\solr\conf`.
+1. Copy the configuration suitable for Solr 4.x (including `schema.xml` and `solrconfig.xml`) into a new directory named `.ddev/solr/conf`.
 1. Run `ddev start`.
 
 You now have a running Solr instance for your project. To get the URL for the instance run `ddev describe`.
