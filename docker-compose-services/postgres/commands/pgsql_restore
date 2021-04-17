@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Restore the postgresql database from a postgre custom format dump located in .ddev/import-db/postgresql.db.backup
+## Usage: pgsql_restore
+## Example: ddev pgsql_restore
+
+# First drop all tables.
+su postgres -c "psql -U db -c 'DROP SCHEMA public CASCADE; CREATE SCHEMA public; GRANT ALL ON SCHEMA public TO db; GRANT ALL ON SCHEMA public TO public;'"
+
+# Import via user postgres to avoid credentials prompt
+su postgres -c "pg_restore -U db db /mnt/ddev_config/import-db/postgresql.db.dump"
