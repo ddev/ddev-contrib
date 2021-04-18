@@ -1,7 +1,13 @@
 ---
+# Docker-ChromeDriver configuration for DDEV-Local.
+# There is one item that must be configured in this file in order for it to
+# work, please see below.
+
 version: '3.6'
 services:
   chromedriver:
+      links:
+          web:web
     image:  drupalci/webdriver-chromedriver:production
     container_name: ddev-${DDEV_SITENAME}-chromedriver
     labels:
@@ -12,9 +18,13 @@ services:
     links:
       - chromedriver:$DDEV_HOSTNAME
     environment:
-      # Pick if you want to run tests as sqlite or mysql and uncomment.
+      # *** One of these must be uncommented ***
+      # In order for the system to work, one of these must be uncommented so
+      # that the test system can connect to the database.
       # - SIMPLETEST_DB=sqlite://tmp/test.sqlite
       # - SIMPLETEST_DB=mysql://db:db@db:3306/db
+      #
+      # Note: Do not modify the base URL value.
       - SIMPLETEST_BASE_URL=http://web
       - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
       - BROWSERTEST_OUTPUT_BASE_URL=${DDEV_PRIMARY_URL}

@@ -1,0 +1,52 @@
+version: '3.6'
+
+services:
+  # This is the service name used when running ddev commands accepting the
+  # --service flag.
+  solr:
+    # Name of container using standard ddev convention.
+    container_name: ddev-${DDEV_SITENAME}-solr
+    image: geerlingguy/solr:4.10.4
+    restart: "always"
+    # Solr is served from this port inside the container.
+    ports:
+      - 8983
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      # This defines the port the service should be accessible from at
+      # sitename.ddev.site.
+      - HTTP_EXPOSE=8983
+    volumes:
+      # solr core *data* is stored on the 'solr' docker volume
+      # This mount is optional; without it your search index disappears
+      # each time the ddev project is stopped and started.
+      - solr:/var/solr
+
+      # This mounts the conf in .ddev/solr into the container.
+      - ./solr:/opt/solr/example/solr/dev
+
+      - ".:/mnt/ddev_config"
+
+    # Start the server.
+    command: ["/opt/solr/bin/solr", "start", "-p", "8983", "-f"]
+
+    external_links:
+      - "ddev-router:${DDEV_SITENAME}.${DDEV_TLD}"
+
+  # This links the Solr service to the web service defined in the main
+  # docker-compose.yml, allowing applications running inside the web container to
+  # access the Solr service at http://solr:8983
+  web:
+    links:
+      - solr:solr
+volumes:
+  # solr is a persistent Docker volume for solr data
+  # The persistent volume should have the same name as the service so it can be deleted
+  # when the project is deleted.
+  solr:
