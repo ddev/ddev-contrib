@@ -1,0 +1,6 @@
+#!/bin/bash
+
+## Description: Run Symphony console
+## Usage: console <command>
+## Example: "ddev console about" or "ddev console debug:config"
+bin/console $@

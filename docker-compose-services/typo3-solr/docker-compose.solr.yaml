@@ -5,7 +5,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-solr
     image: typo3solr/ext-solr:10.0.1
     restart: "no"
-    ports:
+    expose:
       - 8983
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
@@ -21,7 +21,7 @@ services:
 #      - solr:/var/solr
   web:
     links:
-      - solr:$DDEV_HOSTNAME
+      - solr
 
 volumes:
   # solr is a persistent Docker volume for this project's solr data

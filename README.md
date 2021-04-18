@@ -22,8 +22,8 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [Dump and deploy SQL from/to remote servers](custom-commands/dump-and-deploy-db/)
 * [Fetch Production DB from remote server](custom-commands/fetchproductiondb/)
 * [Exclude ddev directory from git: git-exclude](custom-commands/git-exclude)
-* [Downloading data from Platform.sh into DDEV](custom-commands/platform-sync)
 * [inotify-proxy to enable file watchers on NFS shares](custom-commands/inotify-proxy)
+* [Executing Symfony console and phpunit commands without ssh](custom-commands/symfony/)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
@@ -39,6 +39,8 @@ General information on how to do additional services and some additional example
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL](docker-compose-services/postgres/)
+* [Solr 4 Integration](docker-compose-services/solr4)  
+* [Solr 5 Integration](docker-compose-services/solr-5)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
