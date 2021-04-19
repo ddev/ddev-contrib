@@ -39,6 +39,7 @@ General information on how to do additional services and some additional example
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL](docker-compose-services/postgres/)
 * [Solr 5 Integration](docker-compose-services/solr-5)
+* [Solr 7 Integration](docker-compose-services/solr-7)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
