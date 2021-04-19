@@ -1,0 +1,61 @@
+#!/bin/bash
+
+## Description: Enable and show database general_log. Disables log after exiting (via CTRL+C)
+## Usage: general_log
+
+# saner programming env: these switches turn some bugs into errors
+set -o errexit -o pipefail -o noclobber -o nounset
+endC="\033[0m"
+greenb="\033[1;32m"
+purpleb="\033[1;35m"
+#red="\033[0;31m"
+
+noticeC=$purpleb
+successC=$greenb
+#errorC=$red
+
+function spinner() {
+    function cursorBack() {
+        echo -en "\033[$1D"
+    }
+    # make sure we use non-unicode character type locale
+    # (that way it works for any locale as long as the font supports the characters)
+    local LC_CTYPE=C
+
+    local pid=$1 # Process Id of the previous running command
+
+    spin="-\|/"
+    local iSpinner=0
+    local charwidth=1
+
+    tput civis # cursor invisible
+    while kill -0 "$pid" 2>/dev/null; do
+        iSpinner=$(((iSpinner + charwidth) % ${#spin}))
+        printf "$noticeC%s$endC" "${spin:$iSpinner:$charwidth}"
+
+        cursorBack 1
+        sleep .1
+    done
+    tput cnorm
+    wait "$pid" # capture exit code
+    return $?
+}
+function enable() {
+    printf "Enabling general_log "
+    mysql -uroot -proot <<< "SET GLOBAL general_log=1" &
+    spinner $!
+    printf "%b✓%b \n" "${successC}" "${endC}"
+    printf "%bPress CTRL+C to exit.%b\n\n" "${noticeC}" "${endC}"
+}
+function shutdown() {
+    printf " \n\nDisabling general_log "
+    mysql -uroot -proot <<< "SET GLOBAL general_log=0" &
+    spinner $!
+    printf "%b✓%b \n" "${successC}" "${endC}"
+
+    exit 0
+}
+trap shutdown INT
+
+enable
+tail -f /var/lib/mysql/www.log 2> /dev/null
