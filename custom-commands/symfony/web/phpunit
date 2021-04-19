@@ -1,0 +1,6 @@
+#!/bin/bash
+
+## Description: Run Symphony phpunit tests
+## Usage: phpunit <test>
+## Example: "ddev phpunit" or "ddev phpunit tests/Util"
+bin/phpunit $@

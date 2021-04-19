@@ -23,6 +23,8 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [Fetch Production DB from remote server](custom-commands/fetchproductiondb/)
 * [Exclude ddev directory from git: git-exclude](custom-commands/git-exclude)
 * [Enable and view MySQL/MariaDB GENERAL_LOG](custom-commands/general-log/)
+* [inotify-proxy to enable file watchers on NFS shares](custom-commands/inotify-proxy)
+* [Executing Symfony console and phpunit commands without ssh](custom-commands/symfony/)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
@@ -38,6 +40,8 @@ General information on how to do additional services and some additional example
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL](docker-compose-services/postgres/)
+* [Solr 4 Integration](docker-compose-services/solr4)  
+* [Solr 5 Integration](docker-compose-services/solr-5)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
@@ -48,6 +52,7 @@ General information on how to do additional services and some additional example
 
 * [Laravel Queue-Worker](web-container-dockerfiles/laravel-queue-worker) (This is also a good example of adding an additional process to supervisord,)
 * [Stripe CLI](web-container-dockerfiles/stripe-cli) (This is also a good example of adding any non-standard Debian repository.)
+* [gRPC](web-web-container-dockerfiles/grpc) (This is also a good example of adding a pecl module that is not supported via apt-get.)
 
 ## Full recipes
 

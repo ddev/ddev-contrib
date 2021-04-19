@@ -1,0 +1,48 @@
+#!/bin/bash
+
+## Description: Run inotify-proxy to recognize file system changes if NFS is used.
+## Usage: inotify [-profile <magento2|magento2-theme|vue-storefront>] [-sleep <seconds>] [folder1] [folder2] [...folder n]
+## Example: "ddev inotify -profile magento2-theme vendor/magento/theme-frontend-luma"
+
+CURRENT_DIR=$(dirname "$0")
+
+cd /var/www/html;
+
+INOTIFY=/usr/local/bin/inotify-proxy
+
+# Download inotify-proxy
+if [ ! -f "$INOTIFY" ]; then
+  pushd /tmp/ >/dev/null || exit
+
+  unamearch=$(uname -m)
+  
+  case ${unamearch} in
+    x86_64) ARCH="linux_amd64";
+    ;;
+    aarch64) ARCH="linux_arm64";
+    ;;
+    *) printf "${RED}Sorry, your machine architecture ${unamearch} is not currently supported.\n${RESET}" && exit 106
+    ;;
+  esac
+
+  curl -s https://api.github.com/repos/cmuench/inotify-proxy/releases/latest \
+  | grep "browser_download_url.*inotify-proxy.*_${ARCH}\.tar\.gz" \
+  | cut -d ":" -f 2,3 \
+  | tr -d \" \
+  | wget -qi -
+
+  tarball="$(find . -name "inotify-proxy_*_${ARCH}\.tar\.gz")"
+  echo $tarball
+  tar -xzf $tarball
+
+  chmod +x inotify-proxy
+
+  sudo mv inotify-proxy "$INOTIFY"
+
+  rm $tarball
+
+  popd >/dev/null || exit
+fi
+
+cd /var/www/html;
+${INOTIFY} "$@"
