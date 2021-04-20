@@ -33,3 +33,5 @@ services.solr:
 ```
 
 You'll also need to use the updated `solr-configupdate.sh` script, because the Solr 7 image uses the directory `/opt/solr/server/solr/mycores/${CORENAME}/conf`, which is different from some other versions.
+
+**Contributed by [@becw](https://github.com/becw)**
