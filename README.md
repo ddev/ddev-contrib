@@ -39,13 +39,13 @@ General information on how to do additional services and some additional example
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL](docker-compose-services/postgres/)
-* [Solr 4 Integration](docker-compose-services/solr4)  
-* [Solr 5 Integration](docker-compose-services/solr-5)
-* [Solr 7 Integration](docker-compose-services/solr-7)
+* [Drupal Solr 4 Integration](docker-compose-services/solr4)  
+* [Drupal Solr 5 Integration](docker-compose-services/solr-5)
+* [Drupal Solr 7 Integration](docker-compose-services/solr-7)
+* [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
-* [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 * [Varnish](docker-compose-services/varnish)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
