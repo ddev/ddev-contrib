@@ -41,13 +41,16 @@ Example `config.yaml` hooks configuration to automatically import/export the `db
 # Add psql to your webserver
 webimage_extra_packages: [postgresql-client]
 
-# Automatically import and export PostreSQL database on ddev start and stop
+# Automatically import and export PostgreSQL database on ddev start and stop
 hooks:
   pre-stop:
     - exec-host: ddev pgsql_export
   post-start:
     - exec-host: ddev pgsql_import
 ```
+
+There are also another non-plain-text formats that `pg_dump` can generate, and you might need to work with them. If that's the case, there is also
+a `ddev pg_restore` command that will restore `.ddev/import-db/postgresql.db.dump` into `db`.
 
 ## PostGIS
 
