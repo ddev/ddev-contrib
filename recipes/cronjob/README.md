@@ -16,7 +16,7 @@ This recipe provides two completely different techniques to do TYPO3 cron inside
 To run the TYPO3 cron process every 60 seconds, use the `ddev cron` custom command provided here.
 
 1. Install [commands/web/cron](commands/web/cron) into your project's .ddev/commands/web directory.
-2. Make it executable (`chmod +x .ddev/web/commands/cron`)
+2. Make it executable (`chmod +x .ddev/commands/web/cron`)
 3. After starting the project, run `ddev cron` in a separate window and let it do its job.
 
 **Contributed by [@thomaskieslich](https://github.com/thomaskieslich)**
