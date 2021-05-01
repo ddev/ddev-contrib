@@ -25,6 +25,7 @@ to your `.ddev/config.yaml` file.
 Copy the `docker-compose.xhgui.yml` file to your `.ddev` folder.
 Copy the `xhgui` folder to your `.ddev` folder.
 Copy the `xhgui-mongodb` folder to your `.ddev` folder.
+(Optional) Copy the `commands/xhprof` file to your `.ddev/web/commands` folder, so you can easily start/stop `xhprof`
 
 ### Your application
 
@@ -33,7 +34,7 @@ Your application needs to have a profiler set up.
 If your application uses composer, you can install it with
 
 ```
-ddev composer require perftools/php-profiler
+ddev composer require perftools/php-profiler (maybe you want to use --dev)
 ```
 
 For other usecases, see the WordPress section as an example.
