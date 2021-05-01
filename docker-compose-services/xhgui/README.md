@@ -1,7 +1,10 @@
 # XHGui
 
-This container provides a XHGui container for your project so you can collect performance information
+This container provides a [XHGui](https://github.com/perftools/xhgui) container for your project so you can collect performance information
 provided by `xhprof`. 
+
+![A screenshoot of XHGui](assets/xhgui-screenshot.png)
+
 
 ## Warning
 
@@ -82,7 +85,7 @@ Take into account that with the default configuration, every time you
 Start (or restart) DDEV to have the service initialized when you are ready: `ddev start`
 Remember, `settings.ddev.php` or `wp-config-ddev.php` might be rewritten and you need to do changes there.
 
-### Accesing the service
+### Accessing the service
 
 By default, xhgui will be available at  http://`<your site>`:8282. Note that it's http only.
 
