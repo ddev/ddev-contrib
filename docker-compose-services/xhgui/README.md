@@ -17,6 +17,12 @@ webimage_extra_packages: [php7.4-xhprof]
 ```
 to your `.ddev/config.yaml` file.
 
+### The containers
+
+Copy the `docker-compose.xhgui.yml` file to your `.ddev` folder.
+Copy the `xhgui` folder to your `.ddev` folder.
+Copy the `xhgui-mongodb` folder to your `.ddev` folder.
+
 ### Your application
 
 Your application needs to have a profiler set up.
