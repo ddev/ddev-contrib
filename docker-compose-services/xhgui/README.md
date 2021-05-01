@@ -1,6 +1,6 @@
-# XHGUI
+# XHGui
 
-This container provides a xhgui container for your project so you can collect performance information
+This container provides a XHGui container for your project so you can collect performance information
 provided by `xhprof`. 
 
 ## Warning
