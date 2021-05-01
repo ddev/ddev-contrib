@@ -47,6 +47,7 @@ General information on how to do additional services and some additional example
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
 * [Varnish](docker-compose-services/varnish)
+* [XHGui](docker-compose-services/xhgui)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
