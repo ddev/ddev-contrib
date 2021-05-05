@@ -55,7 +55,7 @@ require_once __DIR__ . '/xhgui.collector.php';
 
 If you want to stop profiling, you can just comment/remove that line.
 Take into account that with the default configuration, every time you 
-`ddev start`, DDEV will recreate this file.
+`ddev start`, DDEV will recreate this file. You can remove the #ddev-generated at the top of the file if you want to avoid that.
 
 #### WordPress projects
 
@@ -79,7 +79,7 @@ require_once __DIR__ . '/xhgui.collector.php';
 
 If you want to stop profiling, you can just comment/remove those lines.
 Take into account that with the default configuration, every time you 
-`ddev start`, DDEV will recreate this file.
+`ddev start`, DDEV will recreate this file. You can remove the #ddev-generated at the top of the file if you want to avoid that.
 
 ### Service initialization
 
