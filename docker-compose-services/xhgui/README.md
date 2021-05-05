@@ -22,10 +22,10 @@ to your `.ddev/config.yaml` file.
 
 ### The containers
 
-Copy the `docker-compose.xhgui.yml` file to your `.ddev` folder.
-Copy the `xhgui` folder to your `.ddev` folder.
-Copy the `xhgui-mongodb` folder to your `.ddev` folder.
-(Optional) Copy the `commands/xhprof` file to your `.ddev/web/commands` folder, so you can easily start/stop `xhprof`
+* Copy the `docker-compose.xhgui.yml` file to your `.ddev` folder.
+* Copy the `xhgui` folder to your `.ddev` folder.
+* Copy the `xhgui-mongodb` folder to your `.ddev` folder.
+* (Optional) Copy the `commands/xhprof` file to your `.ddev/web/commands` folder, so you can easily start/stop `xhprof`. This probably won't be needed with next ddev release, where you can just do `ddev xhprof on` as you are already used to with xdebug.
 
 ### Your application
 
