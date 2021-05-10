@@ -1,4 +1,4 @@
 hooks:
   post-start:
-  - exec: sudo chown -R $(id -un) /etc/ssh && && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys && /usr/sbin/sshd -p 2222
+  - exec: sudo chown -R $(id -un) /etc/ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys && /usr/sbin/sshd -p 2222
 webimage_extra_packages: [openssh-server]
