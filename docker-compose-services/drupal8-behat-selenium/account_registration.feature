@@ -8,5 +8,6 @@ I need to be able to complete the registration form
 Scenario: Complete the registration form
     Given I am on "/user/register"
     And I enter "t@gmail.com" for "edit-mail"
+    And I enter "tom" for "edit-name"
     And I check the box "edit-contact--2"
     And I press the "edit-submit" button
