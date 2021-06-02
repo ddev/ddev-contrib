@@ -42,6 +42,7 @@ function spinner() {
 }
 function enable() {
     printf "Enabling general_log "
+    mysql -uroot -proot <<< "SET GLOBAL general_log_file='general_log.log'"
     mysql -uroot -proot <<< "SET GLOBAL general_log=1" &
     spinner $!
     printf "%b✓%b \n" "${successC}" "${endC}"
@@ -58,4 +59,4 @@ function shutdown() {
 trap shutdown INT
 
 enable
-tail -f /var/lib/mysql/www.log 2> /dev/null
+tail -f /var/lib/mysql/general_log.log 
