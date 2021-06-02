@@ -59,4 +59,4 @@ function shutdown() {
 trap shutdown INT
 
 enable
-tail -f /var/lib/mysql/general_log.log 2> /dev/null
+tail -f /var/lib/mysql/general_log.log 
