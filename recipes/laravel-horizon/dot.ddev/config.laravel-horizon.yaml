@@ -1,0 +1,3 @@
+hooks:
+  post-start:
+    - exec: "nohup bash -c '/var/www/html/artisan horizon &' > /var/www/html/storage/logs/horizon.log"
