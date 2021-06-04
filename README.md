@@ -63,6 +63,7 @@ General information on how to do additional services and some additional example
 * [Bludit CMS](recipes/bludit-cms)
 * [Drupal 7 in a Subfolder of Main Site](recipes/drupal7-subfolder)
 * [Flexitype CMS](recipes/flexitype-cms)
+* [Laravel Horizon](recipes/laravel-horizon)
 * [REDAXO CMS](recipes/redaxo-cms)
 * [SSH Server](recipes/sshd): Adding a "real" sshd server in web container
 * [Puppeteer Headless Chrome support](recipes/puppeteer-headless-chrome-support/README.md)
