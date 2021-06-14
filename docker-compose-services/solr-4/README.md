@@ -71,7 +71,7 @@ http://myproject.ddev.site:8983/solr/#/ or
 https://myproject.ddev.site:8984/solr/#/, which is the main dashboard page for
 Solr. From here it is possible to see how much memory and swap space the system
 is using.
-
+ 
 To see if the index was created correctly click on the "Core Admin" link on the
 left menu (underneath "Dashboard" and "Logging"). This page should list the
 `dev` index, including when it was last updated ("lastModified") and the number
