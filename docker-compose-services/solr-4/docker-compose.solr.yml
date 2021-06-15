@@ -19,9 +19,10 @@ services:
       # This defines the host name the service should be accessible from. This
       # will be sitename.ddev.site.
       - VIRTUAL_HOST=$DDEV_HOSTNAME
-      # This defines the port the service should be accessible from at
+      # This defines the ports the service should be accessible from at
       # sitename.ddev.site.
       - HTTP_EXPOSE=8983
+      - HTTPS_EXPOSE=8984:8983
     volumes:
       # solr core *data* is stored on the 'solr' docker volume
       # This mount is optional; without it your search index disappears
