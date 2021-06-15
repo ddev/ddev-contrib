@@ -6,17 +6,17 @@
 version: '3.6'
 services:
   chromedriver:
-      links:
-          web:web
     image:  drupalci/webdriver-chromedriver:production
     container_name: ddev-${DDEV_SITENAME}-chromedriver
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
+    external_links:
+      - ddev-router:${DDEV_SITENAME}.${DDEV_TLD}
 
   web:
     links:
-      - chromedriver:$DDEV_HOSTNAME
+      - chromedriver
     environment:
       # *** One of these must be uncommented ***
       # In order for the system to work, one of these must be uncommented so
