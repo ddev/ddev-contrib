@@ -19,6 +19,32 @@ It is based on [Matt Glaman's excelent blog post](https://glamanate.com/blog/run
 ```bash
 user@demo-web:/var/www/html$ phpunit --verbose -c web/core/phpunit.xml.dist web/core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
 ```
+## Example run
+
+From @damienmckenna, here's an example run to demonstrate functionality:
+
+```bash
+$ ddev ssh
+$ phpunit --verbose -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
+PHPUnit 8.5.8 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 7.3.27-9+0~20210227.82+debian10~1.gbpa4a3d6
+Configuration: /var/www/html/core/phpunit.xml.dist
+
+Testing Drupal\Tests\system\FunctionalJavascript\System\DateFormatTest
+.                                                                   1 / 1 (100%)
+
+Time: 53.15 seconds, Memory: 4.00 MB
+
+OK (1 test, 6 assertions)
+
+HTML output was generated
+https://d91.ddev.site/sites/simpletest/browser_output/Drupal_Tests_system_FunctionalJavascript_System_DateFormatTest-13-97496575.html
+https://d91.ddev.site/sites/simpletest/browser_output/Drupal_Tests_system_FunctionalJavascript_System_DateFormatTest-14-97496575.html
+https://d91.ddev.site/sites/simpletest/browser_output/Drupal_Tests_system_FunctionalJavascript_System_DateFormatTest-15-97496575.html
+https://d91.ddev.site/sites/simpletest/browser_output/Drupal_Tests_system_FunctionalJavascript_System_DateFormatTest-16-97496575.html
+https://d91.ddev.site/sites/simpletest/browser_output/Drupal_Tests_system_FunctionalJavascript_System_DateFormatTest-17-97496575.html
+```
 
 ## Notes
 
