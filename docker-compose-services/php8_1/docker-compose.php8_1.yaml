@@ -5,6 +5,10 @@ services:
     container_name: ddev-${DDEV_SITENAME}-php
     image: php:8.1.0alpha1-fpm-buster
     restart: "no"
+    # Run php container with same as current UID
+    # On linux it gets mounted in with that uid
+    # So if it's different access fails.
+    user: "${UID}:${UID}"
     expose:
       - 9000
     labels:
