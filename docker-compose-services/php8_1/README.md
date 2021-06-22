@@ -1,10 +1,10 @@
-# PHP8 (while in alpha/beta/etc)
+# PHP8.1 (while in alpha/beta/etc)
 
 DDEV-Local will directly support PHP8 as soon as possible, but not likely until the full release in late 2020. At that time this recipe will be obsolete.
 
 In the meantime, you can use the [official docker php image](https://hub.docker.com/_/php) (currently php:8.0.0alpha3-fpm-buster) to serve PHP.  This can be updated as new versions come out.
 
-1. Copy [docker-compose.php8.yaml](docker-compose.php8.yaml) to your project's .ddev folder.
+1. Copy [docker-compose.php8_1.yaml](docker-compose.php8_1.yaml) to your project's .ddev folder.
 2. Copy [nginx-site.conf](nginx-site.conf) to your .ddev/nginx_full directory (overwriting the generated file there)
 3. `ddev start`
 
@@ -17,9 +17,6 @@ hooks:
   post-start:
     - exec: php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
       service: php
-#    To update to composer 2 snapshot
-#    - exec: composer selfupdate --preview
-#      service: php
 #    To `composer install` with the php8 composer
 #    - exec: composer install
 #      service php
@@ -27,6 +24,6 @@ hooks:
 
 You can `ddev exec -s php composer install` as well, and of course you can `ddev ssh -s php` to have full access to the container and work there.
 
-You may find that your project has some problems with PHP8 or that PHP8 has some problems with your project :)
+You may find that your project has some problems with PHP8.1 or that PHP8 has some problems with your project :)
 
 **Contributed by [@rfay](https://github.com/rfay)**

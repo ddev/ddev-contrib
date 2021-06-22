@@ -3,7 +3,7 @@ version: '3.6'
 services:
   php:
     container_name: ddev-${DDEV_SITENAME}-php
-    image: php:8.1.0alpha1-buster
+    image: php:8.1.0alpha1-fpm-buster
     restart: "no"
     ports:
       - 9000
