@@ -5,7 +5,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-php
     image: php:8.1.0alpha1-fpm-buster
     restart: "no"
-    ports:
+    expose:
       - 9000
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
