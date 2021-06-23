@@ -2,7 +2,7 @@
 
 DDEV-Local will directly support PHP 8.1 as soon as possible, but not likely until the full release in late 2021. At that time this recipe will be obsolete.
 
-In the meantime, you can use the [official docker php image](https://hub.docker.com/_/php) (currently php:8.0.0alpha3-fpm-buster) to serve PHP.  This can be updated as new versions come out.
+In the meantime, you can use the [official docker php image](https://hub.docker.com/_/php) (currently php:8.1.0alpha1-fpm-buster) to serve PHP.  This can be updated as new versions come out.
 
 1. Copy [docker-compose.php8_1.yaml](docker-compose.php8_1.yaml) to your project's .ddev folder.
 2. Copy [nginx-site.conf](nginx-site.conf) to your .ddev/nginx_full directory (overwriting the generated file there)
