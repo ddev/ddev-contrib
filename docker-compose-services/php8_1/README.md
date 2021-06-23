@@ -13,19 +13,7 @@ In the meantime, you can use the [official docker php image](https://hub.docker.
 
 On some linux versions you may have to set the UID in the `user` section of the docker-compose.php.yaml.
 
-Note that this introduces a container named `php`, which you can accesss via `ddev ssh -s php`. It has the exact same code mounted in the same place as in the `web` container, at `/var/www/html`. The "php" container does not have composer or other tools installed, so they might need to be added.
-
-For example, you'll probably want a composer running php8 if you're experimenting with this. You can add it with post-start hooks in your project's .ddev/config.yaml:
-
-```yaml
-hooks:
-  post-start:
-    - exec: php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');" && php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-      service: php
-#    To `composer install` with the php8 composer
-#    - exec: composer install
-#      service php
-```
+Note that this introduces a container named `php`, which you can accesss via `ddev ssh -s php`. It has the exact same code mounted in the same place as in the `web` container, at `/var/www/html`.
 
 You can `ddev exec -s php composer install` as well, and of course you can `ddev ssh -s php` to have full access to the container and work there.
 
