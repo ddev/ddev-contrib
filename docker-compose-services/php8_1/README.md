@@ -1,6 +1,6 @@
 # PHP8.1 (while in alpha/beta/etc)
 
-DDEV-Local will directly support PHP8 as soon as possible, but not likely until the full release in late 2020. At that time this recipe will be obsolete.
+DDEV-Local will directly support PHP 8.1 as soon as possible, but not likely until the full release in late 2021. At that time this recipe will be obsolete.
 
 In the meantime, you can use the [official docker php image](https://hub.docker.com/_/php) (currently php:8.0.0alpha3-fpm-buster) to serve PHP.  This can be updated as new versions come out.
 
