@@ -22,7 +22,7 @@ Steps to follow:
     MONGODB_DB=api
     ```
 
-Mongo Express will now be accessible from `https://<site>.ddev.site:8081`
+Mongo Express will now be accessible from `http://<project>.ddev.site:8081`
 
 Caveats:
 

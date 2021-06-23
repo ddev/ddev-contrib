@@ -11,7 +11,7 @@ services:
       volume:
         nocopy: true
     restart: "no"
-    ports:
+    expose:
     - "27017"
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
@@ -32,14 +32,13 @@ services:
 
     links:
     - mongo:mongo
-    ports:
+    expose:
     - "8081"
     environment:
       VIRTUAL_HOST: $DDEV_HOSTNAME
       ME_CONFIG_MONGODB_ADMINUSERNAME: db
       ME_CONFIG_MONGODB_ADMINPASSWORD: db
-      HTTP_EXPOSE: "8082:8081"
-      HTTPS_EXPOSE: 8081:8081
+      HTTP_EXPOSE: "8081:8081"
 
   web:
     links:
