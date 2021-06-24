@@ -11,8 +11,8 @@ services:
       context: './php-build'
       args:
         BASE_IMAGE: php:8.1.0alpha1-fpm-buster
-
-
+    links:
+      - db:db
     expose:
       - 9000
     labels:
