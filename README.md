@@ -35,6 +35,7 @@ General information on how to do additional services and some additional example
 * [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver). This example uses Drupal's DrupalCI approach, supports Behat, DrupalCI, etc.
 * [Elasticsearch](docker-compose-services/elasticsearch)
 * [Elastichq](docker-compose-services/elastichq)
+* [Kibana](docker-compose-services/kibana)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [MongoDB](docker-compose-services/mongodb/)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
