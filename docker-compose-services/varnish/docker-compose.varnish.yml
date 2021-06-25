@@ -28,7 +28,6 @@ services:
       # your default.vcl should be.
       - "./varnish:/etc/varnish"
       - ".:/mnt/ddev_config"
-    ports: []
     links:
       - web:web
   # This is the second half of the trick that puts varnish "in front of" the web
