@@ -1,0 +1,36 @@
+version: '3.6'
+
+services:
+  php:
+    container_name: ddev-${DDEV_SITENAME}-php
+    restart: "no"
+    # On Linux may need to to `export UID` in your environment
+    # or add UID in project's .ddev/.env
+    # user: "${UID}:${UID}"
+    build:
+      context: './php-build'
+      args:
+        BASE_IMAGE: php:8.1.0alpha2-fpm-buster
+    links:
+      - db:db
+    expose:
+      - 9000
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - IS_DDEV_PROJECT=true
+      - DDEV_PHP_VERSION=8.1
+    volumes:
+    - type: bind
+      source: ../
+      target: /var/www/html
+      consistency: cached
+    - ".:/mnt/ddev_config:ro"
+    - ddev-global-cache:/mnt/ddev-global-cache
+
+  web:
+    healthcheck:
+      # Use "true" as the healthcheck to ignore its result
+      test: ["CMD", "true"]
+

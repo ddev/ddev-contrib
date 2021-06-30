@@ -38,6 +38,7 @@ General information on how to do additional services and some additional example
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [MongoDB](docker-compose-services/mongodb/)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
+* [PHP 8.1](docker-compose-services/php8_1) While it's in prerelease
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL](docker-compose-services/postgres/)
 * [Drupal Solr 4 Integration](docker-compose-services/solr-4)
