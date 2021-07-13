@@ -10,7 +10,7 @@ services:
     build:
       context: './php-build'
       args:
-        BASE_IMAGE: php:8.1.0alpha2-fpm-buster
+        BASE_IMAGE: php:8.1.0alpha3-fpm-buster
     links:
       - db:db
     expose:
