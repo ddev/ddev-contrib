@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  kibana:
+    container_name: ddev-${DDEV_PROJECT}-kibana
+    hostname: ${DDEV_PROJECT}-kibana
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    restart: "no"
+    expose:
+      - '5601'
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=5601:5601
+      - HTTPS_EXPOSE=5602:5601
+      - ELASTICSEARCH_HOSTS=http://ddev-${DDEV_PROJECT}-elasticsearch:9200
+      - SERVER_NAME=ddev-${DDEV_PROJECT}-elasticsearch
+    volumes:
+      - '.:/mnt/ddev_config'
+    depends_on:
+      - elasticsearch
