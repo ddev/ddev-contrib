@@ -13,7 +13,7 @@ to your project's `.ddev` folder.
 
 For Drupal and Search API you just need to switch the configured Solr Connector to a Solr Cloud Connector.
 
-Starting from Search API Solr module version 4.1.5 you don't need to deal with configsets manually anymore. Just enable
+Starting from Search API Solr module version 4.2.1 you don't need to deal with configsets manually anymore. Just enable
 the search_api_solr_admin sub-module and configure the Search API Server to use the Solr Cloud Connector with Basic
 Auth. The username "solr" and the password "SolrRocks" are pre-configured in *.ddev/solr-cloud/security.json*. Now you
 create or update your collection any time by clicking the "Upload Configset" button on the Serch API server details

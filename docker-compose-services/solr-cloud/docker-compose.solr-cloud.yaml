@@ -11,7 +11,7 @@
 # To use this in your own project:
 # 1. Copy this file and the solr-cloud (including security.json) directory to your project's ".ddev" directory.
 # 2. For Drupal:
-#      - activate the search_api_solr_admin (this sub-module included in Search API Solr >= 4.1.5)
+#      - activate the search_api_solr_admin (this sub-module included in Search API Solr >= 4.2.1)
 #      - create a search server using the Solr Cloud Connector with Basic Auth using username "solr" and password
 #        "SolrRocks".
 #      - press the "Upload Configset" button.
