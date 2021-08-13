@@ -28,6 +28,8 @@ services:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
+      SOLR_HOST: ddev-${DDEV_SITENAME}-solr1
+      SOLR_PORT: 8983
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
       ZK_HOST: ddev-${DDEV_SITENAME}-zoo1:2181,ddev-${DDEV_SITENAME}-zoo2:2181,ddev-${DDEV_SITENAME}-zoo3:2181
@@ -54,6 +56,7 @@ services:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
+      SOLR_HOST: ddev-${DDEV_SITENAME}-solr2
       SOLR_PORT: 8984
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
@@ -78,6 +81,7 @@ services:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
+      SOLR_HOST: ddev-${DDEV_SITENAME}-solr3
       SOLR_PORT: 8985
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
