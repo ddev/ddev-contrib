@@ -21,3 +21,5 @@ page. Or automate things using
 ```
 ddev drush search_api_solr:upload-configset SERVER_ID
 ```
+
+**Contributed by [@mkalkbrenner](https://github.com/mkalkbrenner)**
