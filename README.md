@@ -42,13 +42,14 @@ General information on how to do additional services and some additional example
 * [PHP 8.1](docker-compose-services/php8_1) While it's in prerelease
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL](docker-compose-services/postgres/)
-* [Drupal Solr 4 Integration](docker-compose-services/solr-4)
-* [Drupal Solr 5 Integration](docker-compose-services/solr-5)
-* [Drupal Solr 7 Integration](docker-compose-services/solr-7)
-* [TYPO3 Solr Integration](docker-compose-services/typo3-solr)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
+* [Solr 4 Integration (Drupal-focused)](docker-compose-services/solr-4)  
+* [Solr 5 Integration (Drupal-focused)](docker-compose-services/solr-5)
+* [Solr 7 Integration (Drupal-focused)](docker-compose-services/solr-7)
+* [Solr Cloud (Drupal-focused)](docker-compose-services/solr-cloud)
+* [Solr Integration (TYPO3-focused)](docker-compose-services/typo3-solr)
 * [Varnish](docker-compose-services/varnish)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
