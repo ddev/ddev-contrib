@@ -24,8 +24,7 @@ user@demo-web:/var/www/html$ phpunit --verbose -c web/core/phpunit.xml.dist web/
 From @damienmckenna, here's an example run to demonstrate functionality:
 
 ```bash
-$ ddev ssh
-$ phpunit --verbose -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
+$ ddev exec phpunit --verbose -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
 PHPUnit 8.5.8 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 7.3.27-9+0~20210227.82+debian10~1.gbpa4a3d6
