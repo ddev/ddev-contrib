@@ -1,5 +1,7 @@
 # PHP8.1 (while in alpha/beta/etc)
 
+# NOTE: php8.1 is now included in DDEV v1.18.0-rc1+, so you probably don't need this.
+
 DDEV-Local will directly support PHP 8.1 as soon as possible, but not likely until the full release in late 2021. At that time this recipe will be obsolete.
 
 This version adds composer support as well as the gd, fileinfo, pdo_mysql, opcache, and curl extensions. More can easily be added in the php-build/Dockerfile.
