@@ -2,7 +2,7 @@ version: '3.6'
 services:
   postgres:
     container_name: ddev-${DDEV_SITENAME}-postgres
-    image: mdillon/postgis:11
+    image: postgres:13.4
     ports:
       - 32784:5432
     environment:
