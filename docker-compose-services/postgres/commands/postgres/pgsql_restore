@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Description: Restore the postgresql database from a postgre custom format dump located in .ddev/import-db/postgresql.db.backup
+## Description: Restore the postgresql database from a postgre custom format dump located in .ddev/import-db/postgresql.db.dump
 ## Usage: pgsql_restore
 ## Example: ddev pgsql_restore
 
