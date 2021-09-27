@@ -4,4 +4,4 @@
 ## Usage: pgsql_export
 ## Example: ddev pgsql_export
 
-mkdir -p /mnt/ddev_config/import-db && su postgres -c "pg_dump db --username=db --host=localhost --port=5432 --column-inserts > /mnt/ddev_config/import-db/postgresql.db.sql"
+mkdir -p /mnt/ddev_config/import-db && chmod 777 /mnt/ddev_config/import-db && su postgres -c "pg_dump db --username=db --host=localhost --port=5432 --column-inserts > /mnt/ddev_config/import-db/postgresql.db.sql"
