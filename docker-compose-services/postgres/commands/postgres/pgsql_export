@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Description: Dump the postgresql database to .ddev/import-db/postgresql.db.sql
+## Description: Dump the postgresql database to .ddev/pgsql-db/postgresql.db.sql
 ## Usage: pgsql_export
 ## Example: ddev pgsql_export
 
