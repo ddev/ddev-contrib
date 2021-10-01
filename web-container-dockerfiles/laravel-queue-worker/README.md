@@ -6,7 +6,7 @@ Run the Laravel queue worker as a process using supervisor. The included configu
 
 Copy `Dockerfile` and `laravel-worker.conf` to `.ddev/web-build` and restart using `ddev restart`.
 
-Keep in mind that using this approach will modify your web image, so read the caveats in the DDEV docs under "Customizing Docker Images" > "Adding extra Dockerfiles for webimage and dbimage."
+Keep in mind that using this approach will modify your web image, so read the caveats in the DDEV docs under "[Customizing Docker Images](https://ddev.readthedocs.io/en/stable/users/extend/customizing-images/)" > "[Adding extra Dockerfiles for webimage and dbimage](https://ddev.readthedocs.io/en/stable/users/extend/customizing-images#adding-extra-dockerfiles-for-webimage-and-dbimage)."
 
 ## Run in background using `nohup`
 
