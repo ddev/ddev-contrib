@@ -19,6 +19,7 @@ services:
         source: "."
         target: "/mnt/ddev_config"
       - ddev-global-cache:/mnt/ddev-global-cache
+      - "./pgsql-db:/docker-entrypoint-initdb.d"
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
