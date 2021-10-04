@@ -99,11 +99,6 @@ To implement this in DDEV:
 
 * If you recieve a `Error response from daemon: ... volume is in use`, you need to stop DDEV first.
 
-### `ddev pgsql_export` auto-import
-
-* The file created by `ddev pgsql_export` is a great example of some of the commands you can use.
-* If this file exists, and the database data directory is empty (ie. you deleted the volume), the file will automatically by imported and populate your database!
-
 ## PostGIS
 
 The `postgres` image support `postgis`, but you will need to create the extension before using it:
