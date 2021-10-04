@@ -6,7 +6,7 @@ offers many additional features like Streaming Expressions and APIs that make ma
 In a production environment it is recommended to have at least three Solr nodes that build that "cloud". In a
 development environment you can choose to only run a single node in standalone mode to require less memory or CPU. DDEV
 offers both options. You choose to run three nodes or a single node in standalone mode by copying either
-`docker-compose.solr-cloud.yaml` of `docker-compose.solr-cloud-standalone.yaml` to your project's `.ddev` folder.
+`docker-compose.solr-cloud.yaml` or `docker-compose.solr-cloud-standalone.yaml` to your project's `.ddev` folder.
 
 For both variations you also need to copy the `solr-cloud` directory (including `security.json`) to your project's
 `.ddev` folder.

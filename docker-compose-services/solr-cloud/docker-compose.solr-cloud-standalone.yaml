@@ -1,7 +1,7 @@
-# DDev Solr Cloud recipe file.
+# DDev Solr Cloud service file.
 #
-# This is a variation of cocker-compose.solr-cloud.yaml that only creates one Solr node and runs a single zookeeper in
-# in standalone mode. This setup is not recommended for a production envrionment but requires less ressources in a
+# This is a variation of docker-compose.solr-cloud.yaml that only creates one Solr node and runs a single zookeeper in
+# standalone mode. This setup is not recommended for a production environment but requires less ressources in a
 # development environment.
 #
 # To access Solr after it is installed:

@@ -1,4 +1,4 @@
-# DDev Solr Cloud recipe file.
+# DDev Solr Cloud service file.
 #
 # To access Solr after it is installed:
 # - The Solr admin interface will be accessible at:
