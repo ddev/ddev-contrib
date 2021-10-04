@@ -1,0 +1,71 @@
+# DDev Solr Cloud recipe file.
+#
+# This is a variation of cocker-compose.solr-cloud.yaml that only creates one Solr node and runs a single zookeeper in
+# in standalone mode. This setup is not recommended for a production envrionment but requires less ressources in a
+# development environment.
+#
+# To access Solr after it is installed:
+# - The Solr admin interface will be accessible at:
+#   http://<projectname>.ddev.site:8983/solr/
+#   For example, if the project is named "myproject" the hostname will be:
+#   http://myproject.ddev.site:8983/solr/
+# - To access the Solr container from the web container use:
+#   http://myproject.ddev.site:8983/solr/
+#
+# To use this in your own project:
+# 1. Copy this file and the solr-cloud (including security.json) directory to your project's ".ddev" directory.
+# 2. For Drupal:
+#      - enable the search_api_solr_admin (this sub-module included in Search API Solr >= 4.2.1)
+#      - create a search server using the Solr Cloud Connector with Basic Auth using username "solr" and password
+#        "SolrRocks".
+#      - press the "Upload Configset" button.
+#      - set the number of shards to "1" and press "Upload"
+
+version: '3.6'
+services:
+  solr:
+    image: solr:8
+    container_name: ddev-${DDEV_SITENAME}-solr
+    restart: "no"
+    expose:
+      - 8983
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      SOLR_HOST: ddev-${DDEV_SITENAME}-solr
+      SOLR_PORT: 8983
+      # The pre-trained OpenNLP models require a much bigger buffer.
+      SOLR_OPTS: -Djute.maxbuffer=50000000
+      #SOLR_HEAP: 1g
+      ZK_HOST: ddev-${DDEV_SITENAME}-zoo:2181
+      VIRTUAL_HOST: $DDEV_HOSTNAME
+      HTTP_EXPOSE: 8983:8983
+      HTTPS_EXPOSE: 8993:8983
+    depends_on:
+      - zoo
+    volumes:
+      - .:/mnt/ddev_config
+      - solr:/var/solr
+    command: bash -c "docker-entrypoint.sh solr zk cp file:/mnt/ddev_config/solr-cloud/security.json zk:/security.json && exec solr-foreground"
+
+  zoo:
+    image: zookeeper:3.6
+    container_name: ddev-${DDEV_SITENAME}-zoo
+    hostname: ddev-${DDEV_SITENAME}-zoo
+    restart: always
+    expose:
+      - 2181
+      - 7000
+    environment:
+      # The pre-trained OpenNLP models require a much bigger buffer.
+      JVMFLAGS: -Djute.maxbuffer=50000000
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
+      ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
+    volumes:
+      - .:/mnt/ddev_config
+
+volumes:
+  solr:
