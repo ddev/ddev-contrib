@@ -58,7 +58,7 @@ a `ddev pg_restore` command that will restore `.ddev/pgsql-db/postgresql.db.dump
 
 * The offical way to add multiple databases is outlined on the [docker image](https://hub.docker.com/_/postgres) under the "Initialization scripts"
 
-To implement this in DDEV:
+EG. Lets create a second database called `testing`.
 
 * Add an additional volume to `./.ddev/docker-composer.postgres.yaml`
 
@@ -74,13 +74,13 @@ To implement this in DDEV:
   mkdir ./.ddev/pgsql-db -p
   ```
 
-* Add your *.sql,*.sql.gz, or *.sh files to `./.ddev/pgsql-db`. EG. Create a file called `./.ddev/pgsql-db/create_testing_database.sql` and add the following:
+* Create a file called `./.ddev/pgsql-db/create_testing_database.sql` and add the following:
 
   ```sql
   CREATE DATABASE testing
   ```
 
-* In fact, you could put any valid SQL connect such as creating or seeding the database.
+* Note: All *.sql,*.sql.gz, & *.sh files in `./.ddev/pgsql-db` will be executed so you can create multiple database or even seed data.
 
 * Note: These files "are only run if you start the container with a data directory that is empty". IE. The first time you start the project. For exisiting projects, you must remove the volume first. Remember to backup the database first (Eg. `ddev pgsql_export`).
 
