@@ -23,6 +23,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-solr1
     expose:
       - 8983
+    # These labels ensure this service is discoverable by ddev.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
@@ -74,7 +75,6 @@ services:
     container_name: ddev-${DDEV_SITENAME}-solr3
     expose:
       - 8985
-    # These labels ensure this service is discoverable by ddev.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
@@ -101,6 +101,9 @@ services:
     expose:
       - 2181
       - 7000
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
     environment:
       # The pre-trained OpenNLP models require a much bigger buffer.
       JVMFLAGS: -Djute.maxbuffer=50000000
@@ -120,6 +123,9 @@ services:
     expose:
       - 2181
       - 7000
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
     environment:
       # The pre-trained OpenNLP models require a much bigger buffer.
       JVMFLAGS: -Djute.maxbuffer=50000000
@@ -139,6 +145,9 @@ services:
     expose:
       - 2181
       - 7000
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
     environment:
       # The pre-trained OpenNLP models require a much bigger buffer.
       JVMFLAGS: -Djute.maxbuffer=50000000
