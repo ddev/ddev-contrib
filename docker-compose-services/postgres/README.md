@@ -60,12 +60,11 @@ a `ddev pg_restore` command that will restore `.ddev/pgsql-db/postgresql.db.dump
 
 EG. Lets create a second database called `testing`.
 
-* Add an additional volume to `./.ddev/docker-composer.postgres.yaml`
+* Add `./pgsql-db:/docker-entrypoint-initdb.d` to the `volumes` section in to `./.ddev/docker-composer.postgres.yaml`
 
   ```yaml
       volumes:
-      ...
-      - "./pgsql-db:/docker-entrypoint-initdb.d"
+        - "./pgsql-db:/docker-entrypoint-initdb.d"
   ```
 
 * Create `./.ddev/pgsql-db` folder if it doesn't already exist
