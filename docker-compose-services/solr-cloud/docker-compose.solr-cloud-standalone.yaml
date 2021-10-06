@@ -26,7 +26,6 @@ services:
   solr:
     image: solr:8
     container_name: ddev-${DDEV_SITENAME}-solr
-    restart: "no"
     expose:
       - 8983
     labels:
@@ -53,7 +52,6 @@ services:
     image: zookeeper:3.6
     container_name: ddev-${DDEV_SITENAME}-zoo
     hostname: ddev-${DDEV_SITENAME}-zoo
-    restart: always
     expose:
       - 2181
       - 7000
@@ -66,6 +64,17 @@ services:
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
     volumes:
       - .:/mnt/ddev_config
+      - zoodata:/data
+      - zoodatalog:/datalog
+
+  # This links the Solr service to the web service defined in the main
+  # docker-compose.yml, allowing applications running inside the web container to
+  # access the Solr service at http://solr:8983
+  web:
+    links:
+      - solr:solr
 
 volumes:
   solr:
+  zoodata:
+  zoodatalog:

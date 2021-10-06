@@ -21,7 +21,6 @@ services:
   solr1:
     image: solr:8
     container_name: ddev-${DDEV_SITENAME}-solr1
-    restart: "no"
     expose:
       - 8983
     labels:
@@ -49,7 +48,6 @@ services:
   solr2:
     image: solr:8
     container_name: ddev-${DDEV_SITENAME}-solr2
-    restart: "no"
     expose:
       - 8984
     labels:
@@ -74,7 +72,6 @@ services:
   solr3:
     image: solr:8
     container_name: ddev-${DDEV_SITENAME}-solr3
-    restart: "no"
     expose:
       - 8985
     # These labels ensure this service is discoverable by ddev.
@@ -101,7 +98,6 @@ services:
     image: zookeeper:3.6
     container_name: ddev-${DDEV_SITENAME}-zoo1
     hostname: ddev-${DDEV_SITENAME}-zoo1
-    restart: always
     expose:
       - 2181
       - 7000
@@ -114,12 +110,13 @@ services:
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
     volumes:
       - .:/mnt/ddev_config
+      - zoo1data:/data
+      - zoo1datalog:/datalog
 
   zoo2:
     image: zookeeper:3.6
     container_name: ddev-${DDEV_SITENAME}-zoo2
     hostname: ddev-${DDEV_SITENAME}-zoo2
-    restart: always
     expose:
       - 2181
       - 7000
@@ -132,12 +129,13 @@ services:
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
     volumes:
       - .:/mnt/ddev_config
+      - zoo2data:/data
+      - zoo2datalog:/datalog
 
   zoo3:
     image: zookeeper:3.6
     container_name: ddev-${DDEV_SITENAME}-zoo3
     hostname: ddev-${DDEV_SITENAME}-zoo3
-    restart: always
     expose:
       - 2181
       - 7000
@@ -150,8 +148,23 @@ services:
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
     volumes:
       - .:/mnt/ddev_config
+      - zoo3data:/data
+      - zoo3datalog:/datalog
+
+  # This links the Solr service to the web service defined in the main
+  # docker-compose.yml, allowing applications running inside the web container to
+  # access the Solr service at http://solr:8983
+  web:
+    links:
+      - solr:solr1
 
 volumes:
   solr1:
   solr2:
   solr3:
+  zoo1data:
+  zoo1datalog:
+  zoo2data:
+  zoo2datalog:
+  zoo3data:
+  zoo3datalog:
