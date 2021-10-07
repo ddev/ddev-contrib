@@ -94,8 +94,8 @@ services:
 
   zoo:
     image: bitnami/zookeeper:3.7
-    container_name: ddev-${DDEV_SITENAME}-zoo1
-    hostname: ddev-${DDEV_SITENAME}-zoo1
+    container_name: ddev-${DDEV_SITENAME}-zoo
+    hostname: ddev-${DDEV_SITENAME}-zoo
     expose:
       - 2181
       - 7000
@@ -106,7 +106,7 @@ services:
       # The pre-trained OpenNLP models require a much bigger buffer.
       JVMFLAGS: -Djute.maxbuffer=50000000
       ZOO_MY_ID: 1
-      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888
+      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo:2888:3888
       ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
       ALLOW_ANONYMOUS_LOGIN: "yes"
