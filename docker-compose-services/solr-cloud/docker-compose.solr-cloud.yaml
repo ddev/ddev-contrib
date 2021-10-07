@@ -33,14 +33,12 @@ services:
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
       #SOLR_HEAP: 1g
-      ZK_HOST: ddev-${DDEV_SITENAME}-zoo1:2181,ddev-${DDEV_SITENAME}-zoo2:2181,ddev-${DDEV_SITENAME}-zoo3:2181
+      ZK_HOST: ddev-${DDEV_SITENAME}-zoo:2181
       VIRTUAL_HOST: $DDEV_HOSTNAME
       HTTP_EXPOSE: 8983:8983
       HTTPS_EXPOSE: 8993:8983
     depends_on:
-      - zoo1
-      - zoo2
-      - zoo3
+      - zoo
     volumes:
       - .:/mnt/ddev_config
       - solr1:/var/solr
@@ -60,7 +58,7 @@ services:
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
       #SOLR_HEAP: 1g
-      ZK_HOST: ddev-${DDEV_SITENAME}-zoo1:2181,ddev-${DDEV_SITENAME}-zoo2:2181,ddev-${DDEV_SITENAME}-zoo3:2181
+      ZK_HOST: ddev-${DDEV_SITENAME}-zoo:2181
       VIRTUAL_HOST: $DDEV_HOSTNAME
       HTTP_EXPOSE: 8984:8984
       HTTPS_EXPOSE: 8994:8984
@@ -84,7 +82,7 @@ services:
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
       #SOLR_HEAP: 1g
-      ZK_HOST: ddev-${DDEV_SITENAME}-zoo1:2181,ddev-${DDEV_SITENAME}-zoo2:2181,ddev-${DDEV_SITENAME}-zoo3:2181
+      ZK_HOST: ddev-${DDEV_SITENAME}-zoo:2181
       VIRTUAL_HOST: $DDEV_HOSTNAME
       HTTP_EXPOSE: 8985:8985
       HTTPS_EXPOSE: 8995:8985
@@ -94,8 +92,8 @@ services:
       - .:/mnt/ddev_config
       - solr3:/var/solr
 
-  zoo1:
-    image: zookeeper:3.6
+  zoo:
+    image: bitnami/zookeeper:3.7
     container_name: ddev-${DDEV_SITENAME}-zoo1
     hostname: ddev-${DDEV_SITENAME}-zoo1
     expose:
@@ -108,72 +106,23 @@ services:
       # The pre-trained OpenNLP models require a much bigger buffer.
       JVMFLAGS: -Djute.maxbuffer=50000000
       ZOO_MY_ID: 1
-      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888;2181 server.2=ddev-${DDEV_SITENAME}-zoo2:2888:3888;2181 server.3=ddev-${DDEV_SITENAME}-zoo3:2888:3888;2181
+      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888
       ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
       ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
+      ALLOW_ANONYMOUS_LOGIN: "yes"
     volumes:
       - .:/mnt/ddev_config
-      - zoo1data:/data
-      - zoo1datalog:/datalog
-
-  zoo2:
-    image: zookeeper:3.6
-    container_name: ddev-${DDEV_SITENAME}-zoo2
-    hostname: ddev-${DDEV_SITENAME}-zoo2
-    expose:
-      - 2181
-      - 7000
-    labels:
-      com.ddev.site-name: ${DDEV_SITENAME}
-      com.ddev.approot: $DDEV_APPROOT
-    environment:
-      # The pre-trained OpenNLP models require a much bigger buffer.
-      JVMFLAGS: -Djute.maxbuffer=50000000
-      ZOO_MY_ID: 2
-      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888;2181 server.2=ddev-${DDEV_SITENAME}-zoo2:2888:3888;2181 server.3=ddev-${DDEV_SITENAME}-zoo3:2888:3888;2181
-      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
-      ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
-    volumes:
-      - .:/mnt/ddev_config
-      - zoo2data:/data
-      - zoo2datalog:/datalog
-
-  zoo3:
-    image: zookeeper:3.6
-    container_name: ddev-${DDEV_SITENAME}-zoo3
-    hostname: ddev-${DDEV_SITENAME}-zoo3
-    expose:
-      - 2181
-      - 7000
-    labels:
-      com.ddev.site-name: ${DDEV_SITENAME}
-      com.ddev.approot: $DDEV_APPROOT
-    environment:
-      # The pre-trained OpenNLP models require a much bigger buffer.
-      JVMFLAGS: -Djute.maxbuffer=50000000
-      ZOO_MY_ID: 3
-      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888;2181 server.2=ddev-${DDEV_SITENAME}-zoo2:2888:3888;2181 server.3=ddev-${DDEV_SITENAME}-zoo3:2888:3888;2181
-      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
-      ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
-    volumes:
-      - .:/mnt/ddev_config
-      - zoo3data:/data
-      - zoo3datalog:/datalog
+      - zoo:/bitnami/zookeeper
 
   # This links the Solr service to the web service defined in the main
   # docker-compose.yml, allowing applications running inside the web container to
   # access the Solr service at http://solr:8983
   web:
     links:
-      - solr:solr1
+      - solr1:solr
 
 volumes:
   solr1:
   solr2:
   solr3:
-  zoo1data:
-  zoo1datalog:
-  zoo2data:
-  zoo2datalog:
-  zoo3data:
-  zoo3datalog:
+  zoo:
