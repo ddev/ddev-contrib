@@ -54,7 +54,7 @@ a `ddev pg_restore` command that will restore `.ddev/pgsql-db/postgresql.db.dump
 
 ## Multiple databases
 
-* By default, DDEV adds a single database called `db`. But it's possible to create additional databases when you first initialize this service.
+* By default, this recipe adds a single database called `db`. But it's possible to create additional databases when you first initialize this service.
 
 * The offical way to add multiple databases is outlined on the [docker image](https://hub.docker.com/_/postgres) under the "Initialization scripts"
 
@@ -81,22 +81,7 @@ EG. Lets create a second database called `testing`.
 
 * Note: All *.sql,*.sql.gz, & *.sh files in `./.ddev/pgsql-db` will be executed so you can create multiple database or even seed data.
 
-* Note: These files "are only run if you start the container with a data directory that is empty". IE. The first time you start the project. For exisiting projects, you must remove the volume first. Remember to backup the database first (Eg. `ddev pgsql_export`).
-
-### Removing a postgres volume
-
-  ```bash
-  # Display all docker volumes.
-  docker volume ls
-
-  # Stop DDEV.
-  ddev stop
-
-  # Remove 'example' project postgres volume.
-  docker volume rm ddev-example_postgres
-  ```
-
-* If you recieve a `Error response from daemon: ... volume is in use`, you need to stop DDEV first.
+* Note: These files "are only run if you start the container with a data directory that is empty". IE. The first time you start the project. For exisiting projects, add a hook to [import a sql dump if the database is empty](https://github.com/drud/ddev-contrib/tree/master/hook-examples/import-db-if-empty), or run `ddev delete` to re-initialize the project. Remember to backup the database first (Eg. `ddev pgsql_export`).
 
 ## PostGIS
 
