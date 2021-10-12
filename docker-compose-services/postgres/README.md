@@ -72,6 +72,23 @@ DROP EXTENSION postgis CASCADE;
 
 It’s safe to re-enable `postgis` after the installation is complete.
 
+## Disabling MySQL & MariaSQL
+
+* If your project only uses a Postgres database, you can disable the MySql & MariaDb services.
+* Run the following command from your project root.
+
+```bash
+ddev config --omit-containers db
+```
+
+* Alternatively, you can update your project's `.ddev/config.yaml` directly by updating the following line:
+
+```yaml
+omit_containers: [db]
+```
+
+* See [.ddev/config.yaml Options](<https://ddev.readthedocs.io/en/stable/users/extend/config_yaml/>) for additional notes.
+
 ## TODO
 
 Future enhancements (PR's welcome here) include:
