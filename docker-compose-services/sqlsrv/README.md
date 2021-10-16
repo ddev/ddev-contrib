@@ -5,7 +5,7 @@ Using SQL server from Microsoft.
 ## Installation
 
 1. Copy `docker-compose.sqlsrv.yaml` to your project's `.ddev` directory.
-2. Copy the full post start hook command to your project's `config.yaml`.
+2. Copy the full post start hook commands to your project's `config.yaml`.
 3. *(optional)* For Drupal 9+ projects: copy `install-drupal-regex-function.sh` to your project's `.ddev` directory.
 
 ## Connection
