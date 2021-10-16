@@ -50,6 +50,7 @@ General information on how to do additional services and some additional example
 * [Solr 7 Integration (Drupal-focused)](docker-compose-services/solr-7)
 * [Solr Cloud (Drupal-focused)](docker-compose-services/solr-cloud)
 * [Solr Integration (TYPO3-focused)](docker-compose-services/typo3-solr)
+* [SQL Server (Microsoft)](docker-compose-services/sqlsrv)
 * [Varnish](docker-compose-services/varnish)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
