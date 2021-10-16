@@ -126,7 +126,7 @@ Future enhancements (PR's welcome here) include:
 ## Links with useful information
 
 * [SQL Server docker hub](https://hub.docker.com/_/microsoft-mssql-server)
-* [Installing the ODBC driver for SQL Server](https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy?view=sql-server-ver15)
+* [Installing the ODBC driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15)
 * [Installing the ODBC driver for SQL Server Tutorial](https://docs.microsoft.com/en-us/sql/connect/php/installation-tutorial-linux-mac?view=sql-server-ver15)
 * [The SQLCMD utility](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15)
 * [The SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15)
