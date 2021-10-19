@@ -46,7 +46,7 @@ then
   ddev exec -s sqlsrv sudo mv RegEx.dll /var/opt/mssql/data/
 fi
 
-# Set the following variables: "show advanced options", "clr strict security" and "clr enable".
+# The following are changed to allow the installation and execution of the user provided database function.
 ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'EXEC sp_configure \"show advanced options\", 1; RECONFIGURE; EXEC sp_configure \"clr strict security\", 0; RECONFIGURE; EXEC sp_configure \"clr enable\", 1; RECONFIGURE;'"
 
 # Create the assambly and the function for the Regex helper.
