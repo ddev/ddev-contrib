@@ -2,7 +2,10 @@
 
 Running Solr in single core mode is not the recommended way anymore. The "Solr
 Cloud" mode is the preferred way and offers many additional features like
-Streaming Expressions and APIs that make management easier.
+Streaming Expressions and APIs that make management easier. These APIs allow to
+create and modify collections (cores), manage stopwords, synonyms etc.
+All from Drupal via UI or drush, via the Solarium library or your custom code.
+That’s a huge difference compared to Solr maintence like you know it before!
 
 In a production environment it is recommended to have at least three Solr nodes
 that build that "cloud". In a development environment you can choose to only run
@@ -22,7 +25,8 @@ rights:
 * password: `SolrRocks`
 
 Just copy the `solr-cloud` directory (including `security.json`) to your
-project's `.ddev` folder.
+project's `.ddev` folder. If required, you can adjust the user name and the
+password by editing the `security.json` file and restarting the service.
 
 Once up and running you can access Solr's UI within your browser by opening
 `http://<projectname>.ddev.site:8983`. For example, if the project is named
