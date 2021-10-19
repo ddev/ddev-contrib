@@ -1,18 +1,18 @@
-# Apache Solr Cloud Integration for DDEV-Local
+# Apache Solr (Cloud) Integration for DDEV-Local
 
 Running Solr in single core mode is not the recommended way anymore. The "Solr
 Cloud" mode is the preferred way and offers many additional features like
 Streaming Expressions and APIs that make management easier. These APIs allow to
 create and modify collections (cores), manage stopwords, synonyms etc.
 All from Drupal via UI or drush, via the Solarium library or your custom code.
-That’s a huge difference compared to Solr maintence like you know it before!
+That’s a huge difference compared to Solr maintenance like you know it before!
 
 In a production environment it is recommended to have at least three Solr nodes
 that build that "cloud". In a development environment you can choose to only run
 a single node in standalone mode to require less memory or CPU. DDEV offers both
 options. You choose to run three nodes or a single node in standalone mode by
-copying either `docker-compose.solr-cloud.yaml` or
-`docker-compose.solr-cloud-standalone.yaml` to your project's `.ddev` folder.
+copying either `docker-compose.solr.yaml` or
+`docker-compose.solrstandalone.yaml` to your project's `.ddev` folder.
 
 Solr Cloud provides a lot of APIs to manage your collections, cores, schemas
 etc. Some of these APIs require a so-called "trusted" context. Solr therefore
@@ -24,9 +24,12 @@ rights:
 * user: `solr`
 * password: `SolrRocks`
 
-Just copy the `solr-cloud` directory (including `security.json`) to your
-project's `.ddev` folder. If required, you can adjust the user name and the
-password by editing the `security.json` file and restarting the service.
+Just copy the `solr` directory (including `security.json`) to your
+project's `.ddev` folder. If required, you can adjust the username and the
+password by editing the `security.json` file and restarting the service. But be
+aware that the password is stored as a hash. Please consult the Solr
+documentation for details. On the other hand our recommendation for a local
+development environment is to just stay with the defualt.
 
 Once up and running you can access Solr's UI within your browser by opening
 `http://<projectname>.ddev.site:8983`. For example, if the project is named
@@ -44,7 +47,7 @@ your information in case you wonder what that service is.
 For Drupal and Search API Solr you need to configure a Search API server using
 Solr as backend and `Solr Cloud with Basic Auth` as its connector. As mentioned
 above, username "solr" and password "SolrRocks" are the pre-configured
-credentials for Basic Authentication in `.ddev/solr-cloud/security.json`.
+credentials for Basic Authentication in `.ddev/solr/security.json`.
 
 Solr requires a Drupal-specific configset for any collection that should be used
 to index Drupal's content. (In Solr Cloud "collections" are the equivalent to
@@ -66,8 +69,8 @@ Note: If you choose to run Solr Cloud using a single node in standalone mode,
 
 ## Installation step by step
 
-1. Copy `docker-compose.solr-cloud.yaml` **or** `docker-compose.solr-cloud-standalone.yaml` to your project's `.ddev` directory.
-2. Copy the `solr-cloud` folder (`including security.json`) to your project's `.ddev` directory.
+1. Copy `docker-compose.solr.yaml` **or** `docker-compose.solr-standalone.yaml` to your project's `.ddev` directory.
+2. Copy the `solr` folder (`including security.json`) to your project's `.ddev` directory.
 3. Configure your application to connect Solr at `http://ddev-<project>-solr:8983`.
 4. If you want to use Solr's APIs that require a trusted context configure Basic Auth with username `solr` and password `SolrRocks`.
 5. (Re-)start your DDEV project.
@@ -110,12 +113,12 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
   * Username: `solr`
   * Password: `SolrRocks`
 * Press the `Upload Configset` button on the server's view.
-* Set the number of shards to _3_ if you use `docker-compose.solr-cloud.yaml` or _1_ if you use `docker-compose.solr-cloud-standalone.yaml`.
+* Set the number of shards to _3_ if you use `docker-compose.solr.yaml` or _1_ if you use `docker-compose.solr-standalone.yaml`.
 * Press `Upload`.
 
 ### Drupal and Search API Solr 4.1 and older
 
-It is hoghly recommended to upgrade to the 4.2 version. But if you're required
+It is highly recommended to upgrade to the 4.2 version. But if you're required
 to use an older versions of the Search API Solr module you have to deploy the
 configset manually and create a collection using this configset afterwards.
 Therefore you need to use the `Download config.zip` function of Search API Solr.
