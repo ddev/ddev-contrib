@@ -38,7 +38,9 @@ services:
       # https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15
       - 'MSSQL_PID=Evaluation'
 
-      # Sets the default collation for SQL Server. This setting is optional.
+      # Sets the default collation for SQL Server. This setting is optional. The
+      # current setting is best for Drupal projects. For more information, see:
+      # https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver15
       - 'MSSQL_COLLATION=LATIN1_GENERAL_100_CI_AS_SC_UTF8'
 
       # For more possible environment variables that can be set, see:
