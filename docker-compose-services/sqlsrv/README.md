@@ -68,6 +68,12 @@ hooks:
    - exec: "echo 'extension=pdo_sqlsrv.so' | sudo tee /etc/php/8.0/mods-available/pdo_sqlsrv.ini"
    - exec: sudo phpenmod -v 8.0 sqlsrv pdo_sqlsrv
 
+   # When you get warnings or errors that there is something wrong with
+   # uploadgrogress, then please uncomment the following lines.
+   #- exec: sudo pecl install uploadprogress
+   #- exec: "echo 'extension=uploadprogress.so' | sudo tee /etc/php/8.0/mods-available/uploadprogress.ini"
+   #- exec: sudo phpenmod -v 8.0 uploadprogress
+
    # For the next line: change the word "nginx" to "apache2" when the variable
    # "webserver_type" is set to "apache-fpm".
    - exec: killall -USR2 nginx php-fpm
