@@ -127,7 +127,7 @@ ddev config --omit-containers db
 omit_containers: [db]
 ```
 
-* See [.ddev/config.yaml Options](<https://ddev.readthedocs.io/en/stable/users/extend/config_yaml/>) for additional notes.
+* See [.ddev/config.yaml Options](https://ddev.readthedocs.io/en/stable/users/extend/config_yaml/) for additional notes.
 
 ## TODO
 
