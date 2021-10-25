@@ -51,6 +51,12 @@ hooks:
    - exec: sudo bash -c 'curl -s https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list'
 
    - exec: sudo apt-get -y update
+
+   # When you have warnings or errors with multiarch, then please uncomment the
+   # following lines.
+   #- exec: wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/multiarch-support_2.27-3ubuntu1.4_amd64.deb
+   #- exec: sudo apt-get install ./multiarch-support_2.27-3ubuntu1.4_amd64.deb
+
    - exec: sudo apt-get -y install dialog apt-utils
    - exec: sudo ACCEPT_EULA=Y apt-get -y install msodbcsql17 mssql-tools
    - exec: echo 'export PATH="$PATH:/opt/mssql-tools/bin" >> ~/.bashrc'
