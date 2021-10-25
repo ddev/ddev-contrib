@@ -95,7 +95,7 @@ The minimum required PHP version the these extensions is PHP 7.3. For more infor
 
 ## Drupal Notice
 
-Drupal CMS needs the a database function installed that is mimicking the Regex function as Drupal requires. To install such a database function run the following command from your project's directory:
+Drupal CMS needs the a database function installed that is mimicking the Regex function as Drupal requires. As a one-time setup for Drupal, install the database function by running the following command from your project's directory:
 
 ```bash
 ./install-drupal-regex-function.sh -u <username> -p <password> -d <database>
