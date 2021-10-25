@@ -52,3 +52,5 @@ ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $u
 # Create the assambly and the function for the Regex helper.
 ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'CREATE ASSEMBLY Regex from \"/var/opt/mssql/data/RegEx.dll\" WITH PERMISSION_SET = SAFE'"
 ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'CREATE FUNCTION dbo.REGEXP(@pattern NVARCHAR(100), @matchString NVARCHAR(100)) RETURNS bit EXTERNAL NAME Regex.RegExCompiled.RegExCompiledMatch'"
+
+**Contributed by [@drupal-daffie](https://github.com/drupal-daffie)**
