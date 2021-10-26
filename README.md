@@ -45,10 +45,10 @@ General information on how to do additional services and some additional example
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
-* [Solr 4 Integration (Drupal-focused)](docker-compose-services/solr-4)  
+* [Solr Integration (Drupal-focused)](docker-compose-services/solr)
+* [Solr 4 Integration (Drupal-focused)](docker-compose-services/solr-4)
 * [Solr 5 Integration (Drupal-focused)](docker-compose-services/solr-5)
 * [Solr 7 Integration (Drupal-focused)](docker-compose-services/solr-7)
-* [Solr Cloud (Drupal-focused)](docker-compose-services/solr-cloud)
 * [Solr Integration (TYPO3-focused)](docker-compose-services/typo3-solr)
 * [Varnish](docker-compose-services/varnish)
 
