@@ -32,6 +32,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 
 General information on how to do additional services and some additional examples are [in the docs](https://ddev.readthedocs.io/en/latest/users/extend/additional-services/).
 
+* [Integrate Cypress (E2E testing)](docker-compose-services/cypress)
 * [Behat, Selenium, Drupal 8/9](docker-compose-services/drupal8-behat-selenium)
 * [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver). This example uses Drupal's DrupalCI approach, supports Behat, DrupalCI, etc.
 * [Elasticsearch](docker-compose-services/elasticsearch)
@@ -46,7 +47,6 @@ General information on how to do additional services and some additional example
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis](docker-compose-services/redis)
 * [redis-commander](docker-compose-services/redis-commander)
-* [Solr Integration (Drupal-focused)](docker-compose-services/solr)
 * [Solr 4 Integration (Drupal-focused)](docker-compose-services/solr-4)
 * [Solr 5 Integration (Drupal-focused)](docker-compose-services/solr-5)
 * [Solr 7 Integration (Drupal-focused)](docker-compose-services/solr-7)
