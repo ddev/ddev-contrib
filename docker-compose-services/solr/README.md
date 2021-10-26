@@ -112,7 +112,7 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
   * Default Solr collection: `techproducts` (You can define any name here. The collection will be created automatically.)
   * Username: `solr`
   * Password: `SolrRocks`
-* Press the `Upload Configset` button on the server's view.
+* Press the `Upload Configset` button on the server's view and check the "Upload (and overwrite) configset" checkbox.
 * Set the number of shards to _3_ if you use `docker-compose.solr.yaml` or _1_ if you use `docker-compose.solr-standalone.yaml`.
 * Press `Upload`.
 
