@@ -19,6 +19,7 @@
 #      - create a search server using the Solr Cloud Connector with Basic Auth using username "solr" and password
 #        "SolrRocks".
 #      - press the "Upload Configset" button.
+#      - select the checkbox "Upload (and overwrite) configset to Solr Server."
 #      - set the number of shards to "1" and press "Upload"
 
 version: '3.6'
