@@ -108,7 +108,7 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
   * HTTP protocol: `http`
   * Solr node: `ddev-<project>-solr` (Replace <project> by your project's name.)
   * Solr port: `8983`
-  * Solr path: `\ `
+  * Solr path: `/`
   * Default Solr collection: `techproducts` (You can define any name here. The collection will be created automatically.)
   * Username: `solr`
   * Password: `SolrRocks`
