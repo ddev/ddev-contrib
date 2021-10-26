@@ -12,7 +12,7 @@ that build that "cloud". In a development environment you can choose to only run
 a single node in standalone mode to require less memory or CPU. DDEV offers both
 options. You choose to run three nodes or a single node in standalone mode by
 copying either `docker-compose.solr.yaml` or
-`docker-compose.solrstandalone.yaml` to your project's `.ddev` folder.
+`docker-compose.solr-standalone.yaml` to your project's `.ddev` folder.
 
 Solr Cloud provides a lot of APIs to manage your collections, cores, schemas
 etc. Some of these APIs require a so-called "trusted" context. Solr therefore
@@ -29,7 +29,7 @@ project's `.ddev` folder. If required, you can adjust the username and the
 password by editing the `security.json` file and restarting the service. But be
 aware that the password is stored as a hash. Please consult the Solr
 documentation for details. On the other hand our recommendation for a local
-development environment is to just stay with the defualt.
+development environment is to just stay with the default.
 
 Once up and running you can access Solr's UI within your browser by opening
 `http://<projectname>.ddev.site:8983`. For example, if the project is named
@@ -77,6 +77,12 @@ Note: If you choose to run Solr Cloud using a single node in standalone mode,
 
 ## Solarium
 
+[Solarium](https://github.com/solariumphp/solarium) is the leading Solr
+integration library for PHP. It is used by the modules and integrations of many
+PHP frameworks and CMS like Drupal, Typo3, Wordpress, Symfony, Laravel, ...
+If you build your own PHP application and want to use Solarium directly, here is
+an example of how to configure the connection in DDEV.
+
 ```php
 use Solarium\Core\Client\Adapter\Curl;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -103,12 +109,12 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
 
 ## Drupal and Search API Solr (>= 4.2.1)
 
-* Enable the `search_api_solr_admin` module. (This sub-module included in Search API Solr >= 4.2.1)
+* Enable the `search_api_solr_admin` module. (This sub-module is included in Search API Solr >= 4.2.1)
 * Create a search server using the Solr backend and select `Solr Cloud with Basic Auth` as connector:
   * HTTP protocol: `http`
   * Solr node: `ddev-<project>-solr` (Replace <project> by your project's name.)
   * Solr port: `8983`
-  * Solr path: `\ `
+  * Solr path: `/`
   * Default Solr collection: `techproducts` (You can define any name here. The collection will be created automatically.)
   * Username: `solr`
   * Password: `SolrRocks`
