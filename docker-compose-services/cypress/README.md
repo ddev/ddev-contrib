@@ -3,8 +3,8 @@
 - [Steps](#steps)
   - [A note about the Cypress image](#a-note-about-the-cypress-image)
 - [Commands](#commands)
-  - [`cypress:open`](#cypressopen)
-  - [`cypress:run`](#cypressrun)
+  - [`cypress-open`](#cypress-open)
+  - [`cypress-run`](#cypress-run)
 - [Notes](#notes)
 - [Troubleshooting](#troubleshooting)
   - ["Could not find a Cypress configuration file, exiting"](#could-not-find-a-cypress-configuration-file-exiting)
@@ -42,12 +42,12 @@ It is considered best practice to use a [specific image tag](https://github.com/
 Cypress can run into 2 different modes: interactive and runner.
 This recipe includes 2 alias commands to help you use Cypress.
 
-### `cypress:open`
+### `cypress-open`
 
 To open cypress in "interactive" mode, run the following command:
 
 ```shell
-ddev cypress:open
+ddev cypress-open
 ```
 
 This command also accepts arguments. Refer to the ["#cyress open" documentation](https://docs.cypress.io/guides/guides/command-line#cypress-open) for further details.
@@ -55,15 +55,15 @@ This command also accepts arguments. Refer to the ["#cyress open" documentation]
 Example: To open Cypress in interactive mode, and specify a config file
 
 ```shell
-ddev cypress:open --config cypress.json
+ddev cypress-open --config cypress.json
 ```
 
-### `cypress:run`
+### `cypress-run`
 
 To run Cypress in "runner" mode, run the following command:
 
 ```shell
-ddev cypress:run
+ddev cypress-run
 ```
 
 This command also accepts arguments. Refer to [#cypress run](https://docs.cypress.io/guides/guides/command-line#cypress-run) page for a full list of available arguments.
@@ -71,7 +71,7 @@ This command also accepts arguments. Refer to [#cypress run](https://docs.cypres
 Example: To run all Cypress tests, using Chrome in headless mode
 
 ```shell
-ddev cypress:run --browser chrome
+ddev cypress-run --browser chrome
 ```
 
 ## Notes
@@ -85,7 +85,7 @@ ddev cypress:run --browser chrome
 
 Cypress expects a directory strutures containing the tests, plugins and support files.
 
-- If the `./cypress` directory does not exist, it will scaffold out these directories, including a default `cypress.json` setting file and example tests when you first run `ddev cypress:open`.
+- If the `./cypress` directory does not exist, it will scaffold out these directories, including a default `cypress.json` setting file and example tests when you first run `ddev cypress-open`.
 - Make sure you have a `cypress.json` file in your project root, or use `--config [file]` argument to specify one.
 
 ### "Unable to open X display."

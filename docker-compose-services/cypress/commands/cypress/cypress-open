@@ -2,7 +2,7 @@
 
 ## Description: Open an interactive Cypress window
 ##              https://docs.cypress.io/guides/guides/command-line#cypress-open
-## Usage: cypress:open [arguments]
-## Example: "ddev cypress:open --config cypress.json"
+## Usage: cypress-open [arguments]
+## Example: "ddev cypress-open --config cypress.json"
 
 cypress open --project . "$@"
