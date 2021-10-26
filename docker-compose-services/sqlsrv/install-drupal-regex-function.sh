@@ -39,18 +39,17 @@ then
   exit 1
 fi
 
-if ! ddev exec -s sqlsrv test -e "/var/opt/mssql/data/RegEx.dll" &>/dev/null;
+if ! ddev exec -s sqlsrv test -e "/RegEx.dll" &>/dev/null;
 then
   # Download the Regex.dll file and copy it to the right location.
   ddev exec -s sqlsrv wget https://github.com/Beakerboy/drupal-sqlsrv-regex/releases/download/1.0/RegEx.dll
-  ddev exec -s sqlsrv sudo mv RegEx.dll /var/opt/mssql/data/
 fi
 
 # The following are changed to allow the installation and execution of the user provided database function.
 ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'EXEC sp_configure \"show advanced options\", 1; RECONFIGURE; EXEC sp_configure \"clr strict security\", 0; RECONFIGURE; EXEC sp_configure \"clr enable\", 1; RECONFIGURE;'"
 
 # Create the assambly and the function for the Regex helper.
-ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'CREATE ASSEMBLY Regex from \"/var/opt/mssql/data/RegEx.dll\" WITH PERMISSION_SET = SAFE'"
+ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'CREATE ASSEMBLY Regex from \"/RegEx.dll\" WITH PERMISSION_SET = SAFE'"
 ddev exec -s sqlsrv "/opt/mssql-tools/bin/sqlcmd -P $password -S localhost -U $username -d $database -Q 'CREATE FUNCTION dbo.REGEXP(@pattern NVARCHAR(100), @matchString NVARCHAR(100)) RETURNS bit EXTERNAL NAME Regex.RegExCompiled.RegExCompiledMatch'"
 
 **Contributed by [@drupal-daffie](https://github.com/drupal-daffie)**
