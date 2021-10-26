@@ -51,7 +51,7 @@ credentials for Basic Authentication in `.ddev/solr/security.json`.
 
 Solr requires a Drupal-specific configset for any collection that should be used
 to index Drupal's content. (In Solr Cloud "collections" are the equivalent to
-"cores" in classic Solr installations. Actually a collections consists of
+"cores" in classic Solr installations. Actually a collection consists of
 multiple cores sharded across all server nodes.)
 Starting from Search API Solr module version 4.2.1 you don't need to deal with
 configsets manually anymore. Just enable the `search_api_solr_admin` sub-module
