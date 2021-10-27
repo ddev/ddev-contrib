@@ -1,0 +1,31 @@
+#!/bin/bash
+
+## Description: Run project PHP REPL. Arguments are accepted in Laravel projects (with caveats)
+## Usage: tinker
+## Example: "ddev tinker"
+## ProjectTypes: laravel,drupal7,drupal8,drupal9
+
+if [ "${DDEV_PROJECT_TYPE}" == "laravel" ]; then
+  if [ -z "$1" ]
+      then
+          php artisan tinker
+      else
+          # There is an known issue if the arguments contain quotes (`"`, `'`) or brackets (`(` , `)`)
+          # There are 2 known workaround: escape the characters or double-wrap the quotes
+          # - ddev tinker "User::find(1)" => ddev tinker "User::find\(1\)"
+          # - ddev tinker "User::find(1)" => ddev tinker '"User::find(1)"'
+          # - ddev tinker "User::find(1)" => ddev tinker "'User::find(1)'"
+          # See https://github.com/drud/ddev/issues/2547
+          php artisan tinker --execute="dd($1);"
+  fi
+
+  exit 0
+fi
+
+
+if ! command -v drush >/dev/null; then
+  echo "drush is not available. You may need to 'ddev composer require drush/drush'"
+  exit 1
+fi
+
+drush php
