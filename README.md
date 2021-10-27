@@ -26,6 +26,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [inotify-proxy to enable file watchers on NFS shares](custom-commands/inotify-proxy)
 * [Executing Symfony console and phpunit commands without ssh](custom-commands/symfony/)
 * [Build Drupal theme assets with Gulp](custom-commands/gulp) -- with minor modifications, this approach will work for other frameworks (WordPress, etc.) and other front-end build tools.
+* [Run Laravel `tinker` or Drupal's `drush php` with a single command](custom-commands/tinker)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
