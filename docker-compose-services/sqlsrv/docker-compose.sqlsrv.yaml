@@ -10,7 +10,7 @@ services:
 
     user: root
     volumes:
-      - sqldata:/var/opt/sqlserver/data
+      - sqlsystem:/var/opt/mssql/
     restart: "no"
     ports:
       - "1433:1433"
@@ -48,4 +48,4 @@ services:
     - sqlsrv:sqlsrv
 
 volumes:
-  sqldata:
+  sqlsystem:
