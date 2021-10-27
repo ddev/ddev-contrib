@@ -1,4 +1,4 @@
-# Run Laravel `tinker` or Drupal's `drush php` <!-- omit in toc -->
+# Run Laravel `tinker` or Drupal's `drush php` with a single command <!-- omit in toc -->
 
 - [Installation](#installation)
   - [Per-project](#per-project)
