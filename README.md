@@ -38,6 +38,7 @@ General information on how to do additional services and some additional example
 * [Elastichq](docker-compose-services/elastichq)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [Kibana](docker-compose-services/kibana)
+* [MinIO](docker-compose-services/minio/)
 * [MongoDB](docker-compose-services/mongodb/)
 * [Old PHP Versions to run old sites](docker-compose-services/old_php)
 * [PHP 8.1](docker-compose-services/php8_1) While it's in prerelease
