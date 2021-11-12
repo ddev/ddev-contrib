@@ -13,7 +13,7 @@ Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided
 Connect to `postgres` host/db server from within the web container with:
 
 ```
-Host: postgres
+Host: ddev-<projectname>-postgres
 User: db
 Password: db
 Database: db
