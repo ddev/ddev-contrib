@@ -92,3 +92,5 @@ Cypress expects a directory strutures containing the tests, plugins and support 
 
 - This recipe forwards the Cypress GUI via an X11  server. Please ensure you have this working on your host system.
 - For Windows 10 users, try [GWSL](https://opticos.github.io/gwsl/tutorials/manual.html) (via [Microsoft store](ms-windows-store://pdp/?productid=9NL6KD1H33V3)), or [VcXsrv](https://sourceforge.net/projects/vcxsrv/) (via [chocolatey](https://community.chocolatey.org/packages/vcxsrv#versionhistory))
+
+**Contributed by [@tyler36](https://github.com/tyler36)**
