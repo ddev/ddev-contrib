@@ -1,4 +1,4 @@
-# Intergrate Cypress (E2E testing) <!-- omit in toc -->
+# Integrate Cypress (E2E testing) <!-- omit in toc -->
 
 - [Steps](#steps)
   - [A note about the Cypress image](#a-note-about-the-cypress-image)
