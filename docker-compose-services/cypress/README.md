@@ -1,6 +1,9 @@
 # Integrate Cypress (E2E testing) <!-- omit in toc -->
 
 - [Steps](#steps)
+  - [Configure `DISPLAY`](#configure-display)
+    - [Windows 10](#windows-10)
+      - [Running DDEV on Win10 (not WSL)](#running-ddev-on-win10-not-wsl)
   - [A note about the Cypress image](#a-note-about-the-cypress-image)
 - [Commands](#commands)
   - [`cypress-open`](#cypress-open)
@@ -17,12 +20,47 @@ This recipe integrates a Cypress docker image with your DDEV project.
 ## Steps
 
 - Copy the `docker-compose.cypress.yaml` file into your project's `./.ddev' directory.
-- Copy the `commands` directory into your project's `./.ddev/commands` directory
+- Copy the `commands` directory into your project's `./.ddev/commands` directory.
 - Restart DDEV to begin using the this service.
 
     ```shell
     ddev restart
     ```
+
+### Configure `DISPLAY`
+
+To correctly display the Cypress screen and browser output, you must configure a `DISPLAY` environment variable.
+
+#### Windows 10
+
+If you are running DDEV on Win10 or WSL2 on Win10, you need to configure a display server on Win10.
+You are free to use any X11-compatible server. A configuration-free solution is to install [GWSL via the Windows Store](https://www.microsoft.com/en-us/p/gwsl/9nl6kd1h33v3#activetab=pivot:overviewtab).
+
+##### Running DDEV on Win10 (not WSL)
+
+- Install [GWSL via the Windows Store](https://www.microsoft.com/en-us/p/gwsl/9nl6kd1h33v3#activetab=pivot:overviewtab)
+- Get you "IPv4 Address" for your "Ethernet adapter" via networking panel or by typing `ipconfig` in a terminal. The address in the below example is `192.168.0.196`
+
+```shell
+❯ ipconfig
+
+Windows IP Configuration
+
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   IPv4 Address. . . . . . . . . . . : 192.168.0.196
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.0.1
+```
+
+- In your project `./docker-compose.cypress.yaml`, add the IPv4 address and `:0` (EG. `192.168.0.196:0` ) to the display section under environment.
+
+```yaml
+    environment:
+      - DISPLAY=192.168.0.196:0
+```
 
 ### A note about the Cypress image
 
