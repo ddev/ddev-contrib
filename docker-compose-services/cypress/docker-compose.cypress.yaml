@@ -8,8 +8,6 @@ services:
       com.ddev.approot: ${DDEV_APPROOT}
     user: "${DDEV_UID}:${DDEV_GID}"
     tty: true
-    links:
-      - web:web
 
     environment:
       - CYPRESS_baseUrl=${DDEV_PRIMARY_URL}
