@@ -13,7 +13,7 @@ Redis Commander requires that there is a container within the project that has a
 If your redis server is not available on host `redis` on port `6379`, then you need to edit `docker-compose.redis-commander.yaml` and edit the following environment variables:
 
 * Change `REDIS_PORT` to the port your redis server is available at.
-* Change `REDIS_HOST` to the hostname your redis server is available at.
+* Change `REDIS_HOST` to `ddev-<project>-redis`.
 
 ## Installation
 
