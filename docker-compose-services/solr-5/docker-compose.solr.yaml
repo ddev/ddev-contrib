@@ -47,7 +47,6 @@ services:
       # This defines the ports the service should be accessible from at
       # sitename.ddev.site.
       - HTTP_EXPOSE=8983
-      - HTTPS_EXPOSE=8984:8983
     volumes:
       # solr core *data* is stored on the 'solr_var' or `solr_opt` docker
       # volumes depending on the version of solr.

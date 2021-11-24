@@ -70,18 +70,9 @@ the expected URL format, the Solr index may not have been created correctly. It
 is possible to access Solr directly from the host OS by loading its full URL,
 e.g. `http://myproject.ddev.site:8983`.
 
-* The brower may redirect to https://myproject.ddev.site:8983. This is a
-  default behavior in Safari. The solution is to either load the page in a
-  different browser, e.g. Firefox, or load the site from the HTTPS port:
-  https://myproject.ddev.site:8984
-* If https://myproject.ddev.site:8984 does not work make sure that the
-  `HTTPS_EXPOSE=8984` line is present in the `docker-compose.solr.yml` file,
-  per the example in this directory.
-
-Once http://myproject.ddev.site:8983 or http://myproject.ddev.site:8984 loads
+Once http://myproject.ddev.site:8983 loads
 correctly it will redirect the browser to
-http://myproject.ddev.site:8983/solr/#/ or
-https://myproject.ddev.site:8984/solr/#/, which is the main dashboard page for
+http://myproject.ddev.site:8983/solr/#/ which is the main dashboard page for
 Solr. From here it is possible to see how much memory and swap space the system
 is using.
 

@@ -22,7 +22,7 @@ services:
       # In order for the system to work, one of these must be uncommented so
       # that the test system can connect to the database.
       # - SIMPLETEST_DB=sqlite://tmp/test.sqlite
-      # - SIMPLETEST_DB=mysql://db:db@db:3306/db
+      # - SIMPLETEST_DB=mysql://ddev-<project>-db:db@db:3306/db
       #
       # Note: Do not modify the base URL value.
       - SIMPLETEST_BASE_URL=http://web

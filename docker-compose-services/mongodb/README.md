@@ -18,7 +18,7 @@ Steps to follow:
 4. In your application `.env`, set the connection string:
 
     ```
-    MONGODB_URL=mongodb://db:db@mongo:27017
+    MONGODB_URL=mongodb://db:db@ddev-<project>-mongo:27017
     MONGODB_DB=api
     ```
 
