@@ -11,7 +11,7 @@ The [rabbitmq-build](rabbitmq-build) directory contains the enabled plugins, the
 
 ## Configuration
 
-From within the container, the RabbitMQ container is reached at hostname: rabbitmq, port: 5672, so the server URL might be `amqp://rabbitmq:15672`.
+From within the container, the RabbitMQ container is reached at hostname: ddev-<projectname>-rabbitmq, port: 5672, so the server URL might be `amqp://ddev-<projectname>-rabbitmq:15672`.
 
 For more details check the connection section below.
 
@@ -30,6 +30,6 @@ The management UI can be accessed through `http://<DDEV_SITENAME>.ddev.site:1567
 You can access the RabbitMQ service through it's AMQP protocol two ways:
 
 * From the host machine: `amqp://<DDEV_SITENAME>.ddev.site:5672`
-* From docker containers on the same docker network (ddev_default): `amqp://rabbitmq:15672`
+* From docker containers on the same docker network (ddev_default): `amqp://ddev-<projectname>-rabbitmq:15672`
 
 **Originally by [@Graloth](https://github.com/Graloth)**
