@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Stop all other running projects
+## Usage: stop-other
+## Example: "ddev stop-other"
+
+# Ensure jq is installed on the host.
+command -v jq >/dev/null 2>&1 || { echo >&2 "jq is required but it's not installed. See https://stedolan.github.io/jq/download/ for installation instructions."; exit 1; }
+
+# Stop all other running projects.
+ddev stop $(ddev list --active-only -j | jq -r ".raw[].name" | grep -v $(ddev describe -j | jq -r ".raw.name"))
