@@ -42,3 +42,5 @@ ddev restart
 
 - The service name is parsed from the file name; `docker-composer.goo.yaml` assumes the service is called `goo`.
 - You can update the command variable `DISABLED_EXT` to change the disabled extension. Default is ".`disabled`"
+
+**Contributed by [@tyler36](https://github.com/tyler36)**
