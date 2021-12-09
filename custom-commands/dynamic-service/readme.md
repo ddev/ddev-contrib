@@ -27,6 +27,7 @@ Type the following command to disable the service:
 
 ```shell
 ddev service cypress disable
+ddev restart
 ```
 
 The file is renamed to `./.ddev/docker-compose.cypress.yaml.disabled`. It will no longer be read by DDEV on startup.
