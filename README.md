@@ -72,3 +72,4 @@ General information on how to do additional services and some additional example
 * [REDAXO CMS](recipes/redaxo-cms)
 * [SSH Server](recipes/sshd): Adding a "real" sshd server in web container
 * [Puppeteer Headless Chrome support](recipes/puppeteer-headless-chrome-support/README.md)
+* [Using Colima instead of Docker Desktop on macOS](recipes/clima/README.md)
