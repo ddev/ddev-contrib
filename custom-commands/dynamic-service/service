@@ -54,4 +54,5 @@ case $2 in
     ;;
 esac
 
-echo "DDEV '$1' has been ${TARGET}. Please type `ddev restart` to re-initalize and apply the changes."
+echo "DDEV '$1' has been ${TARGET}."
+ddev restart

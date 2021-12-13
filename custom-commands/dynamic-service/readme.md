@@ -27,7 +27,6 @@ Type the following command to disable the service:
 
 ```shell
 ddev service cypress disable
-ddev restart
 ```
 
 The file is renamed to `./.ddev/docker-compose.cypress.yaml.disabled`. It will no longer be read by DDEV on startup.
@@ -36,11 +35,11 @@ Type the following command to enable the service:
 
 ```shell
 ddev service cypress enable
-ddev restart
 ```
 
 ## Notes
 
+- If a service is updated, "enabled" or "disabled", DDEV will automatically restart to apply the changes.
 - The service name is parsed from the file name; `docker-composer.goo.yaml` assumes the service is called `goo`.
 - You can update the command variable `DISABLED_EXT` to change the disabled extension. Default is ".`disabled`"
 
