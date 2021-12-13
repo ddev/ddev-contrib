@@ -10,6 +10,15 @@ DISABLED_EXT="disabled"
 STATUS=null
 FILE="./.ddev/docker-compose.$1.yaml"
 
+list_services() {
+    ddev describe
+    exit 0;
+}
+
+if [[ "$1" == "status" ]] || [ -z "$1" ]; then
+    list_services
+fi
+
 if [ -f "${FILE}" ]; then
     STATUS="enabled"
 fi
@@ -24,6 +33,7 @@ if [ -z "${STATUS}" ]; then
     exit 0
 fi
 
+if
 echo "DDEV '$1' service is currently ${STATUS}."
 
 case $2 in
@@ -44,9 +54,6 @@ case $2 in
     fi
 
     mv "${FILE}" "${FILE}.${DISABLED_EXT}"
-    ;;
-    status)
-        echo $result
     ;;
     *)
         echo "Invalid argument: $2"
