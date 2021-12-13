@@ -27,7 +27,7 @@ fi
 echo "DDEV '$1' service is currently ${STATUS}."
 
 case $2 in
-    on|true|enable)
+    on|true|enable|start)
     TARGET="enabled"
     if [ "${STATUS}" = "${TARGET}" ]; then
         echo "Nothing to do"
@@ -36,7 +36,7 @@ case $2 in
 
     mv "${FILE}.${DISABLED_EXT}" "${FILE}"
     ;;
-    off|false|disable)
+    off|false|disable|stop)
     TARGET="disabled"
     if [ "${STATUS}" = "${TARGET}" ]; then
         echo "Nothing to do."
