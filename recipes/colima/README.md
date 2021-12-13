@@ -28,3 +28,5 @@ In day-to-day use, Colima is very similar to how WSL2 works on Windows.
 
 - Instead of using Mutagen, colima can be started with the `--mount` flag, such as with `--mount $HOME/projects:w` to mount the projects folder in your home directory read-write. However, colima currently uses sshfs for mounts and this is not suitable for many or most PHP or Node projects.
 - DDEV can also be installed _inside_ the virtual machine. This is identical to how WSL2 installations are managed. A notable limitation is that ddev cannot install TLS certificates from `mkcert` in macOS browsers. Consider this setup experimental, such as for testing out PHPStorm's new remote develompment features.
+
+**Contributed by [@deviantintegral](https://github.com/deviantintegral)**
