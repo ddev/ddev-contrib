@@ -1,0 +1,65 @@
+#!/bin/bash
+
+## Description: This allows DDEV services activated via docker-compose to be enabled/disabled
+## Usage: service [service-name] [status]
+## Example: To enable a service: "ddev service postgres enable", "ddev service postgres on"
+## Example: To disable a service: "ddev service postgres disable", "ddev service postgres off"
+
+
+DISABLED_EXT="disabled"
+STATUS=null
+FILE="./.ddev/docker-compose.$1.yaml"
+
+list_services() {
+    ddev describe
+    exit 0;
+}
+
+if [[ "$1" == "status" ]] || [ -z "$1" ]; then
+    list_services
+fi
+
+if [ -f "${FILE}" ]; then
+    STATUS="enabled"
+fi
+
+if [ -f "${FILE}.${DISABLED_EXT}" ]; then
+    STATUS="disabled"
+fi
+
+if [ -z "${STATUS}" ]; then
+    echo "DDEV '$1' was not detected"
+    echo "Are you sure you have ${FILE} file?"
+    exit 0
+fi
+
+if
+echo "DDEV '$1' service is currently ${STATUS}."
+
+case $2 in
+    on|true|enable|start)
+    TARGET="enabled"
+    if [ "${STATUS}" = "${TARGET}" ]; then
+        echo "Nothing to do"
+        exit 0
+    fi
+
+    mv "${FILE}.${DISABLED_EXT}" "${FILE}"
+    ;;
+    off|false|disable|stop)
+    TARGET="disabled"
+    if [ "${STATUS}" = "${TARGET}" ]; then
+        echo "Nothing to do."
+        exit 0
+    fi
+
+    mv "${FILE}" "${FILE}.${DISABLED_EXT}"
+    ;;
+    *)
+        echo "Invalid argument: $2"
+        exit 0;
+    ;;
+esac
+
+echo "DDEV '$1' has been ${TARGET}."
+ddev restart

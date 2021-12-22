@@ -28,6 +28,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [Build Drupal theme assets with Gulp](custom-commands/gulp) -- with minor modifications, this approach will work for other frameworks (WordPress, etc.) and other front-end build tools.
 * [Run Laravel `tinker` or Drupal's `drush php` with a single command](custom-commands/tinker)
 * [Stop all running projects except the current](custom-commands/stop-other)
+* [Dynamically enable / disable a service](custom-commands/dynamic-service)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
