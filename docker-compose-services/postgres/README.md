@@ -32,8 +32,8 @@ When using multiple project with PostgreSQL support, remember to update your `do
 
 Two new `ddev` commands are provided:
 
-* `ddev pgsql_export` : Use `pg_dump` to export `db` to `.ddev/pgsql-db/postgresql.db.sql`
-* `ddev pgsql_import` : Use `pgsql` to import `.ddev/pgsql-db/postgresql.db.sql` into `db` - Note that this must be executed with an empty database.
+* `ddev pgsql_export` : Use `pg_dump` to export `db` to `.ddev/import-db/postgresql.db.sql`
+* `ddev pgsql_import` : Use `pgsql` to import `.ddev/import-db/postgresql.db.sql` into `db` - Note that this must be executed with an empty database.
 
 Example `config.yaml` hooks configuration to automatically import/export the `db` table:
 
@@ -50,7 +50,7 @@ hooks:
 ```
 
 There are also another non-plain-text formats that `pg_dump` can generate, and you might need to work with them. If that's the case, there is also
-a `ddev pg_restore` command that will restore `.ddev/pgsql-db/postgresql.db.dump` into `db`.
+a `ddev pg_restore` command that will restore `.ddev/import-db/postgresql.db.dump` into `db`.
 
 ## PostGIS
 
