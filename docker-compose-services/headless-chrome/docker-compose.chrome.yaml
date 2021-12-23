@@ -2,8 +2,7 @@
 version: '3.6'
 services:
     chrome:
-        # swap this for an isholgueras image when https://github.com/isholgueras/chrome-headless/pull/2 goes in
-        image:  randyfay/chrome-headless:chromium-isholgueras
+        image:  isholgueras/chrome-headless:latest
         restart: unless-stopped
         container_name: ddev-${DDEV_SITENAME}-chrome
         labels:
