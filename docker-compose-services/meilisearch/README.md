@@ -1,5 +1,6 @@
 # Meilisearch
 
+[Meilisearch](https://www.meilisearch.com/) is an open source search-engine and can be used in ddev to handle searchindexes for the Drupal search_api.
 Using official meilisearch v0.20.0 container [meilisearch](https://hub.docker.com/r/getmeili/meilisearch).
 
 ## Installation
@@ -18,5 +19,7 @@ You can use `ddev logs -s meilisearch` to investigate what the meilissearch daem
 
 ## Additional Resources
 
-* https://www.drupal.org/project/search_api_meilisearch
-* https://docs.meilisearch.com/learn/getting_started/quick_start.html
+- https://www.drupal.org/project/search_api_meilisearch
+- https://docs.meilisearch.com/learn/getting_started/quick_start.html
+
+**Contributed by [@thilohille](https://github.com/thilohille)**
