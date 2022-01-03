@@ -8,7 +8,7 @@ Copy [docker-compose.meilisearch.yaml](docker-compose.meilisearch.yaml) to your 
 
 ## Configuration
 
-From within the container, the meilisearch container is reached at hostname: ddev-<projectname>-meilisearch, port: 7700, so the server URL might be `http://ddev-<projectname>-meilisearch:7700`.
+From within the container, the meilisearch container is reached at hostname: ddev-\<projectname\>-meilisearch, port: 7700, so the server URL might be `http://ddev-<projectname>-meilisearch:7700`.
 
 ## Connection
 
