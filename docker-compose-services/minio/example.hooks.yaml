@@ -1,0 +1,14 @@
+# Many ddev commands can be extended to run tasks before or after the
+# ddev command is executed, for example "post-start", "post-import-db",
+# "pre-composer", "post-composer"
+# See https://ddev.readthedocs.io/en/stable/users/extending-commands/ for more
+# information on the commands that can be extended and the tasks you can define
+# for them. Example:
+hooks:
+  post-start:
+    - exec: "mc alias set local http://localhost:9000 minio minio123"
+      service: minio
+    - exec: "mc mb minio/default -p"
+      service: minio
+    - exec: "mc policy set download minio/default"
+      service: minio

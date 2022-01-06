@@ -1,0 +1,36 @@
+version: '3.6'
+
+services:
+  minio:
+    container_name: ddev-${DDEV_SITENAME}-minio
+    build:
+      context: './minio-build'
+    restart: always
+    ports:
+      - 9000
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=9001:9000
+      - HTTPS_EXPOSE=9000:9000
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio123
+    command: server /data
+    volumes:
+      - type: "volume"
+        source: minio
+        target: "/data"
+        volume:
+          nocopy: true
+      - type: "bind"
+        source: "."
+        target: "/mnt/ddev_config"
+  web:
+    links:
+      - minio:$DDEV_HOSTNAME
+
+volumes:
+  minio:
+    name: "${DDEV_SITENAME}-minio"
