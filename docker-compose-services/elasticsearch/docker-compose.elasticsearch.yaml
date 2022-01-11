@@ -4,6 +4,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-elasticsearch
     hostname: ${DDEV_SITENAME}-elasticsearch
     image: elasticsearch:7.16.2
+    networks: [default, ddev_default]
     expose:
       - "9200"
       - "9300"
@@ -21,9 +22,6 @@ services:
     volumes:
       - elasticsearch:/usr/share/elasticsearch/data
       - ".:/mnt/ddev_config"
-  web:
-    links:
-      - elasticsearch:elasticsearch
 
 volumes:
   elasticsearch:

@@ -6,6 +6,7 @@ services:
   redis:
     container_name: ddev-${DDEV_SITENAME}-redis
     image: redis:4
+    networks: [default, ddev_default]
     ports:
       - 6379
     labels:
@@ -18,5 +19,3 @@ services:
   web:
     depends_on:
       - redis
-    links:
-      - redis:redis

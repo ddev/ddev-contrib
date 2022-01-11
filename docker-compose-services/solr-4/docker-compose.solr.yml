@@ -7,6 +7,7 @@ services:
     # Name of container using standard ddev convention.
     container_name: ddev-${DDEV_SITENAME}-solr
     image: geerlingguy/solr:4.10.4
+    networks: [default, ddev_default]
     restart: "always"
     # Solr is served from this port inside the container.
     ports:
@@ -39,12 +40,6 @@ services:
     external_links:
       - "ddev-router:${DDEV_SITENAME}.${DDEV_TLD}"
 
-  # This links the Solr service to the web service defined in the main
-  # docker-compose.yml, allowing applications running inside the web container to
-  # access the Solr service at http://solr:8983
-  web:
-    links:
-      - solr:solr
 volumes:
   # solr is a persistent Docker volume for solr data
   # The persistent volume should have the same name as the service so it can be deleted

@@ -3,6 +3,7 @@ version: '3.6'
 services:
   solr:
     container_name: ddev-${DDEV_SITENAME}-solr
+    networks: [default, ddev_default]
     image: typo3solr/ext-solr:10.0.1
     restart: "no"
     expose:
@@ -19,9 +20,6 @@ services:
       # If you uncomment it and want to flush your data you have to `ddev stop` and then
       # `docker volume rm ddev-<projectname>_solrdata` to destroy it.
 #      - solr:/var/solr
-  web:
-    links:
-      - solr
 
 volumes:
   # solr is a persistent Docker volume for this project's solr data

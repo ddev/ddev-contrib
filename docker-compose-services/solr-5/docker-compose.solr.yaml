@@ -32,6 +32,7 @@ services:
     # README: https://github.com/docker-solr/docker-solr/blob/master/README.md
     # It's almost impossible to work with it if you don't read the docs there
     image: solr:5
+    networks: [default, ddev_default]
     restart: "no"
     # Solr is served from this port inside the container.
     ports:
@@ -73,12 +74,6 @@ services:
     external_links:
       - "ddev-router:${DDEV_SITENAME}.${DDEV_TLD}"
 
-  # This links the Solr service to the web service defined in the main
-  # docker-compose.yml, allowing applications running inside the web container to
-  # access the Solr service at http://solr:8983
-  web:
-    links:
-      - solr:solr
 volumes:
   # solr_var and solr_opt are a persistent Docker volumes for solr data.
   # They are not automatically deleted, so you may need to delete them on your

@@ -3,6 +3,7 @@ services:
   postgres:
     container_name: ddev-${DDEV_SITENAME}-postgres
     image: postgres:13.4
+    networks: [default, ddev_default]
     ports:
       - 32784:5432
     environment:
@@ -23,9 +24,6 @@ services:
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
-  web:
-    links:
-      - postgres:postgres
 
 volumes:
   postgres:

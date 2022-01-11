@@ -3,3 +3,8 @@ services:
   web:
     external_links:
     - "ddev-router:project2.ddev.site"
+
+  # if you want a custom service to be reachable cross-project, add it 
+  # to the inter-project network "ddev":
+  my_service:
+    networks: [default, ddev_default]

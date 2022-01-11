@@ -3,6 +3,7 @@ version: '3.6'
 services:
   portainer:
     image: portainer/portainer:latest
+    networks: [default, ddev_default]
     expose:
       - "9000"
     environment:
@@ -23,8 +24,3 @@ services:
       - SYS_ADMIN
 volumes:
   portainer_data:
-
-networks:
-  default:
-    external:
-      name: ddev_default

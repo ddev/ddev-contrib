@@ -4,6 +4,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-rabbitmq
     hostname: ${DDEV_SITENAME}-rabbitmq
     image: "rabbitmq:3-management"
+    networks: [default, ddev_default]
     ports:
       - "15672:15672"
       - "5672:5672"
@@ -18,8 +19,5 @@ services:
     volumes:
       - "./rabbitmq-build/enabled_plugins:/etc/rabbitmq/enabled_plugins"
       - ".:/mnt/ddev_config"
-  web:
-    links:
-      - rabbitmq:rabbitmq
 volumes:
   rabbitmq:

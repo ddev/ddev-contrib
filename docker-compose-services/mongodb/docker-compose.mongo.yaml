@@ -24,14 +24,12 @@ services:
   mongo-express:
     container_name: ddev-${DDEV_SITENAME}-mongo-express
     image: mongo-express:0.49
+    networks: [default, ddev_default]
     restart: "no"
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: ${DDEV_APPROOT}
       com.ddev.platform: ddev
-
-    links:
-    - mongo:mongo
     expose:
     - "8081"
     environment:
@@ -39,10 +37,6 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: db
       ME_CONFIG_MONGODB_ADMINPASSWORD: db
       HTTP_EXPOSE: "8081:8081"
-
-  web:
-    links:
-    - mongo:mongo
 
 volumes:
   mongo:

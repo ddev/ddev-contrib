@@ -9,6 +9,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-varnish
     # Use "varnish:latest" to get the latest stable image.
     image: varnish:6.4
+    networks: [default, ddev_default]
     # These labels ensure this service is discoverable by ddev.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
@@ -28,8 +29,6 @@ services:
       # your default.vcl should be.
       - "./varnish:/etc/varnish"
       - ".:/mnt/ddev_config"
-    links:
-      - web:web
   # This is the second half of the trick that puts varnish "in front of" the web
   # container, just by switching the names.
   web:

@@ -4,6 +4,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-redis-commander
     hostname: ${DDEV_SITENAME}-redis-commander
     image: rediscommander/redis-commander
+    networks: [default, ddev_default]
     restart: always
     ports:
       - 1358
@@ -19,6 +20,3 @@ services:
       - PORT=1358
     volumes:
       - ".:/mnt/ddev_config"
-  redis:
-    links:
-      - redis-commander:redis-commander

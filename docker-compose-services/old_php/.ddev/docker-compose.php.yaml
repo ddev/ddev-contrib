@@ -7,6 +7,7 @@ services:
 #    image: devilbox/php-fpm:5.3-work
 #    image: devilbox/php-fpm:5.4-work
 #    image: devilbox/php-fpm:5.5-work
+    networks: [default, ddev_default]
 
     restart: "no"
     ports:
@@ -26,8 +27,6 @@ services:
       - IS_DDEV_PROJECT=true
 
   web:
-    links:
-    - php:php
     healthcheck:
       # Use "true" as the healthcheck to ignore its result
       test: ["CMD", "true"]

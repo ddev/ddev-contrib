@@ -20,6 +20,7 @@ version: '3.6'
 services:
   solr1:
     image: solr:8
+    networks: [default, ddev_default]
     container_name: ddev-${DDEV_SITENAME}-solr1
     expose:
       - 8983
@@ -45,6 +46,7 @@ services:
 
   solr2:
     image: solr:8
+    networks: [default, ddev_default]
     container_name: ddev-${DDEV_SITENAME}-solr2
     expose:
       - 8984
@@ -68,6 +70,7 @@ services:
 
   solr3:
     image: solr:8
+    networks: [default, ddev_default]
     container_name: ddev-${DDEV_SITENAME}-solr3
     expose:
       - 8985
@@ -91,6 +94,7 @@ services:
 
   zoo:
     image: bitnami/zookeeper:3.7
+    networks: [default, ddev_default]
     container_name: ddev-${DDEV_SITENAME}-zoo
     hostname: ddev-${DDEV_SITENAME}-zoo
     expose:

@@ -4,6 +4,7 @@ services:
     container_name: ddev-${DDEV_PROJECT}-kibana
     hostname: ${DDEV_PROJECT}-kibana
     image: docker.elastic.co/kibana/kibana:7.10.1
+    networks: [default, ddev_default]
     restart: "no"
     expose:
       - '5601'

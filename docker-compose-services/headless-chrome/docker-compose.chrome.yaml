@@ -5,6 +5,7 @@ services:
         image:  isholgueras/chrome-headless:latest
         restart: unless-stopped
         container_name: ddev-${DDEV_SITENAME}-chrome
+        networks: [default, ddev_default]
         labels:
             com.ddev.site-name: ${DDEV_SITENAME}
             com.ddev.approot: $DDEV_APPROOT

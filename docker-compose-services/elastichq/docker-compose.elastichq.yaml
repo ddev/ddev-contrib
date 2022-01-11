@@ -4,6 +4,7 @@ services:
     container_name: ddev-${DDEV_SITENAME}-elastichq
     hostname: ${DDEV_SITENAME}-elastichq
     image: elastichq/elasticsearch-hq
+    networks: [default, ddev_default]
     restart: always
     expose:
       - "5000"
@@ -17,6 +18,3 @@ services:
       - HQ_DEFAULT_URL=http://ddev-${DDEV_PROJECT}-elasticsearch:9200
     volumes:
       - ".:/mnt/ddev_config"
-  elasticsearch:
-    links:
-      - elastichq:elastichq

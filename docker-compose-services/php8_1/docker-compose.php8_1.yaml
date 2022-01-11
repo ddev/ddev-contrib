@@ -3,6 +3,7 @@ version: '3.6'
 services:
   php:
     container_name: ddev-${DDEV_SITENAME}-php
+    networks: [default, ddev_default]
     restart: "no"
     # On Linux may need to to `export UID` in your environment
     # or add UID in project's .ddev/.env
@@ -11,8 +12,6 @@ services:
       context: './php-build'
       args:
         BASE_IMAGE: php:8.1.0alpha3-fpm-buster
-    links:
-      - db:db
     expose:
       - 9000
     labels:
