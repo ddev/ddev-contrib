@@ -2,7 +2,7 @@
 
 ## Description: Launch a browser and login to the current Drupal project.
 ## Usage: login [--name=USER]
-## Example: "ddev login" or "ddev login --name=username"
+## Example: "ddev login" or "ddev login --name=username" or "ddev login --uid=1"
 
 FULLURL=${DDEV_PRIMARY_URL}
 HTTPS=""
