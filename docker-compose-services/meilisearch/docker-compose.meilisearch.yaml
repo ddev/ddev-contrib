@@ -1,0 +1,30 @@
+version: '3.6'
+services:
+  meilisearch:
+    container_name: ddev-${DDEV_SITENAME}-meilisearch
+    image: getmeili/meilisearch:v0.20.0
+    hostname: ${DDEV_SITENAME}-meilisearch
+    expose:
+      - "7700"
+    environment:
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=7700:7700
+    volumes:
+      - type: "volume"
+        source: meilisearch
+        target: "/data.ms"
+        volume:
+          nocopy: true
+      - type: "bind"
+        source: "."
+        target: "/mnt/ddev_config"
+      - ddev-global-cache:/mnt/ddev-global-cache
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+  web:
+    links:
+      - meilisearch:meilisearch
+
+volumes:
+  meilisearch:
