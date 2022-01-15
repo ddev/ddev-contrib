@@ -52,6 +52,37 @@ hooks:
 There are also another non-plain-text formats that `pg_dump` can generate, and you might need to work with them. If that's the case, there is also
 a `ddev pg_restore` command that will restore `.ddev/import-db/postgresql.db.dump` into `db`.
 
+## Multiple databases
+
+* By default, this recipe adds a single database called `db`. But it's possible to create additional databases when you first initialize this service.
+
+* The offical way to add multiple databases is outlined on the [docker image](https://hub.docker.com/_/postgres) under the "Initialization scripts"
+
+EG. Lets create a second database called `testing`.
+
+* Add `./pgsql-db:/docker-entrypoint-initdb.d` to the `volumes` section in to `./.ddev/docker-composer.postgres.yaml`
+
+  ```yaml
+      volumes:
+        - "./pgsql-db:/docker-entrypoint-initdb.d"
+  ```
+
+* Create `./.ddev/pgsql-db` folder if it doesn't already exist
+
+  ```bash
+  mkdir ./.ddev/pgsql-db -p
+  ```
+
+* Create a file called `./.ddev/pgsql-db/create_testing_database.sql` and add the following:
+
+  ```sql
+  CREATE DATABASE testing
+  ```
+
+* Note: All *.sql,*.sql.gz, & *.sh files in `./.ddev/pgsql-db` will be executed so you can create multiple database or even seed data.
+
+* Note: These files "are only run if you start the container with a data directory that is empty". IE. The first time you start the project. For exisiting projects, add a hook to [import a sql dump if the database is empty](https://github.com/drud/ddev-contrib/tree/master/hook-examples/import-db-if-empty), or run `ddev delete` to re-initialize the project. Remember to backup the database first (Eg. `ddev pgsql_export`).
+
 ## PostGIS
 
 The `postgres` image support `postgis`, but you will need to create the extension before using it:
