@@ -29,6 +29,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [Run Laravel `tinker` or Drupal's `drush php` with a single command](custom-commands/tinker)
 * [Stop all running projects except the current](custom-commands/stop-other)
 * [Dynamically enable / disable a service](custom-commands/dynamic-service)
+* [Automatically open browser and login to Drupal](custom-commands/drupal-login)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
