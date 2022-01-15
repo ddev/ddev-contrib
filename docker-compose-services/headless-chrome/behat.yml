@@ -9,7 +9,7 @@ default:
     extensions:
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
         Drupal\MinkExtension:
-            base_url: https://<PROJECTNAME>>.ddev.site
+            base_url: https://<PROJECTNAME>.ddev.site
             ajax_timeout: 30
             # goutte: ~
             browser_name: chrome
