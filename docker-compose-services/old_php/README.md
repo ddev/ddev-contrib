@@ -54,6 +54,9 @@ Now, if you're paranoid, do a `ddev restart` (probably unnecessary) and begin to
 
 The site you've set up can probably be used as a migration source, can be archived, converted to html with a sitesucker, etc.
 
+## Configure PHP settings
+You cannot set PHP settings in .htaccess when running php-fpm. But PHP will load settings from .user.ini. This is important for enabling Xdebug, because the .ddev/php/xdebug.ini that normally controls Xdebug settings is not used by old_php.
+
 ## Options
 
 You may need another version of PHP. As noted in [docker-compose.php.yaml](.ddev/docker-compose.php.yaml), you can easily use 5.3, 5.4, or 5.5.
