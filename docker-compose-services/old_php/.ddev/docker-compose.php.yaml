@@ -3,10 +3,10 @@ version: '3.6'
 services:
   php:
     container_name: ddev-${DDEV_SITENAME}-php
-    image: devilbox/php-fpm-5.2
-#    image: devilbox/php-fpm-5.3
-#    image: devilbox/php-fpm:5.4-prod
-#    image: devilbox/php-fpm:5.5-prod
+    image: devilbox/php-fpm:5.2-work
+#    image: devilbox/php-fpm:5.3-work
+#    image: devilbox/php-fpm:5.4-work
+#    image: devilbox/php-fpm:5.5-work
 
     restart: "no"
     ports:
@@ -21,6 +21,9 @@ services:
       consistency: cached
     - ".:/mnt/ddev_config:ro"
     - ddev-global-cache:/mnt/ddev-global-cache
+    environment:
+      - DDEV_PHP_VERSION
+      - IS_DDEV_PROJECT=true
 
   web:
     links:
