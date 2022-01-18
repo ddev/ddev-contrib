@@ -1,6 +1,6 @@
 # Redis
 
-This recipe adds a Redis container to a project.
+This recipe adds a Redis container to a project. See the [offical `redis` image](https://hub.docker.com/_/redis) page for supported versions and help.
 
 ## Installation
 
