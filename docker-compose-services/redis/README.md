@@ -31,7 +31,7 @@ services:
     image: redis:6
 ```
 
-* To configure the redis service config file as needed: `.ddev/redis/redis.conf`
+* The redis service can be configured in the following file as needed: `.ddev/redis/redis.conf`
 * Start (or restart) DDEV to have the service initialized: `ddev start` (`ddev restart`)
 * Your redis instance is available **inside the containers** at `ddev-<DDEV_SITENAME>-redis:6379`:
   * Host: `ddev-${DDEV_SITENAME}-redis`
@@ -66,7 +66,7 @@ Frameworks, such as Laravel, require configuration to use the redis service.
 
 ### Laravel
 
-To configure Laravel to use the redis cache driver.
+Laravel can be configured to use the redis service as the cache driver.
 
 * Update the `.env` file.
 
@@ -78,6 +78,10 @@ REDIS_PORT=6379
 ```
 
 * You can check your `REDIS_HOST` by running `ddev describe`; under the redis section, look for `InDocker` line.
+
+```shell
+$ ddev describe
+```
 
 * Clear all caches with the following command:
 
