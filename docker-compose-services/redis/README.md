@@ -60,4 +60,34 @@ $ ddev describe
 │          │      │ Host: localhost:54710                   │                       │
 ```
 
+## Examples
+
+Frameworks, such as Laravel, require configuration to use the redis service.
+
+### Laravel
+
+To configure Laravel to use the redis cache driver.
+
+* Update the `.env` file.
+
+```env
+CACHE_DRIVER=redis
+REDIS_HOST=ddev-<DDEV_SITENAME>:6379
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+```
+
+* You can check your `REDIS_HOST` by running `ddev describe`; under the redis section, look for `InDocker` line.
+
+* Clear all caches with the following command:
+
+```shell
+$ ddev artisan optimize:clear
+Compiled views cleared!
+Application cache cleared!
+Route cache cleared!
+Configuration cache cleared!
+Compiled services and packages files removed!
+Caches cleared successfully!
+```
 **Contributed by [@gormus](https://github.com/gormus)**
