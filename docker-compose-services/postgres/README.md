@@ -4,7 +4,7 @@ Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided
 
 ## Installation
 
-1. Copy `docker-compose.postgres.yaml` to your into the `.ddev` folder in your project
+1. Copy `docker-compose.postgres.yaml` into the `.ddev` folder in your project
 2. Copy the full `commands/postgres` directory to your project's `.ddev/commands` directory. For example `cp -r commands/postgres /.ddev/commands`
 3. *(optional)* Update your config.yaml file to support auto-import/auto-export (see below)
 
