@@ -60,10 +60,20 @@ $ ddev describe
 │          │      │ Host: localhost:54710                   │                       │
 ```
 
+This example shows:
+
+* From the webserver point-of-view:
+  * REDIS HOST: ddev-example-redis
+  * REDIS PORT: 6379
+
+* From the host Operating System point-of-view:
+  * REDIS HOST: localhost
+  * REDIS PORT: 54710
+
 ## Framework Quickstarts
 
 * Frameworks require configuration to use the redis service.
-* You need to replace `<DDEV_SITENAME>` values with your project's site name. Hint: `ddev describe`
+* You need to replace `<REDIS_HOST>` values with your project's redis host. Hint: `ddev describe`
 
 ## Drupal
 
@@ -80,12 +90,12 @@ $ ddev drush en redis
  [success] Successfully enabled: redis
 ```
 
-* add setting information to `web/sites/default/settings.ddev.php`; remember to update '<DDEV_SITENAME>'
+* add setting information to `web/sites/default/settings.ddev.php`; remember to update `<REDIS_HOST>`
 
 ```php
 # DDEV SERVICE: Redis
 $settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
-$settings['redis.connection']['host']      = '<DDEV_SITENAME>';  // Your Redis instance hostname.
+$settings['redis.connection']['host']      = '<REDIS_HOST>';  // Your Redis instance hostname.
 $settings['cache']['default'] = 'cache.backend.redis';
 ```
 
@@ -101,11 +111,11 @@ ddev drush cr
 
 Laravel can be configured to use the redis service as the cache driver.
 
-* Update the `.env` file.
+* Update the `.env` file; remember to update `<REDIS_HOST>`
 
 ```env
 CACHE_DRIVER=redis
-REDIS_HOST=ddev-<DDEV_SITENAME>:6379
+REDIS_HOST=<REDIS_HOST>:6379
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
