@@ -60,9 +60,42 @@ $ ddev describe
 │          │      │ Host: localhost:54710                   │                       │
 ```
 
-## Examples
+## Framework Quickstarts
 
-Frameworks, such as Laravel, require configuration to use the redis service.
+* Frameworks require configuration to use the redis service.
+* You need to replace `<DDEV_SITENAME>` values with your project's site name. Hint: `ddev describe`
+
+## Drupal
+
+* install the [`redis` module](https://www.drupal.org/project/redis)
+
+```shell
+ddev composer require drupal/redis
+```
+
+* enable the module via the website (`/admin/modules`) or via `drush` with the following command
+
+```shell
+$ ddev drush en redis
+ [success] Successfully enabled: redis
+```
+
+* add setting information to `web/sites/default/settings.ddev.php`; remember to update '<DDEV_SITENAME>'
+
+```php
+# DDEV SERVICE: Redis
+$settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
+$settings['redis.connection']['host']      = '<DDEV_SITENAME>';  // Your Redis instance hostname.
+$settings['cache']['default'] = 'cache.backend.redis';
+```
+
+* clear Drupal caches with `drush`
+
+```shell
+ddev drush cr
+```
+
+* You can view redis reports at the following path `/admin/reports/redis`
 
 ### Laravel
 
@@ -80,7 +113,7 @@ REDIS_PORT=6379
 * You can check your `REDIS_HOST` by running `ddev describe`; under the redis section, look for `InDocker` line.
 
 ```shell
-$ ddev describe
+ddev describe
 ```
 
 * Clear all caches with the following command:
@@ -94,4 +127,5 @@ Configuration cache cleared!
 Compiled services and packages files removed!
 Caches cleared successfully!
 ```
+
 **Contributed by [@gormus](https://github.com/gormus)**
