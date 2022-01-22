@@ -1,11 +1,15 @@
-# Puppeteer Headless Chrome support
+# Puppeteer Chromium support
+
+> ⚠️ That recipe was updated to be compatible with latest ddev web container images (1.6 and upper) and Apple Silicon M1 architecture.
 
 Npm packages like codeceptjs or critical-css-webpack-plugin which depend on [Puppeteer](https://github.com/puppeteer/puppeteer/) will not be able to run from within the web container because of some missing Linux libraries.
 
-You can add Puppeteer support by setting the following extra Debian packages to your ddev `config.yaml` file:
+You can add Puppeteer support to your ddev project by adding the chromium package to your `config.yaml` file and let Puppeteer use it instead of the bundled one:
 
 ```yaml
-webimage_extra_packages: [gconf-service, libasound2, libatk1.0-0, libcairo2, libgconf-2-4, libgdk-pixbuf2.0-0, libgtk-3-0, libnspr4, libpango-1.0-0, libpangocairo-1.0-0, libx11-xcb1, libxcomposite1, libxcursor1, libxdamage1, libxfixes3, libxi6, libxrandr2, libxrender1, libxss1, libxtst6, fonts-liberation, libappindicator1, libnss3, xdg-utils]
+webimage_extra_packages: [chromium]
+web_environment:
+- PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 ```
 
 ## Puppeteer CSS Demo
@@ -24,11 +28,11 @@ For the root of the [demo](demo/) folder, start the ddev environment:
 ddev start
 ```
 
-The provided `.ddev/config.yaml` is pre-configured to include the needed webimage_extra_packages in order to run the critical-css-webpack-plugin.
+The provided `.ddev/config.yaml` is pre-configured to include the needed `webimage_extra_packages` in order to run the `critical-css-webpack-plugin`.
 
 ### Installation
 
-This project comes with a custom yarn command for convenience. To install the node dependencies, run `ddev yarn install`
+To install the node dependencies, run `ddev yarn install`
 
 ### Generate the webpack assets and the critical CSS file
 
