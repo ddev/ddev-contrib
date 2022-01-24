@@ -49,16 +49,6 @@ ddev redis-cli
 
 * Run `ddev describe` to check the status and ports used by the service.
 
-```shell
-$ ddev describe
-...
-├──────────┬──────┬─────────────────────────────────────────┬───────────────────────┤
-│ SERVICE  │ STAT │ URL/PORT                                │ INFO                  │
-├──────────┼──────┼─────────────────────────────────────────┼───────────────────────┤
-│ redis    │ OK   │ https://example.ddev.site               │                       │
-│          │      │ InDocker: ddev-example-redis:6379       │                       │
-│          │      │ Host: localhost:54710                   │                       │
-```
 
 ## Framework Quickstarts
 
@@ -73,19 +63,11 @@ $ ddev describe
 ddev composer require drupal/redis
 ```
 
-* enable the module via the website (`/admin/modules`) or via `drush` with the following command
-
-```shell
-$ ddev drush en redis
- [success] Successfully enabled: redis
-```
-
-* add setting information to `web/sites/default/settings.ddev.php`; remember to update '<DDEV_SITENAME>'
+* add setting information to `web/sites/default/settings.local.php`; remember to update '<DDEV_SITENAME>'
 
 ```php
 # DDEV SERVICE: Redis
-$settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
-$settings['redis.connection']['host']      = '<DDEV_SITENAME>';  // Your Redis instance hostname.
+$settings['redis.connection']['host']      = 'ddev-${DDEV_SITENAME}-redis';  // Your Redis instance hostname.
 $settings['cache']['default'] = 'cache.backend.redis';
 ```
 
@@ -95,7 +77,7 @@ $settings['cache']['default'] = 'cache.backend.redis';
 ddev drush cr
 ```
 
-* You can view redis reports at the following path `/admin/reports/redis`
+* If the module is enabled, you can view redis reports at the following path `/admin/reports/redis`
 
 ### Laravel
 
