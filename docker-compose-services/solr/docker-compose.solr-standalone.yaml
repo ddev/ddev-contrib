@@ -1,7 +1,7 @@
 # DDev Solr Cloud service file.
 #
 # This is a variation of docker-compose.solr.yaml that only creates one Solr node and runs a single zookeeper in
-# standalone mode. This setup is not recommended for a production environment but requires less ressources in a
+# standalone mode. This setup is not recommended for a production environment but requires less resources in a
 # development environment.
 #
 # To access Solr after it is installed:
@@ -50,7 +50,7 @@ services:
     command: bash -c "docker-entrypoint.sh solr zk cp file:/mnt/ddev_config/solr/security.json zk:/security.json && exec solr-foreground"
 
   zoo:
-    image: bitnami/zookeeper:3.7
+    image: zookeeper:3.7
     container_name: ddev-${DDEV_SITENAME}-zoo
     hostname: ddev-${DDEV_SITENAME}-zoo
     expose:
@@ -62,12 +62,13 @@ services:
       # The pre-trained OpenNLP models require a much bigger buffer.
       JVMFLAGS: -Djute.maxbuffer=50000000
       ZOO_MY_ID: 1
-      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo1:2888:3888
+      ZOO_SERVERS: server.1=ddev-${DDEV_SITENAME}-zoo:2888:3888
       ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
       ALLOW_ANONYMOUS_LOGIN: "yes"
     volumes:
       - .:/mnt/ddev_config
-      - zoo:/bitnami/zookeeper
+      - zoo:/data
+      - zoolog:/datalog
 
   # This links the Solr service to the web service defined in the main
   # docker-compose.yml, allowing applications running inside the web container to
@@ -79,3 +80,4 @@ services:
 volumes:
   solr:
   zoo:
+  zoolog:

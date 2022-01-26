@@ -90,7 +90,7 @@ services:
       - solr3:/var/solr
 
   zoo:
-    image: bitnami/zookeeper:3.7
+    image: zookeeper:3.7
     container_name: ddev-${DDEV_SITENAME}-zoo
     hostname: ddev-${DDEV_SITENAME}-zoo
     expose:
@@ -107,7 +107,8 @@ services:
       ALLOW_ANONYMOUS_LOGIN: "yes"
     volumes:
       - .:/mnt/ddev_config
-      - zoo:/bitnami/zookeeper
+      - zoo:/data
+      - zoolog:/datalog
 
   # This links the Solr service to the web service defined in the main
   # docker-compose.yml, allowing applications running inside the web container to
@@ -121,3 +122,4 @@ volumes:
   solr2:
   solr3:
   zoo:
+  zoolog:
