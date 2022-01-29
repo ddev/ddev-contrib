@@ -1,5 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
-var CriticalCssPlugin = require('critical-css-webpack-plugin');
+var CriticalCssPlugin = require('html-critical-webpack-plugin');
 
 const sane = require("sane");
 const path = require("path");

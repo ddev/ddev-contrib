@@ -1,15 +1,28 @@
 # Puppeteer Chromium support
 
-> ⚠️ That recipe was updated to be compatible with latest ddev web container images (1.6 and upper) and Apple Silicon M1 architecture.
+> ⚠️ That recipe has been updated to be compatible with latest ddev web container images (1.6 and upper) and Apple Silicon M1 architecture.
 
-Npm packages like codeceptjs or critical-css-webpack-plugin which depend on [Puppeteer](https://github.com/puppeteer/puppeteer/) will not be able to run from within the web container because of some missing Linux libraries.
+Npm packages like `codeceptjs` or `html-critical-webpack-plugin` which depend on [Puppeteer](https://github.com/puppeteer/puppeteer/) will not be able to launch the bundled chromium binary from within the web container because of some missing Linux libraries.
 
-You can add Puppeteer support to your ddev project by adding the chromium package to your `config.yaml` file and let Puppeteer use it instead of the bundled one:
+Furthermore, for now, the bundled chromium version will not run on Apple Silicon M1 architecture. This recipe provides a workaround to use a native chromium package instead of the one provided by Puppeteer.
+
+You can add chromium support to your ddev project by adding the following extra Debian packages to your `config.yaml` file:
 
 ```yaml
-webimage_extra_packages: [chromium]
+webimage_extra_packages: [gconf-service, libasound2, libatk1.0-0, libcairo2, libgconf-2-4,
+  libgdk-pixbuf2.0-0, libgtk-3-0, libnspr4, libpango-1.0-0, libpangocairo-1.0-0, libx11-xcb1,
+  libxcomposite1, libxcursor1, libxdamage1, libxfixes3, libxi6, libxrandr2, libxrender1,
+  libxss1, libxtst6, fonts-liberation, libappindicator1, libnss3, xdg-utils]
+```
+
+For Apple Silicon M1 support, you will have to override that configuration by adding a `config.m1.yaml` file in your ddev folder along with the `config.yaml` one with the following content:
+
+```yaml
+webimage_extra_packages : [chromium]
 web_environment:
+- CPPFLAGS=-DPNG_ARM_NEON_OPT=0
 - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+- PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ```
 
 ## Puppeteer CSS Demo
@@ -19,6 +32,8 @@ You will find a proof of concept in the [demo](demo/) folder.
 It is based on the [Tailwind CSS Landing Page starter project](https://github.com/tailwindtoolbox/Landing-Page) and demonstrate how to use [Webpack Encore](https://symfony.com/doc/current/frontend.html) to compile javascript and css resources and extract critical CSS with critical-css-webpack-plugin from within the ddev web container.
 
 Obviously, the PHP part is quite minimalistic and is just used to read the webpack manifest file to inject relevant javascript and css files and inline the critical css file in the landing page. However, the overall workflow can easily be adapted in a more complex PHP project using a CMS or a framework.
+
+> In order to run the demo project on Apple Silicon M1, rename the `config.m1.yaml.dist` to `config.m1.yaml` before starting ddev.
 
 ### Startup
 
