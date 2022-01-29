@@ -12,7 +12,7 @@ You can add chromium support to your ddev project by adding the following extra 
 webimage_extra_packages: [gconf-service, libasound2, libatk1.0-0, libcairo2, libgconf-2-4,
   libgdk-pixbuf2.0-0, libgtk-3-0, libnspr4, libpango-1.0-0, libpangocairo-1.0-0, libx11-xcb1,
   libxcomposite1, libxcursor1, libxdamage1, libxfixes3, libxi6, libxrandr2, libxrender1,
-  libxss1, libxtst6, fonts-liberation, libappindicator1, libnss3, xdg-utils]
+  libxss1, libxtst6, fonts-liberation, libnss3, xdg-utils]
 ```
 
 For Apple Silicon M1 support, you will have to override that configuration by adding a `config.m1.yaml` file in your ddev folder along with the `config.yaml` one with the following content:
