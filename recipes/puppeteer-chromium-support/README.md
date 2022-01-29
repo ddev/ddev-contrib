@@ -43,7 +43,7 @@ For the root of the [demo](demo/) folder, start the ddev environment:
 ddev start
 ```
 
-The provided `.ddev/config.yaml` is pre-configured to include the needed `webimage_extra_packages` in order to run the `critical-css-webpack-plugin`.
+The provided `.ddev/config.yaml` is pre-configured to include the needed `webimage_extra_packages` in order to run the `html-critical-webpack-plugin`.
 
 ### Installation
 
@@ -53,9 +53,9 @@ To install the node dependencies, run `ddev yarn install`
 
 Run `ddev yarn build`
 
-This will generate optimized javascript and css files in `web/webpack-assets` folder along with the critical css file in the `web/criticalcss` folder using the critical-css-webpack-plugin.
+This will generate optimized javascript and css files in `web/webpack-assets` folder along with the critical css file in the `web/criticalcss` folder using the html-critical-webpack-plugin.
 
-Under the hood, critical-css-webpack-plugin will instantiate a headless Chrome using Puppeteer to access the landing page hosted by ddev in order to extact relevant critical css.
+Under the hood, html-critical-webpack-plugin will instantiate a headless Chrome using Puppeteer to access the landing page hosted by ddev in order to extact relevant critical css.
 
 At that stage you should be able to view the landing page at `https://demo.ddev.site`.
 
