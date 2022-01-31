@@ -1,6 +1,6 @@
 # Puppeteer Chromium support
 
-> ⚠️ That recipe has been updated to be compatible with latest ddev web container images (1.6 and upper) and Apple Silicon M1 architecture.
+> ⚠️ That recipe has been updated to be compatible with latest ddev web container images (1.16 and upper) and Apple Silicon M1 architecture.
 
 Npm packages like `codeceptjs` or `html-critical-webpack-plugin` which depend on [Puppeteer](https://github.com/puppeteer/puppeteer/) will not be able to launch the bundled chromium binary from within the web container because of some missing Linux libraries.
 
