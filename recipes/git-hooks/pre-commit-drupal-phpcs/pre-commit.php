@@ -2,8 +2,10 @@
 
 /**
  * @file
- * A Git pre-commit hook script to check files for PHP syntax errors and Drupal
- * coding standards violations. Requires phpcs and Coder Sniffer:
+ * A Git pre-commit hook script to check files.
+ *
+ * Checks for PHP syntax errors and Drupal coding standards violations.
+ * Requires phpcs and Coder Sniffer.
  *
  * @see https://drupal.org/node/1419988
  *
@@ -30,7 +32,7 @@ if (file_exists($file_path)) {
 }
 
 // Extensions of files to test.
-$file_exts = array(
+$file_exts = [
   'php',
   'module',
   'inc',
@@ -42,10 +44,10 @@ $file_exts = array(
   'info',
   'md',
   'yml',
-);
+];
 
 $exit_code = 0;
-$files = array();
+$files = [];
 $return = 0;
 
 // Determine whether this is the first commit or not. If it is, set $against to
@@ -84,7 +86,7 @@ foreach ($files as $file) {
       continue;
     }
 
-    $phpcs_output = array();
+    $phpcs_output = [];
 
     $file = escapeshellarg($file);
     // Add extra path to get warranty for run drush.
@@ -97,7 +99,7 @@ foreach ($files as $file) {
     // Perform PHP syntax check (lint).
     $return = 0;
     $lint_cmd = "php -l {$file}";
-    $lint_output = array();
+    $lint_output = [];
     exec($lint_cmd, $lint_output, $return);
     if ($return !== 0) {
       // Format error messages and set exit code.
