@@ -60,9 +60,12 @@ exec("git diff-index --cached --name-only $against", $files);
 
 print "\nPrecommit PHPCS\n\n";
 
-// The number of ignored items.
+// The number of ignored items (including CONFIG_ROOT).
 $ignored_items_count = count($ignore);
-echo "\033[0;31mYou have $ignored_items_count item(s) in your ignore list!\n\033[0m";
+echo "\033[0;31mAll files under " . CONFIG_ROOT . " are ignored!\n\033[0m";
+if ($ignored_items_count > 1) {
+  echo "\033[0;31mYou have " . ($ignored_items_count - 1) . " item(s) in your ignore list!\n\033[0m";
+}
 
 foreach ($files as $file) {
 
@@ -71,8 +74,12 @@ foreach ($files as $file) {
     // Check files to ignore.
     if ($ignored_items_count > 0) {
       foreach ($ignore as $key => $value) {
+        // Display a message for ignored files.
         if (substr($file, 0, strlen(trim($value))) == trim($value) && trim($value) != '') {
-          echo "\033[0;31mIgnored in .phpcs_ignore file: $file\n\033[0m";
+          // Suppress ignore message for exported config files.
+          if (trim($value) !== CONFIG_ROOT) {
+            echo "\033[0;31mIgnored in .phpcs_ignore file: $file\n\033[0m";
+          }
           continue 2;
         }
       }
