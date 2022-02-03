@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Run pre-commit check PHP script inside ddev when commiting from host.
-if [ "$IS_DDEV_PROJECT" = true ]; then
-  ddev exec /usr/bin/php scripts/git/pre-commit.php
+# Run pre-commit check PHP script inside ddev when committing from host.
+if [ "$IS_DDEV_PROJECT" != true ]; then
+  ddev exec /usr/bin/php scripts/git/pre-commit-phpcs.php
 else
-  /usr/bin/php scripts/git/pre-commit.php
+  /usr/bin/php scripts/git/pre-commit-phpcs.php
 fi
