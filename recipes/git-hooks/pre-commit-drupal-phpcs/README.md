@@ -5,6 +5,24 @@ machine.
 
 **Does not require PHP to be installed on the host machine!**
 
+## Dependencies
+
+This requires [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) and the
+[Drupal standards](https://www.drupal.org/project/coder) installed in your project.
+The recommended way to do this is by:
+```
+ddev composer require --dev drupal/coder dealerdirect/phpcodesniffer-composer-installer
+```
+
+After composer completes you should have phpcs installed. You can verify it
+with `ddev exec vendor/bin/phpcs -i`. You should see `Drupal, DrupalPractice` in the
+installed coding standards.
+
+### Resources
+
+- https://www.drupal.org/node/1419988
+- https://www.drupal.org/docs/contributed-modules/code-review-module/php-codesniffer-command-line-usage
+
 ## Installation
 
 Copy `pre-commit` and `pre-commit-phpcs.php` under `PROJECT_ROOT/scripts/git/`
