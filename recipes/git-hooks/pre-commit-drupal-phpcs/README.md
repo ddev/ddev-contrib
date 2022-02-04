@@ -38,4 +38,12 @@ cd .git/hooks && ln -s ../../scripts/git/pre-commit
 Paste the files wherever you want, but change the paths on lines 5 and 7
 in `pre-commit` file. **Don't forget to make the hook executable!**
 
+## Modifying for non-Drupal use
+
+This hook is having Drupal in mind but it can be easily changed to any system.
+Please see the discussion from https://github.com/drud/ddev-contrib/pull/197#issuecomment-1029523141
+onwards.
+
+---
+
 **Contributed by [@bserem](https://github.com/bserem)**
