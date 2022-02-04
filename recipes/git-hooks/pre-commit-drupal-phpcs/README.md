@@ -38,6 +38,11 @@ cd .git/hooks && ln -s ../../scripts/git/pre-commit
 Paste the files wherever you want, but change the paths on lines 5 and 7
 in `pre-commit` file. **Don't forget to make the hook executable!**
 
+## Usage
+
+Once installed the hook will run on `pre-commit`, checking files to be commited.
+You can add `.phpcs_ignore` file with instructions for which files to ignore.
+
 ## Modifying for non-Drupal use
 
 This hook is having Drupal in mind but it can be easily changed to any system.
