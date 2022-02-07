@@ -14,7 +14,7 @@ Although most people do fine with `ddev ssh` and `ddev exec`, they don't actuall
 
 (The StrictHostKeyChecking=no is required because every time you restart the container it comes up with a new "host" identity.)
 
-* Note: If your are running DDEV from a domain connected Windows PC, you may need to specify a username.
+* Note: If you are running DDEV from a domain connected Windows PC, you may need to specify a username.
 
 1. First, check if your account is tied to a domain. From a command prompt, type `whoami`
 
