@@ -3,7 +3,7 @@
 ## Description: Run project PHP REPL. Arguments are accepted in Laravel projects (with caveats)
 ## Usage: tinker
 ## Example: "ddev tinker"
-## ProjectTypes: laravel,drupal7,drupal8,drupal9,drupal10
+## ProjectTypes: laravel,drupal7,drupal8,drupal9
 
 if [ "${DDEV_PROJECT_TYPE}" == "laravel" ]; then
   if [ -z "$1" ]
@@ -22,6 +22,7 @@ if [ "${DDEV_PROJECT_TYPE}" == "laravel" ]; then
   exit 0
 fi
 
+# If this it hit, it's must be a Drupal project type.
 
 if ! command -v drush >/dev/null; then
   echo "drush is not available. You may need to 'ddev composer require drush/drush'"
