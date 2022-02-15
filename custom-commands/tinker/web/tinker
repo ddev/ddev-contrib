@@ -3,7 +3,7 @@
 ## Description: Run project PHP REPL. Arguments are accepted in Laravel projects (with caveats)
 ## Usage: tinker
 ## Example: "ddev tinker"
-## ProjectTypes: laravel,drupal7,drupal8,drupal9
+## ProjectTypes: laravel,drupal7,drupal8,drupal9,drupal10
 
 if [ "${DDEV_PROJECT_TYPE}" == "laravel" ]; then
   if [ -z "$1" ]
