@@ -72,7 +72,7 @@ Laravel can be configured to use the redis service as the cache driver.
 
 ```env
 CACHE_DRIVER=redis
-REDIS_HOST=ddev-<DDEV_SITENAME>:6379
+REDIS_HOST=ddev-<DDEV_SITENAME>
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
