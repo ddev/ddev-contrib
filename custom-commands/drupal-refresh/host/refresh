@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+
+## Description: Refreshes the local development environment.
+## Usage: refresh [branch]
+## Example: "ddev refresh some-branch --no-restart --import-db"
+## Flags: [{"Name":"no-assets","Shorthand":"A","Usage":"Don't compile front-end assets (JS, CSS, etc)."},{"Name":"no-composer","Shorthand":"C","Usage":"Don't run \"composer install\"."},{"Name":"no-git-pull","Shorthand":"G","Usage":"Don't update the git branch."},{"Name":"no-restart","Shorthand":"R","Usage":"Don't restart ddev, e.g., because you know there have been no ddev configuration changes."},{"Name":"no-update","Shorthand":"U","Usage":"Don't run Drupal database updates, import configuration, or clear caches, etc."},{"Name":"no-login","Shorthand":"L","Usage":"Don't open a browser in a one-time login URL."},{"Name":"import-db","Shorthand":"i","Usage":"Import a Drupal database dump (downloads a fresh copy unless the \"--existing-sql\" flag is given)."},{"Name":"existing-sql","Shorthand":"e","Usage":"Import the existing/previously-downloaded database dump rather than downloading a new one."},{"Name":"yes","Shorthand":"y","Usage":"Automaticallly answer \"yes\" to all confirmation prompts."},{"Name":"verbose","Shorthand":"v","Usage":"Show more command output."}]
+
+# Initialize options variables.
+skip_prompts=0
+can_import_db=0
+existing_sql=0
+no_git_pull=0
+no_restart=0
+no_composer=0
+no_assets=0
+no_update=0
+no_login=0
+
+# Parse command flags and arguments. Adapted from
+# https://stackoverflow.com/a/62616466
+EOL=$(echo '\01\03\03\07')
+usage_error () { printf >&2 "\n[error] $@\n" ; exit 2 ; }
+if [ "$#" -gt 0 ] ; then
+  set -- "$@" "$EOL"
+  while [ "$1" != "$EOL" ] ; do
+    opt="$1"
+    shift
+    case "$opt" in
+
+      ######################################
+      ### BEGIN: PROCESS COMMAND OPTIONS ###
+      ######################################
+
+      # Standard flags. Note that DDEV provides "--help" (usage) automatically.
+      # Support multiple "v" flags.
+      -v | --verbose ) [ $verbose ] && verbose="${verbose}v" || verbose="-v" ;;
+      -y | --yes     ) skip_prompts=1 ;;
+
+      # Flags to enable steps that are disabled by default.
+      -i | --import-db    ) can_import_db=1 ;;
+      -e | --existing-sql ) existing_sql=1 ;;
+
+      # Flags to skip steps that are enabled by default.
+      -G | --no-git-pull ) no_git_pull=1 ;;
+      -R | --no-restart  ) no_restart=1 ;;
+      -C | --no-composer ) no_composer=1 ;;
+      -A | --no-assets   ) no_assets=1 ;;
+      -U | --no-update   ) no_update=1 ;;
+      -L | --no-login    ) no_login=1 ;;
+
+      ####################################
+      ### END: PROCESS COMMAND OPTIONS ###
+      ####################################
+
+      # Don't modify these.
+      -|''|[^-]*) set -- "$@" "$opt" ;;                                            # positional parameter, rotate to the end
+      --*=*)      set -- "${opt%%=*}" "${opt#*=}" "$@" ;;                          # convert '--name=arg' to '--name' 'arg'
+      -[^-]?*)    set -- $(echo "${opt#-}" | sed 's/\(.\)/ -\1/g') "$@" ;;         # convert '-abc' to '-a' '-b' '-c'
+      --)         while [ "$1" != "$EOL" ] ; do set -- "$@" "$1" ; shift ; done ;; # process remaining arguments as positional
+      -*)         usage_error "Unknown option: '$opt'" ;;                          # catch misspelled options
+      *)          usage_error "This should never happen ($opt)" ;;                 # sanity test for previous patterns
+    esac
+  done
+  shift
+fi
+
+# Helper functions to decide whether a step can be executed.
+# @todo Is /dev/null cross-platform compatible?
+has_upstream       () { git rev-parse "${branch}@{upstream}" 1>/dev/null 2>&1 ; }
+can_change_branch  () { [ -n "$branch" ]                                      ; }
+can_update_git     () { [ $no_git_pull   -eq 0 ] && has_upstream              ; }
+can_skip_prompts   () { [ $skip_prompts  -eq 1 ]                              ; }
+can_restart_ddev   () { [ $no_restart    -eq 0 ]                              ; }
+can_build_composer () { [ $no_composer   -eq 0 ]                              ; }
+can_build_assets   () { [ $no_assets     -eq 0 ]                              ; }
+can_import_db      () { [ $can_import_db -eq 1 ]                              ; }
+can_download_db    () { [ $existing_sql  -eq 0 ]                              ; }
+can_skip_download  () { [ $existing_sql  -eq 1 ]                              ; }
+can_update_drupal  () { [ $no_update     -eq 0 ]                              ; }
+can_log_in         () { [ $no_login      -eq 0 ]                              ; }
+
+# Helper function to prompt user for confirmation before proceeding.
+confirm () {
+  question="$1"
+  help_text="$2"
+  printf "\n$question (yes/no) [yes]: \n"
+  if can_skip_prompts ; then
+    echo "> yes"
+  else
+    read -p "> " -r
+    printf '\n'
+    case $(echo "$REPLY" | tr '[A-Z]' '[a-z]') in
+      # On "y", "yes", or no input (default action), okay to proceed (no exit).
+      yes | y | "" ) ;;
+      # Any other response...
+      * )
+        if [ -n "$help_text" ] ; then
+          echo "$help_text"
+        fi
+        exit 0
+        ;;
+    esac
+  fi
+}
+
+# Use the first "positional parameter" as git branch. Note: All the options
+# have been popped from the args list, so only positional parameters are left.
+branch="$1"
+
+# Ensure no other positional parameters were passed.
+if [ "$#" -gt 1 ] ; then
+  usage_error "This command only takes one argument (git branch name), got \"$*\""
+fi
+
+# Check for invalid options combinations.
+if can_skip_download && (! can_import_db) ; then
+  usage_error 'The "--existing-sql" option requires "--import-db".'
+fi
+
+# Make sure an existing database file is present, if requested.
+db_dump_exists () { [ -f "${DDEV_APPROOT}/files/private/db.sql" ] ; }
+if can_import_db && can_skip_download && (! db_dump_exists) ; then
+  usage_error \
+    'There is no previously-downloaded database dump. Rerun this command without "--existing-sql" to download a new file.'
+fi
+
+# Confirm reverting Drupal configuration changes.
+has_config_changes () { ! ddev task drupal:config:check >/dev/null 2>&1 ; }
+if can_update_drupal && (! can_import_db) && has_config_changes ; then
+  printf '\nYour local environment has some Drupal configuration overrides:\n\n'
+  if ! ddev drush config:status ; then
+    usage_error 'Mismatch between code and database. Add the "--import-db" option to reinitialize the database.'
+  fi
+  confirm \
+    'Discard these configuration overrides and proceed?' \
+    'To preserve configuration changes, export them to code with "drush config:export", and either commit them to a different/temporary branch, or stash the changes with "git stash".'
+fi
+
+# Confirm importing the database.
+if can_import_db ; then
+  confirm \
+    'Importing the database replaces all content in your Drupal DB. Okay to discard local content changes?' \
+    'To skip the database import step, rerun this command without the "--import-db" option.'
+fi
+
+# Helper function to print command before executing it.
+announce () {
+  step_is_allowed="$1"
+  step="${@:2}"
+  if $step_is_allowed ; then
+    # Print the command first.
+    printf "\n\$ $step\n"
+    # Perform the step (execute the command).
+    $step
+    printf '\n'
+  elif [ $verbose ] ; then
+    echo "[info] Skipping \"$step\""
+  fi
+}
+
+# Abort the rest of the script if any command fails from here onward.
+set -e
+
+# Steps to refresh.
+announce can_change_branch   git fetch $verbose
+announce can_change_branch   git checkout "$branch" $verbose
+announce can_update_git      git pull $verbose
+announce can_restart_ddev    ddev restart
+announce can_build_composer  ddev task drupal:composer:development $verbose
+announce can_build_assets    ddev task assets $verbose
+announce can_download_db     ddev task acquia:fetch-db $verbose
+announce can_import_db       ddev task drupal:import-db
+announce can_update_drupal   ddev task drupal:update $verbose
+announce can_log_in          ddev login $verbose
+
+printf "\nDone refreshing. Success!\n"
