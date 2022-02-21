@@ -80,7 +80,7 @@ REDIS_PORT=6379
 * You can check your `REDIS_HOST` by running `ddev describe`; under the redis section, look for `InDocker` line.
 
 ```shell
-$ ddev describe
+ddev describe
 ```
 
 * Clear all caches with the following command:
@@ -94,4 +94,5 @@ Configuration cache cleared!
 Compiled services and packages files removed!
 Caches cleared successfully!
 ```
+
 **Contributed by [@gormus](https://github.com/gormus)**
