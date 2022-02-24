@@ -188,7 +188,7 @@ announce can_build_composer ddev composer install --optimize-autoloader $verbose
 announce can_build_assets   ddev gulp $verbose # Requires the gulp command from ddev-contrib
 announce can_download_db    echo 'download db here' # https://ddev.readthedocs.io/en/stable/users/providers/provider-introduction
 announce can_import_db      ddev import-db
-announce can_update_drupal  ddev update_drupal
+announce can_update_drupal  update_drupal
 announce can_log_in         ddev login $verbose # Requires the drupal-login command from ddev-contrib
 
 printf "\nDone refreshing. Success!\n"
