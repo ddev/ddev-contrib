@@ -1,6 +1,0 @@
-#!/bin/bash
-
-## Description: Run yarn command inside the web container
-## Usage: yarn [flags] [args]
-
-yarn $@
