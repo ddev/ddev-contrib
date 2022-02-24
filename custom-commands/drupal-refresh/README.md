@@ -9,12 +9,6 @@ This command refreshes your local Drupal environment, including steps to:
 - rebuild caches
 - and other stuff
 
-It currently relies on [Drainpipe](https://github.com/Lullabot/drainpipe/) for
-some functionality, but you may replace the `task` commands with your own steps.
-E.g.,
-[these steps](https://architecture.lullabot.com/adr/20210924-drupal-build-steps)
-for building Drupal.
-
 You may pass a branch name, and `refresh` will switch to that branch before
 running the steps. This is useful e.g. to give other developers a one-line
 command to set up your feature in their local environment for testing and code
