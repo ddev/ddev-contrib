@@ -11,7 +11,7 @@ This command refreshes your local Drupal environment, including steps to:
 
 It currently relies on [Drainpipe](https://github.com/Lullabot/drainpipe/) for
 some functionality, but you may replace the `task` commands with your own steps.
-E.g., 
+E.g.,
 [these steps](https://architecture.lullabot.com/adr/20210924-drupal-build-steps)
 for building Drupal.
 
@@ -50,3 +50,5 @@ Flags:
 -v, --verbose        Show more command output.
 -y, --yes            Automaticallly answer "yes" to all confirmation prompts.
 ```
+
+**Contributed by [Hawkeye Tenderwolf](https://github.com/hawkeyetwolf)**

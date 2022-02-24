@@ -125,7 +125,7 @@ if can_import_db && can_skip_download && (! db_dump_exists) ; then
 fi
 
 # Confirm reverting Drupal configuration changes.
-has_config_changes () { ! ddev task drupal:config:check >/dev/null 2>&1 ; }
+has_config_changes () { [ $(./vendor/bin/drush config:status --format=string | wc -w) -ne 0 ] >/dev/null 2>&1 ; }
 if can_update_drupal && (! can_import_db) && has_config_changes ; then
   printf '\nYour local environment has some Drupal configuration overrides:\n\n'
   if ! ddev drush config:status ; then
@@ -142,6 +142,24 @@ if can_import_db ; then
     'Importing the database replaces all content in your Drupal DB. Okay to discard local content changes?' \
     'To skip the database import step, rerun this command without the "--import-db" option.'
 fi
+
+# Adapted from https://architecture.lullabot.com/adr/20210924-drupal-build-steps
+update_drupal () {
+  announce true ddev drush cache:clear plugin -y
+  # Run numbered module updates (hook_update_N) only.
+  announce true ddev drush updatedb --no-post-updates -y
+  # Run config:import twice to make sure we catch any config that didn't declare
+  # a dependency correctly. This is also useful when importing large config sets
+  # as it can sometimes hit an out of memory error.
+  # @todo The `|| true` doesn't work with the announce script. set -e will
+  # still cause the script to fail.
+  announce true ddev drush config:import -y || true
+  announce true ddev drush config:import -y
+  # Run updatedb again for updates dependent on config changes
+  # This second run should fire all hook_post_update_NAME() hooks.
+  announce true ddev drush updatedb --no-cache-clear -y
+  announce true ddev drush cache:rebuild -y
+}
 
 # Helper function to print command before executing it.
 announce () {
@@ -162,15 +180,15 @@ announce () {
 set -e
 
 # Steps to refresh.
-announce can_change_branch   git fetch $verbose
-announce can_change_branch   git checkout "$branch" $verbose
-announce can_update_git      git pull $verbose
-announce can_restart_ddev    ddev restart
-announce can_build_composer  ddev task drupal:composer:development $verbose
-announce can_build_assets    ddev task assets $verbose
-announce can_download_db     ddev task acquia:fetch-db $verbose
-announce can_import_db       ddev task drupal:import-db
-announce can_update_drupal   ddev task drupal:update $verbose
-announce can_log_in          ddev login $verbose
+announce can_change_branch  git fetch $verbose
+announce can_change_branch  git checkout "$branch" $verbose
+announce can_update_git     git pull $verbose
+announce can_restart_ddev   ddev restart
+announce can_build_composer ddev composer install --optimize-autoloader $verbose
+announce can_build_assets   ddev gulp $verbose # Requires the gulp command from ddev-contrib
+announce can_download_db    echo 'download db here' # https://ddev.readthedocs.io/en/stable/users/providers/provider-introduction
+announce can_import_db      ddev import-db
+announce can_update_drupal  ddev update_drupal
+announce can_log_in         ddev login $verbose # Requires the drupal-login command from ddev-contrib
 
 printf "\nDone refreshing. Success!\n"

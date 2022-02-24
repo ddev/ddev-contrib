@@ -30,6 +30,7 @@ Ddev's [custom commands](https://ddev.readthedocs.io/en/latest/users/extend/cust
 * [Stop all running projects except the current](custom-commands/stop-other)
 * [Dynamically enable / disable a service](custom-commands/dynamic-service)
 * [Automatically open browser and login to Drupal](custom-commands/drupal-login)
+* [Refresh your local Drupal environment in one command](custom-commands/drupal-refresh)
 
 ## Additional services added via docker-compose.\<service\>.yaml
 
