@@ -14,7 +14,7 @@ running the steps. This is useful e.g. to give other developers a one-line
 command to set up your feature in their local environment for testing and code
 review.
 
-To use, place the `refresh` script in your project's `.ddev/commands/host`
+To use, place the `refresh` script in your project's `.ddev/commands/host/`
 folder.
 
 If you don't need `refresh` to run _all_ the steps, you can pass various flags
