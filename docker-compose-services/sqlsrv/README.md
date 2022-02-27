@@ -44,11 +44,6 @@ hooks:
   post-start:
    - exec: echo export PATH="$PATH:/opt/mssql-tools/bin" >> ~/.bashrc
    - exec: source ~/.bashrc
-
-   # Test that the installation of the PHP extensions for the SQL Server were
-   # successful.
-   - exec: "echo 'When the installation was succesful, the following strings: \"pdo_sqlsrv\" and \"sqlsrv\" should appear. Each on its own line.'"
-   - exec: "php -m | grep 'sqlsrv'"
 ```
 
 The minimum required PHP version the these extensions is PHP 7.3. For more information about these extension, see: [MS SQL driver for PHP](https://github.com/microsoft/msphpsql).
