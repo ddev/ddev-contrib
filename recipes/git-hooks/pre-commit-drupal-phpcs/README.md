@@ -1,4 +1,4 @@
-# Drupal PHPCS on pre-commit without PHP on host
+# PHPCS on pre-commit _without_ PHP on host
 
 Runs PHPCS from **inside** DDEV, regardless if you are committing from your host
 machine.
@@ -7,21 +7,9 @@ machine.
 
 ## Dependencies
 
-This requires [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) and the
-[Drupal standards](https://www.drupal.org/project/coder) installed in your project.
-The recommended way to do this is by:
-```
-ddev composer require --dev drupal/coder dealerdirect/phpcodesniffer-composer-installer
-```
-
-After composer completes you should have phpcs installed. You can verify it
-with `ddev exec vendor/bin/phpcs -i`. You should see `Drupal, DrupalPractice` in the
-installed coding standards.
-
-### Resources
-
-- https://www.drupal.org/node/1419988
-- https://www.drupal.org/docs/contributed-modules/code-review-module/php-codesniffer-command-line-usage
+This requires [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer) to be
+installed and configured with a `phpcs.xml` file. A sample configuration for
+Drupal can be found below in this file.
 
 ## Installation
 
@@ -33,21 +21,62 @@ chmod +x scripts/git/pre-commit
 cd .git/hooks && ln -s ../../scripts/git/pre-commit
 ```
 
-### Advanced installation
+### Drupal Installation
+Requires [Drupal standards](https://www.drupal.org/project/coder) installed in your project.
+The recommended way to do this is by:
+```
+ddev composer require --dev drupal/coder dealerdirect/phpcodesniffer-composer-installer
+```
 
-Paste the files wherever you want, but change the paths on lines 5 and 7
-in `pre-commit` file. **Don't forget to make the hook executable!**
+After composer completes you should have phpcs installed. You can verify it
+with `ddev exec vendor/bin/phpcs -i`. You should see `Drupal, DrupalPractice` in the
+installed coding standards.
+
+#### Sample `phpcs.xml` for Drupal development
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drupal_website_development">
+  <description>PHP CodeSniffer configuration for Drupal website development.</description>
+
+  <arg name="extensions" value="yaml,yml,php,inc,module,install,info,test,profile,theme,css,js"/>
+  <arg name="report" value="full"/>
+  <arg value="p"/>
+  <arg name="colors"/>
+
+  <!--Include custom code.-->
+  <file>RoboFile.php</file>
+  <file>web/modules/custom</file>
+  <file>web/themes/custom</file>
+
+  <!--Exclude third party code.-->
+  <exclude-pattern>./.ddev</exclude-pattern>
+  <exclude-pattern>./vendor</exclude-pattern>
+  <exclude-pattern>./web/core</exclude-pattern>
+  <exclude-pattern>./web/libraries</exclude-pattern>
+  <exclude-pattern>./web/modules/contrib</exclude-pattern>
+  <exclude-pattern>./web/themes/contrib</exclude-pattern>
+  <exclude-pattern>./web/sites</exclude-pattern>
+
+  <!--Exclude Drupal generated config files.-->
+  <exclude-pattern>./config</exclude-pattern>
+
+  <rule ref="Drupal" />
+  <rule ref="DrupalPractice" />
+
+</ruleset>
+```
+
+#### Resources
+
+- https://www.drupal.org/node/1419988
+- https://www.drupal.org/docs/contributed-modules/code-review-module/php-codesniffer-command-line-usage
+
 
 ## Usage
 
-Once installed the hook will run on `pre-commit`, checking files to be commited.
-You can add `.phpcs_ignore` file with instructions for which files to ignore.
-
-## Modifying for non-Drupal use
-
-This hook is having Drupal in mind but it can be easily changed to any system.
-Please see the discussion from https://github.com/drud/ddev-contrib/pull/197#issuecomment-1029523141
-onwards.
+- Once installed the hook will run on `pre-commit`, checking files to be commited.
+- Add ignored files/files in your `phpcs.xml` file.
 
 ---
 
