@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  adminer:
+    container_name: ddev-${DDEV_SITENAME}-adminer
+    image: adminer:standalone
+    environment:
+      # - ADMINER_DESIGN=nette
+      - ADMINER_DEFAULT_SERVER=ddev-${DDEV_SITENAME}-db
+      - ADMINER_PLUGINS=tables-filter
+      # This defines the host name the service should be accessible from. This
+      # will be sitename.ddev.site.
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      # HTTP_EXPOSE allows for ports accepting HTTP traffic to be accessible from <site>.ddev.site:<port>
+      - HTTP_EXPOSE=8080:8080
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+  web:
+    links:
+      - adminer:adminer
