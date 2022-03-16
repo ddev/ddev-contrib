@@ -73,7 +73,7 @@ Note: If you choose to run Solr Cloud using a single node in standalone mode,
 2. Copy the `solr` folder (`including security.json`) to your project's `.ddev` directory.
 3. Configure your application to connect Solr at `http://ddev-<project>-solr:8983`.
 4. If you want to use Solr's APIs that require a trusted context configure Basic Auth with username `solr` and password `SolrRocks`.
-5. (Re-)start your DDEV project.
+5. `ddev restart`.
 
 ## Solarium
 
@@ -112,7 +112,7 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
 * Enable the `search_api_solr_admin` module. (This sub-module is included in Search API Solr >= 4.2.1)
 * Create a search server using the Solr backend and select `Solr Cloud with Basic Auth` as connector:
   * HTTP protocol: `http`
-  * Solr node: `ddev-<project>-solr` (Replace <project> by your project's name.)
+  * Solr node: `solr` (Replace <project> by your project's name.)
   * Solr port: `8983`
   * Solr path: `/`
   * Default Solr collection: `techproducts` (You can define any name here. The collection will be created automatically.)
@@ -124,7 +124,7 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
 
 ### Drupal and Search API Solr 4.1 and older
 
-It is highly recommended to upgrade to the 4.2 version. But if you're required
+Please upgrade to the 4.2+ versions. If you're required
 to use an older versions of the Search API Solr module you have to deploy the
 configset manually and create a collection using this configset afterwards.
 Therefore you need to use the `Download config.zip` function of Search API Solr.
