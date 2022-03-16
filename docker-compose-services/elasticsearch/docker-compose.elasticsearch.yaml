@@ -21,9 +21,6 @@ services:
     volumes:
       - elasticsearch:/usr/share/elasticsearch/data
       - ".:/mnt/ddev_config"
-  web:
-    links:
-      - elasticsearch:elasticsearch
 
 volumes:
   elasticsearch:
