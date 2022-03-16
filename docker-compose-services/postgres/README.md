@@ -1,5 +1,12 @@
 # PostgreSQL
 
+## UPDATE: Postgres is included as a first-class database type in DDEV v1.19 
+
+You'll probably want to use the officially-suported one, see [docs](https://ddev.readthedocs.io/en/latest/users/topics/database_management/).
+
+
+--------------------------------------------------------------------------------
+
 Using PostgreSQL container with [PostGIS](https://postgis.net/) support provided by [mdillon/postgis](https://hub.docker.com/r/mdillon/postgis).
 
 ## Installation
