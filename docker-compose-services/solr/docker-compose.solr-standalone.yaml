@@ -10,7 +10,7 @@
 #   For example, if the project is named "myproject" the hostname will be:
 #   http://myproject.ddev.site:8983
 # - To access the Solr container from the web container use:
-#   ddev-<project>-solr:8983
+#   solr:8983
 #
 # To use this in your own project:
 # 1. Copy this file and the solr (including security.json) directory to your project's ".ddev" directory.

@@ -34,7 +34,7 @@ development environment is to just stay with the default.
 Once up and running you can access Solr's UI within your browser by opening
 `http://<projectname>.ddev.site:8983`. For example, if the project is named
 "myproject" the hostname will be `http://myproject.ddev.site:8983`. To access
-the Solr container from the web container use `ddev-<project>-solr:8983`.
+the Solr container from the web container use `solr:8983`.
 
 Solr Cloud depends on Zookeeper to share configurations between the Solr nodes.
 Therefore this service starts a single Zookeeper server on port 2181, too. It is
@@ -71,7 +71,7 @@ Note: If you choose to run Solr Cloud using a single node in standalone mode,
 
 1. Copy `docker-compose.solr.yaml` **or** `docker-compose.solr-standalone.yaml` to your project's `.ddev` directory.
 2. Copy the `solr` folder (`including security.json`) to your project's `.ddev` directory.
-3. Configure your application to connect Solr at `http://ddev-<project>-solr:8983`.
+3. Configure your application to connect Solr at `http://solr:8983`.
 4. If you want to use Solr's APIs that require a trusted context configure Basic Auth with username `solr` and password `SolrRocks`.
 5. `ddev restart`.
 
@@ -93,7 +93,7 @@ $config = [
     'endpoint' => [
         'localhost' => [
             // Replace <project> by your project's name:
-            'host' => 'ddev-<project>-solr',
+            'host' => 'solr',
             'port' => 8983,
             'path' => '/',
             // Use your collection name here:
@@ -112,7 +112,7 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
 * Enable the `search_api_solr_admin` module. (This sub-module is included in Search API Solr >= 4.2.1)
 * Create a search server using the Solr backend and select `Solr Cloud with Basic Auth` as connector:
   * HTTP protocol: `http`
-  * Solr node: `solr` (Replace <project> by your project's name.)
+  * Solr node: `solr`
   * Solr port: `8983`
   * Solr path: `/`
   * Default Solr collection: `techproducts` (You can define any name here. The collection will be created automatically.)
