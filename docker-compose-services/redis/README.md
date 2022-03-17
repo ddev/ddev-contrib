@@ -49,9 +49,6 @@ ddev redis-cli
 
 * Run `ddev describe` to check the status and ports used by the service.
 
-
-## Framework Quickstarts
-
 * Frameworks require configuration to use the redis service.
 * You need to replace `<DDEV_SITENAME>` values with your project's site name. Hint: `ddev describe`
 
@@ -63,12 +60,16 @@ ddev redis-cli
 ddev composer require drupal/redis
 ```
 
-* add setting information to `web/sites/default/settings.local.php`; remember to update '<DDEV_SITENAME>'
+* add the service to `web/sites/default/settings.php`; a great place is inside the ddev block.
 
 ```php
-# DDEV SERVICE: Redis
-$settings['redis.connection']['host']      = 'ddev-${DDEV_SITENAME}-redis';  // Your Redis instance hostname.
-$settings['cache']['default'] = 'cache.backend.redis';
+if (file_exists(__DIR__ . '/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
+  include __DIR__ . '/settings.ddev.php';
+
+  # DDEV SERVICE: Redis
+  $settings['redis.connection']['host'] = getenv('DDEV_SITENAME');
+  $settings['cache']['default'] = 'cache.backend.redis';
+}
 ```
 
 * clear Drupal caches with `drush`
