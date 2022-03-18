@@ -7,7 +7,7 @@
 
 Both Laravel and Drupal have an interactive debugger & REPL environment for tinkering in PHP. You can test various php statements, resolve services or even query the database! Both environment's are customized versions of the excellent [PsySh](https://psysh.org/).
 
-- Laravel: [`php artisan tinker`](https://laravel.com/docs/8.x/artisan#tinker)
+- Laravel: [`php artisan tinker`](https://laravel.com/docs/artisan#tinker)
 
 - Drupal via a Drush: [`drush php`](https://www.drush.org/latest/commands/php_cli/)
 
