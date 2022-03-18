@@ -35,31 +35,31 @@ ddev tinker
 
 ### Arguments
 
-Arguments are currently supported (with caveats ) in *Laravel projects only*.
+- Tinker can accept simple arguments.
 
 ```shell
 $ ddev tinker 6+8
 14
+```
 
-$ ddev tinker "'User::first()'"
+- More complex arguments should be wrapped with <kbd>'</kbd>.
+
+```shell
+$ ddev tinker 'User::first()'
 [!] Aliasing 'User' to 'App\Models\User' for this Tinker session.
 App\Models\User^ {#4400
 ...
+
+$ ddev tinker 'node_access_rebuild()'
+ [notice] Message: Content permissions have been rebuilt.
+
+$ ddev tinker '$node = \Drupal\node\Entity\Node::load(1); print $node->getTitle();'
+Who Doesn’t Like a Good Waterfall?
 ```
 
-There is [known issue](https://github.com/drud/ddev/issues/2547) when arguments contain:
-
-- quotes (`"`, `'`)
-- or brackets (`(` , `)`)
-
-There are 2 known workaround:
-
-- escape the character:
-  - `ddev tinker "User::find(1)"` => `ddev tinker "User::find\(1\)"`
-- double-wrap; use a different matching pair of quotes:
-  - `ddev tinker "User::find(1)"` => `ddev tinker '"User::find(1)"'`
-  - `ddev tinker "User::find(1)"` => `ddev tinker "'User::find(1)'"`
-
 While this might be helpful for a quick one-off command, it's recommend to run `ddev tinker` for tinkering to avoid any Docker connection delays between multiple commands.
+
+- Wrapping may also work with <kbd>"</kbd>, depending on the command used. For more consistent results between frameworks and host OS, it is recommended to use <kbd>'</kbd>.
+- See https://github.com/drud/ddev/issues/2547
 
 **Contributed by [@tyler36](https://github.com/tyler36)**

@@ -3,19 +3,16 @@
 ## Description: Run project PHP REPL. Arguments are accepted in Laravel projects (with caveats)
 ## Usage: tinker
 ## Example: "ddev tinker"
+## Example: "ddev tinker 'User::first()->email'"
+## Example: "dev tinker '$node = \Drupal\node\Entity\Node::load(1); print $node->getTitle();'"
 ## ProjectTypes: laravel,drupal7,drupal8,drupal9,drupal10
+## ExecRaw: true
 
 if [ "${DDEV_PROJECT_TYPE}" == "laravel" ]; then
   if [ -z "$1" ]
       then
           php artisan tinker
       else
-          # There is an known issue if the arguments contain quotes (`"`, `'`) or brackets (`(` , `)`)
-          # There are 2 known workaround: escape the characters or double-wrap the quotes
-          # - ddev tinker "User::find(1)" => ddev tinker "User::find\(1\)"
-          # - ddev tinker "User::find(1)" => ddev tinker '"User::find(1)"'
-          # - ddev tinker "User::find(1)" => ddev tinker "'User::find(1)'"
-          # See https://github.com/drud/ddev/issues/2547
           php artisan tinker --execute="dd($1);"
   fi
 
