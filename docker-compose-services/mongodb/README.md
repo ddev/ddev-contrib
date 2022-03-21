@@ -10,7 +10,7 @@ Steps to follow:
 
 1. Install php-mongo extension by adding `webimage_extra_packages: [php7.3-mongodb]` to your .ddev/config.yaml. Note that the PHP version in the package name must correspond to the PHP version you are running, e.g. use `php7.4-mongodb` if your server runs PHP 7.4.
 
-2. Add extra file [docker-compose.mongo.yaml](docker-compose.mongo.yaml)
+2. Add the file [docker-compose.mongo.yaml](docker-compose.mongo.yaml) to the project's `.ddev` directory.
 
 3. Require the [Doctrine MongoDB ODM bundle](https://github.com/doctrine/DoctrineMongoDBBundle)
     `ddev composer require doctrine/mongodb-odm-bundle:^4.0.0@beta doctrine/mongodb-odm:^2.0.0@beta`
