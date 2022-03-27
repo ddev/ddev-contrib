@@ -49,7 +49,7 @@ General information on how to do additional services and some additional example
 * [PostgreSQL (deprecated in favor of official support)](docker-compose-services/postgres/)
 * [RabbitMQ](docker-compose-services/rabbitmq)
 * [redis (deprecated in favor of github.com/drud/ddev-redis)](docker-compose-services/redis)
-* [redis-commander](docker-compose-services/redis-commander)
+* [redis-commander (deprecated in favor of github.com/ddev-redis-commander)](docker-compose-services/redis-commander)
 * [Solr Integration (Drupal-focused)](docker-compose-services/solr)
 * [Solr 4 Integration (Drupal-focused)](docker-compose-services/solr-4)
 * [Solr 5 Integration (Drupal-focused)](docker-compose-services/solr-5)

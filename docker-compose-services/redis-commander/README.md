@@ -1,5 +1,7 @@
 # Redis Commander
 
+**Deprecated in favor of https://github.com/ddev-redis-commander: `ddev get drud/ddev-redis-commander`**
+
 This recipe adds a Redis Commander container to a project.
 
 This will allow you to have a graphical interface for browsing data in your Redis server.
