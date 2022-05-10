@@ -12,10 +12,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg:
 
 RUN ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt-get install -y msodbcsql18 mssql-tools
 
-RUN pecl channel-update pecl.php.net && pecl install sqlsrv && pecl install pdo_sqlsrv
+# Change the PHP version to what you want. It is currently set to version 8.0.
+RUN pecl channel-update pecl.php.net
+RUN pecl -d php_suffix=8.0 install sqlsrv
+RUN pecl -d php_suffix=8.0 install pdo_sqlsrv
 
-RUN for v in 7.4 8.0 8.1; do \
-  echo 'extension=sqlsrv.so' >> "/etc/php/${v}/mods-available/sqlsrv.ini"; \
-  echo 'extension=pdo_sqlsrv.so' >> "/etc/php/${v}/mods-available/pdo_sqlsrv.ini" ; \
-done
+RUN echo 'extension=sqlsrv.so' >> "/etc/php/8.0/mods-available/sqlsrv.ini"
+RUN echo 'extension=pdo_sqlsrv.so' >> "/etc/php/8.0/mods-available/pdo_sqlsrv.ini"
+
 RUN phpenmod sqlsrv pdo_sqlsrv
