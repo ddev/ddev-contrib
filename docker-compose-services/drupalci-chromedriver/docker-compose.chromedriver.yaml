@@ -1,4 +1,3 @@
----
 # Docker-ChromeDriver configuration for DDEV-Local.
 # There is one item that must be configured in this file in order for it to
 # work, please see below.
