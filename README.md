@@ -66,7 +66,7 @@ General information on how to do additional services and some additional example
 
 ## Full recipes
 
-* [Using ddev with a corporate (or other) web proxy](recipes/proxy)
+* [Using ddev with a corporate (or other) web proxy (obsolete - use `ddev get drud/ddev-proxy-support`)](recipes/proxy)
 * [enable TYPO3 cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/)
 * [Setting up Drupal 8 multisite, including Drush support](recipes/drupal8-multisite/)
 * [Bludit CMS](recipes/bludit-cms)
