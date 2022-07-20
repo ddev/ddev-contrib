@@ -1,5 +1,7 @@
 # Running TYPO3 Cron inside the web container
 
+**OBSOLETE: This recipe is obsolete in favor of `ddev get drud/ddev-cron`, see [ddev-cron](https://github.com/drud/ddev-cron) for more details***
+
 This recipe provides two completely different techniques to do TYPO3 cron inside the web container.
 
 * Enable Linux cron on `ddev start` and have it run the TYPO3 cron every minute or
