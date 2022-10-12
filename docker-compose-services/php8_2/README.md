@@ -1,5 +1,7 @@
 # PHP8.2 (while in alpha/beta/etc)
 
+## Update: ddev v1.21.2 now supports PHP8.2, so this is obsolete until next time.
+
 DDEV-Local will directly support PHP 8.2 as soon as possible, but not likely until the full release in late 2022. At that time this recipe will be obsolete.
 
 This version adds composer support as well as the gd, fileinfo, pdo_mysql, opcache, and curl extensions. More can easily be added in the php-build/Dockerfile.
