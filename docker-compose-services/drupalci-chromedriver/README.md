@@ -1,6 +1,10 @@
 # DrupalCI ChromeDriver (Behat, DrupalCI, FunctionalJavascript)
 
+**Note: You may want to take a look at the [ddev-selenium-standalone-chrome add-on](https://github.com/weitzman/ddev-selenium-standalone-chrome) for this situation.**
+
 This recipe adds the DrupalCI ChromeDriver container to a project.
+
+**Note that the drupalci Chromedriver does not work on macOS M1 computers.**
 
 Among other things, this supports Drupal's FunctionalJavascript tests.
 But it also supports Behat with WebDriver or any other use of headless Chrome.

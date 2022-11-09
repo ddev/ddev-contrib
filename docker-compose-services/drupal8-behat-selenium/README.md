@@ -1,5 +1,7 @@
 # Setup Behat for Drupal 8/9 with  DDEV-Local and Selenium
 
+**Note: You may want to take a look at the [ddev-selenium-standalone-chrome add-on](https://github.com/weitzman/ddev-selenium-standalone-chrome) for this situation.**
+
 1. Add the [Behat Drupal Extension](https://github.com/jhedstrom/drupalextension) to your project using Composer: `ddev composer require drupal/drupal-extension='~4.0'`
 ` (see [youtube video](https://www.youtube.com/watch?v=KRqqKZPBqpA)) This installs Behat and other required dependencies.
 
