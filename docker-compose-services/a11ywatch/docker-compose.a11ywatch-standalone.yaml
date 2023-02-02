@@ -1,0 +1,24 @@
+version: '3.6'
+services:
+  a11ywatch:
+    container_name: ddev-${DDEV_SITENAME}-a11ywatch
+    hostname: ${DDEV_SITENAME}-a11ywatch
+    image: a11ywatch/a11ywatch:${A11YWATCH_IMAGE:-latest}
+    expose:
+      - "3280"
+      - "50050"
+    environment:
+      - COMPUTER_VISION_ENDPOINT=${COMPUTER_VISION_ENDPOINT:-""}
+      - COMPUTER_VISION_SUBSCRIPTION_KEY=${COMPUTER_VISION_SUBSCRIPTION_KEY:-""}
+      - PAGESPEED_API_KEY=${PAGESPEED_API_KEY:-""}
+      - AI_DISABLED=${AI_DISABLED:-false}
+      - SUPER_MODE=${SUPER_MODE:-true}
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - a11ywatch:/usr/share/a11ywatch/data
+      - ".:/mnt/ddev_config"
+
+volumes:
+  a11ywatch:
