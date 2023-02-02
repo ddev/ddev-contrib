@@ -24,4 +24,4 @@ You can access the [A11yWatch Lite](https://github.com/a11ywatch/a11ywatch) serv
 * To get detailed infromation on how to interact or commincate with the [A11yWatch API Info](https://a11ywatch.com/api-info) A11yWatch.
 * The [A11yWatch CLI](https://github.com/a11ywatch/a11ywatch) is helpful to perform automated task using the gRPC client.
 
-**Contributed by [j-mendez](https://github.com/j-mendez) s**
+**Contributed by [j-mendez](https://github.com/j-mendez)**
