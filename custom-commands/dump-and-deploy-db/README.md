@@ -28,7 +28,7 @@ Running `ddev deploy-db` or `ddev dump-db` will show the available host configur
 
 ## Future Plans
 
-It was planned to create siblings for these commands in the form of `dump-files` and `deploy-files`. It was not meant as a replacement for the usual code-deployment process but rather an addition that takes care of user- or editor- created files. This is currently on hold. (There is also a request for this in <https://github.com/drud/ddev/issues/1930)>
+It was planned to create siblings for these commands in the form of `dump-files` and `deploy-files`. It was not meant as a replacement for the usual code-deployment process but rather an addition that takes care of user- or editor- created files. This is currently on hold. (There is also a request for this in <https://github.com/ddev/ddev/issues/1930)>
 
 ## Example
 

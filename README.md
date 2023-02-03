@@ -37,7 +37,7 @@ General information on how to do additional services and some additional example
 
 * [Behat, Selenium, Drupal 8/9](docker-compose-services/drupal8-behat-selenium)
 * [DrupalCI with Headless Chrome and Behat](docker-compose-services/drupalci-chromedriver). This example uses Drupal's DrupalCI approach, supports Behat, DrupalCI, etc.
-* [Elasticsearch (deprecated - see github.com/drud/ddev-elasticsearch)](docker-compose-services/elasticsearch)
+* [Elasticsearch (deprecated - see github.com/ddev/ddev-elasticsearch)](docker-compose-services/elasticsearch)
 * [Elastichq](docker-compose-services/elastichq)
 * [Headless Chrome for Behat Testing](docker-compose-services/headless-chrome)
 * [Kibana](docker-compose-services/kibana)
@@ -48,7 +48,7 @@ General information on how to do additional services and some additional example
 * [Portainer Service for DDEV](docker-compose-services/portainer)
 * [PostgreSQL (deprecated in favor of official support)](docker-compose-services/postgres/)
 * [RabbitMQ](docker-compose-services/rabbitmq)
-* [redis (deprecated in favor of github.com/drud/ddev-redis)](docker-compose-services/redis)
+* [redis (deprecated in favor of github.com/ddev/ddev-redis)](docker-compose-services/redis)
 * [redis-commander (deprecated in favor of github.com/ddev-redis-commander)](docker-compose-services/redis-commander)
 * [Solr Integration (Drupal-focused)](docker-compose-services/solr)
 * [Solr 4 Integration (Drupal-focused)](docker-compose-services/solr-4)
@@ -66,7 +66,7 @@ General information on how to do additional services and some additional example
 
 ## Full recipes
 
-* [Using DDEV with a corporate (or other) web proxy (obsolete - use `ddev get drud/ddev-proxy-support`)](recipes/proxy)
+* [Using DDEV with a corporate (or other) web proxy (obsolete - use `ddev get ddev/ddev-proxy-support`)](recipes/proxy)
 * [enable TYPO3 cronjob on start or on demand (typo3 scheduler:run)](recipes/cronjob/)
 * [Setting up Drupal 8 multisite, including Drush support](recipes/drupal8-multisite/)
 * [Bludit CMS](recipes/bludit-cms)

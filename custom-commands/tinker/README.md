@@ -60,6 +60,6 @@ Who Doesn’t Like a Good Waterfall?
 While this might be helpful for a quick one-off command, it's recommend to run `ddev tinker` for tinkering to avoid any Docker connection delays between multiple commands.
 
 - Wrapping may also work with <kbd>"</kbd>, depending on the command used. For more consistent results between frameworks and host OS, it is recommended to use <kbd>'</kbd>.
-- See https://github.com/drud/ddev/issues/2547
+- See https://github.com/ddev/ddev/issues/2547
 
 **Contributed by [@tyler36](https://github.com/tyler36)**

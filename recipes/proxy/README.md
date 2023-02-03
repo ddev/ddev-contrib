@@ -1,6 +1,6 @@
 # Using ddev behind a corporate web proxy (obsolete)
 
-**This recipe is now obsolete. Please use [ddev get drud/ddev-proxy-support](https://github.com/drud/ddev-proxy-support)**
+**This recipe is now obsolete. Please use [ddev get ddev/ddev-proxy-support](https://github.com/ddev/ddev-proxy-support)**
 
 Some of us have to live with web proxies for access to the internet. There are loads of implications of this. Web browsers are great with proxies, as they've had to deal with them from the beginning of web browsing. But in a complex container environment there are loads of other things to think about, including curl, apt-get, docker containers, etc.
 

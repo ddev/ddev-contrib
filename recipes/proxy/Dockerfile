@@ -1,7 +1,7 @@
 # This is a Dockerfile for use with the ddev-webserver image
 # It should be in .ddev/web-build/Dockerfile
 # and then you can expand on it.
-ARG BASE_IMAGE=drud/ddev-webserver:v1.9.1
+ARG BASE_IMAGE=ddev/ddev-webserver:v1.9.1
 FROM $BASE_IMAGE
 # If HTTP_PROXY is set in the docker environment, then add the same proxy configuration
 # into apt system in the Debian-based ddev-webserver image at
