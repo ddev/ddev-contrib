@@ -1,6 +1,6 @@
 # PostgreSQL
 
-## UPDATE: Postgres is included as a first-class database type in DDEV v1.19 
+## UPDATE: Postgres is included as a first-class database type in DDEV v1.19
 
 You'll probably want to use the officially-suported one, see [docs](https://ddev.readthedocs.io/en/latest/users/topics/database_management/).
 
@@ -88,7 +88,7 @@ EG. Lets create a second database called `testing`.
 
 * Note: All *.sql,*.sql.gz, & *.sh files in `./.ddev/pgsql-db` will be executed so you can create multiple database or even seed data.
 
-* Note: These files "are only run if you start the container with a data directory that is empty". IE. The first time you start the project. For exisiting projects, add a hook to [import a sql dump if the database is empty](https://github.com/drud/ddev-contrib/tree/master/hook-examples/import-db-if-empty), or run `ddev delete` to re-initialize the project. Remember to backup the database first (Eg. `ddev pgsql_export`).
+* Note: These files "are only run if you start the container with a data directory that is empty". IE. The first time you start the project. For exisiting projects, add a hook to [import a sql dump if the database is empty](https://github.com/ddev/ddev-contrib/tree/master/hook-examples/import-db-if-empty), or run `ddev delete` to re-initialize the project. Remember to backup the database first (Eg. `ddev pgsql_export`).
 
 ## PostGIS
 

@@ -1,6 +1,6 @@
 # Running TYPO3 Cron inside the web container
 
-**OBSOLETE: This recipe is obsolete in favor of `ddev get drud/ddev-cron`, see [ddev-cron](https://github.com/drud/ddev-cron) for more details***
+**OBSOLETE: This recipe is obsolete in favor of `ddev get ddev/ddev-cron`, see [ddev-cron](https://github.com/ddev/ddev-cron) for more details***
 
 This recipe provides two completely different techniques to do TYPO3 cron inside the web container.
 

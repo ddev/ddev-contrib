@@ -1,6 +1,6 @@
 # Redis Commander
 
-**Deprecated in favor of https://github.com/ddev-redis-commander: `ddev get drud/ddev-redis-commander`**
+**Deprecated in favor of https://github.com/ddev-redis-commander: `ddev get ddev/ddev-redis-commander`**
 
 This recipe adds a Redis Commander container to a project.
 

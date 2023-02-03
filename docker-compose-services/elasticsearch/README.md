@@ -1,6 +1,6 @@
 # Elasticsearch: Deprecated
 
-**This recipe is deprecated in favor of https://github.com/drud/ddev-elasticsearch. Please use that and file issues and PRs there.**
+**This recipe is deprecated in favor of https://github.com/ddev/ddev-elasticsearch. Please use that and file issues and PRs there.**
 
 Using official Elasticsearch container [elasticsearch](https://hub.docker.com/_/elasticsearch).
 
