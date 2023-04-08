@@ -8,4 +8,10 @@ Sake is the Silverstripe Make command, to run development tools.
 
 Use it as sake in your project:
 
-`ddev sake dev/tasks`
+`ddev sake dev/tasks` for tasks
+
+`ddev sake dev/build` to build the database
+
+etc.
+
+For the full list of features of Silverstripe CLI, see the Silverstripe (developer) documentation.
