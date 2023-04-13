@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Description: Run Silverstripe make
+## Usage: sake <command-url> <parameters>
+## Example: "ddev sake dev/tasks" or "ddev sake dev/build flush=all"
+## ExecRaw: true
+## HostWorkingDir: true
+
+sake $@
