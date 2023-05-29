@@ -6,7 +6,7 @@
 #   For example, if the project is named "myproject" the hostname will be:
 #   http://myproject.ddev.site:8983
 # - To access the Solr container from the web container use:
-#   ddev-<project>-solr:8983
+#   ddev-<project>-solr1:8983
 #
 # To use this in your own project:
 # 1. Copy this file and the solr (including security.json) directory to your project's ".ddev" directory.
@@ -14,6 +14,7 @@
 #      - enable the search_api_solr_admin (this sub-module included in Search API Solr >= 4.2.1)
 #      - create a search server using the Solr Cloud Connector with Basic Auth using username "solr" and password
 #        "SolrRocks".
+#      - remember to fill out "Default Solr collection" field
 #      - press the "Upload Configset" button.
 
 version: '3.6'
