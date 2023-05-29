@@ -24,9 +24,9 @@
 
 version: '3.6'
 services:
-  solr:
+  solr1:
     image: solr:8
-    container_name: ddev-${DDEV_SITENAME}-solr
+    container_name: ddev-${DDEV_SITENAME}-solr1
     expose:
       - 8983
     # These labels ensure this service is discoverable by ddev.
@@ -34,7 +34,7 @@ services:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
-      SOLR_HOST: ddev-${DDEV_SITENAME}-solr
+      SOLR_HOST: ddev-${DDEV_SITENAME}-solr1
       SOLR_PORT: 8983
       # The pre-trained OpenNLP models require a much bigger buffer.
       SOLR_OPTS: -Djute.maxbuffer=50000000
@@ -46,7 +46,7 @@ services:
       - zoo
     volumes:
       - .:/mnt/ddev_config
-      - solr:/var/solr
+      - solr1:/var/solr
     command: bash -c "docker-entrypoint.sh solr zk cp file:/mnt/ddev_config/solr/security.json zk:/security.json && exec solr-foreground"
 
   zoo:
