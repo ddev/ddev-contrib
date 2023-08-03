@@ -23,8 +23,3 @@ services:
       - SYS_ADMIN
 volumes:
   portainer_data:
-
-networks:
-  default:
-    external:
-      name: ddev_default
