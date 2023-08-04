@@ -12,6 +12,8 @@ Copy [docker-compose.meilisearch.yaml](docker-compose.meilisearch.yaml) to your 
 
 From within the container, the meilisearch container is reached at hostname: `ddev-<projectname>-meilisearch`, port: 7700, so the in-container server URL might be `http://ddev-<projectname>-meilisearch:7700`.
 
+Setup a Master Key by setting the environment variable `MEILI_MASTER_KEY` to a 16 byte UTF-8 string.
+
 ## Connection
 
 You can access the Meilisearch server directly from the host for debugging purposes by visiting `http://<projectname>.ddev.site:7700`.
