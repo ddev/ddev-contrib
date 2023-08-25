@@ -1,6 +1,6 @@
 # Headless Chrome Service
 
-**Note: You may want to take a look at the [ddev-selenium-standalone-chrome add-on](https://github.com/weitzman/ddev-selenium-standalone-chrome) for this situation.**
+**Note: You may want to take a look at the [ddev-selenium-standalone-chrome add-on](https://github.com/ddev/ddev-selenium-standalone-chrome) for this situation.**
 
 This recipe allows you to configure a Headless Chrome which will be available inside the web container, at `chrome:9222`.
 
