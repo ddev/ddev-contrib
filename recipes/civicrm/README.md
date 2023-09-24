@@ -38,7 +38,7 @@ To set up DDEV, for example for a non-Composer Drupal 7 and CiviCRM with PHP 7.4
 
 `ddev config --project-type drupal7 --php-version 7.4 --docroot . --project-name civicrm`
 
-Then import the CiviCRM database with this command:
+Restore your Drupal 7 installation, and then import the CiviCRM database with this command:
 
 `ddev import-db --database=cividb --file=cividb.sql`
 
