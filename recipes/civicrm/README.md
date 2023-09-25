@@ -16,9 +16,7 @@ See https://docs.civicrm.org/installation/en/latest/drupal/. Other CMS'es, such 
 
 For Drupal 10, download CiviCRM with this command. Study the guide above for details:
 
-`ddev composer require civicrm/civicrm-{core,packages,drupal-8} --ignore-platform-req=ext-intl`
-
-*ToDo*: Add command to add `ext-intl` PHP extension in DDEV.
+`ddev composer require civicrm/civicrm-{core,packages,drupal-8}`
 
 
 ## Import separate CiviCRM database, configure database and template settings
