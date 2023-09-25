@@ -59,3 +59,7 @@ $civicrm_root = '/var/www/html/sites/all/modules/civicrm';
 define( 'CIVICRM_TEMPLATE_COMPILEDIR', '/var/www/html/sites/default/files/civicrm/templates_c/' );
 define( 'CIVICRM_UF_BASEURL'      , 'https://civicrm.ddev.site/' );
 ```
+
+---
+
+**Contributed by [@gitressa](https://github.com/gitressa)**
