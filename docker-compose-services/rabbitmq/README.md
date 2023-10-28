@@ -4,6 +4,10 @@ This enables a RabbitMQ service container that can be used by other containers o
 
 ## Installation
 
+> [!WARNING]  
+> This obsolete recipe has been replaced by the add-on "ochorocho/ddev-rabbitmq" (`ddev get ochorocho/ddev-rabbitmq`). 
+> See the repository https://github.com/ochorocho/ddev-rabbitmq/
+
 1. Copy [docker-compose.rabbitmq.yaml](docker-compose.rabbitmq.yaml) to your project
 2. Copy the directory [rabbitmq-build](rabbitmq-build) to your project.
 
