@@ -16,7 +16,7 @@ ddev exec stripe --version
 should output something like this
 
 ```bash
-stripe version 1.5.1
+stripe version 1.18.0
 ```
 
 Well done. Now you can start to listen to the stripe web hooks. Have fun 🎉
