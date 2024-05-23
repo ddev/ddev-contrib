@@ -1,9 +1,6 @@
-ARG BASE_IMAGE
-FROM $BASE_IMAGE
-
 ENV PHP_VERSION=$DDEV_PHP_VERSION
 RUN \
-    apt-get update && apt-get install -y libz-dev php-dev php-pear && \
+    (apt-get update || true) && apt-get install -y libz-dev php-dev php-pear && \
     pecl install grpc && \
     pecl install protobuf && \
     echo "extension=grpc.so" > /etc/php/$DDEV_PHP_VERSION/cli/conf.d/grpc.ini && \
