@@ -14,21 +14,21 @@ It is based on [Matt Glaman's excelent blog post](https://glamanate.com/blog/run
 
 * Copy `docker-compose.chromedriver.yaml` to the `.ddev` folder of your project.
 * Set environment variables in the "environment" section of the "web" service in `docker-compose.chromedriver.yaml` as appropriate. The defaults are for Drupal Functional and FunctionalJavascript testing.
-* Verify that your phpunit.xml does not define `MINK_DRIVER_ARGS_WEBDRIVER`. This should come from our docker-compose.chromedriver.yaml.
+* Verify that your phpunit.xml does not define `MINK_DRIVER_ARGS_WEBDRIVER`, `SIMPLETEST_DB`, `SIMPLETEST_BASE_URL`, `BROWSERTEST_OUTPUT_DIRECTORY`, or `BROWSERTEST_OUTPUT_BASE_URL`. These should come from our docker-compose.chromedriver.yaml.
 * Ensure that one of the two `SIMPLETEST_DB` options is uncommented.
 * Start (or restart) DDEV to have the service initialized: `ddev start`
 * Your Drupal project must be built with --require-dev to get necessary dependencies like phpunit (for example, `ddev composer create drupal/recommended-project --require-dev`)
 * To test the setup, `ddev ssh` and run a Drupal unit test that triggers ChromeDriver. Example (assumes Drupal core is in the `web` directory):
 
 ```bash
-user@demo-web:/var/www/html$ phpunit --verbose -c web/core/phpunit.xml.dist web/core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
+user@demo-web:/var/www/html$ phpunit -c web/core/phpunit.xml.dist web/core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
 ```
 ## Example run
 
 From @damienmckenna, here's an example run to demonstrate functionality:
 
 ```bash
-$ ddev exec phpunit --verbose -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
+$ ddev exec phpunit -c core/phpunit.xml.dist core/modules/system/tests/src/FunctionalJavascript/System/DateFormatTest.php
 PHPUnit 8.5.8 by Sebastian Bergmann and contributors.
 
 Runtime:       PHP 7.3.27-9+0~20210227.82+debian10~1.gbpa4a3d6
