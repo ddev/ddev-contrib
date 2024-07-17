@@ -19,7 +19,8 @@ Resources:
 4. If you want your solr data to be persistent across `ddev restart`, then uncomment the `- solrdata:/var/solr` line in docker-compose.solr.yaml. The comments there explain what you have to do if you want to start over. It's recommended to wait to uncomment that until you have everything else working.
 5. Copy the default Solr configuration from Ext:Solr to ddev:
     * `mkdir -p .ddev/solr`
-    * `cp -r public/typo3conf/ext/solr/Resources/Private/Solr/* .ddev/solr`
+    * TYPO3 v12 and above: `cp -r vendor/apache-solr-for-typo3/solr/Resources/Private/Solr/* .ddev/solr`
+    * TYPO3 v11 and below: `cp -r public/typo3conf/ext/solr/Resources/Private/Solr/* .ddev/solr`
     * You will have `configsets`, `cores`, `solr.xml` and `zoo.cfg` in .ddev/solr.
 6. `ddev restart` will bring up the new solr container.
 7. On the TYPO3 backend "Sites" module, choose your site
