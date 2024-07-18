@@ -1,10 +1,12 @@
 # ddev-contrib: Contrib for DDEV
 
-Contrib space for DDEV add-ons, services, tools, snippets, and approaches.
+Contrib space for DDEV add-ons, services, tools, snippets, and approaches. **MOSTLY OBSOLETE!**
 
-## Third-party add-ons
+## THIS REPO IS MOSTLY OBSOLETE, Check the Add-On Registry!
 
-**MANY OF THESE have been made obsolete by DDEV add-ons. Please look for add-ons before using anything here. `ddev get --list --all`***
+**MOST OF THESE recipes have been made obsolete by DDEV add-ons. Please look for add-ons before using anything here. `ddev get --list --all`**
+
+See [docs](https://ddev.readthedocs.io/en/stable/users/extend/additional-services/) and `ddev get --list` for official add-ons, `ddev get --list --all` for all add-ons.
 
 ## config.yaml hook examples
 
