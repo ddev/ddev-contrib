@@ -58,6 +58,7 @@ General information on how to do additional services and some additional example
 * [Solr Integration (TYPO3-focused)](docker-compose-services/typo3-solr)
 * [SQL Server (Microsoft)](docker-compose-services/sqlsrv)
 * [Varnish](docker-compose-services/varnish)
+* [XHGui](docker-compose-services/xhgui)
 
 ## .ddev/web-build/Dockerfile examples to customize web container
 
