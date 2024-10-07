@@ -1,0 +1,20 @@
+---
+# Adds New Relic support for performance profiling.
+version: '3.6'
+services:
+  newrelic:
+    image: newrelic/php-daemon
+    container_name: ddev-${DDEV_SITENAME}-newrelic
+    ports: ['31339']
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+
+  web:
+    build:
+      args:
+        NEW_RELIC_AGENT_VERSION: "9.2.0.247"
+        NEW_RELIC_LICENSE_KEY: ""
+        NEW_RELIC_APPNAME: ${DDEV_SITENAME}
+    links:
+      - newrelic
