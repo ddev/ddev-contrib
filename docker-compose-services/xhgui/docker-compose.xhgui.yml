@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  xhgui:
+    container_name: ddev-${DDEV_SITENAME}-xhgui
+    hostname: ${DDEV_SITENAME}-xhgui
+    image: xhgui/xhgui
+    ports:
+      - 8282:80
+    links:
+      - xhgui-mongo
+    environment:
+      - XHGUI_MONGO_HOSTNAME=xhgui-mongo
+      - XHGUI_MONGO_DATABASE=xhprof
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+      - ./xhgui/nginx.default.conf:/etc/nginx/conf.d/default.conf
+      - ./xhgui/xhgui.config.php:/var/www/xhgui/config/config.php
+  xhgui-mongo:
+    container_name: ddev-${DDEV_SITENAME}-xhgui-mongo
+    # xhgui doesn't work with mongodb >= 3.6
+    image: percona/percona-server-mongodb:3.4
+    # (case sensitive) engine: mmapv1, rocksdb, wiredTiger, inMemory
+    command: --storageEngine=wiredTiger
+    environment:
+      - MONGO_INITDB_DATABASE=xhprof
+    volumes:
+      - ./xhgui-mongo/mongo.init.d:/docker-entrypoint-initdb.d
+      - xhgui-mongo:/data/db
+    ports:
+      - "27017:27017"
+  web:
+    links:
+      - xhgui
+    depends_on:
+      - xhgui
+volumes:
+  xhgui-source:
+  xhgui-mongo:
