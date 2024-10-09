@@ -16,7 +16,7 @@ Connect to `sqlsrv` host/db server from within the web container with:
 ```
 Host: `ddev-projectname-sqlsrv`
 User: sa
-Password: password!
+Password: Password12!
 Database: master
 ```
 
