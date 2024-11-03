@@ -1,10 +1,10 @@
-# ddev-contrib: Contrib for DDEV
+# ddev-contrib: ARCHIVED Contrib for DDEV
 
 Contrib space for DDEV add-ons, services, tools, snippets, and approaches. **MOSTLY OBSOLETE!**
 
-## THIS REPO IS MOSTLY OBSOLETE, Check the Add-On Registry!
+## THIS REPO IS ARCHIVED AND OBSOLETE, Check the Add-On Registry!
 
-**MOST OF THESE recipes have been made obsolete by DDEV add-ons. Please look for add-ons before using anything here. `ddev get --list --all`**
+**MOST OF THESE recipes have been made obsolete by maintained DDEV add-ons. Please look for add-ons before using anything here. `ddev get --list --all`**
 
 See [docs](https://ddev.readthedocs.io/en/stable/users/extend/additional-services/) and `ddev get --list` for official add-ons, `ddev get --list --all` for all add-ons.
 
